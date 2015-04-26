@@ -12,10 +12,20 @@
 	public class RentalController {
 		
 		/**
+	     * Check that the controller is available for the current user/visitor
+	     */
+	    abstract public function checkAccess();
+
+	    /**
+	     * Check that the current user/visitor has valid view permissions
+	     */
+	    abstract public function viewAccess();
+		
+		/**
 		 * The constructor of RentalController
 		 */
 		public function __construct() {
-			
+		
 		}
 		
 	}

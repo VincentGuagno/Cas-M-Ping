@@ -1,8 +1,8 @@
 <?php
 	
 	/*
-	 * Controller for rental's modifications
-	 * This class manages the modifications on rentals
+	 * Controller for rental modifications
+	 * This class handles modifications rentals
 	 *
 	 * @author Jérémie LIECHTI
 	 * @version 0.0.1
@@ -16,6 +16,22 @@
 		 */
 		public function __construct() {
 			
+		}
+		
+		/**
+	     * @see RentalController::checkAccess()
+	     * @return boolean
+	     */
+	    public function checkAccess() {
+			return true;
+	    }
+
+		/**
+		 * @see RentalController::viewAccess()
+		 * @return boolean
+		 */
+		public function viewAccess() {
+			return true;
 		}
 		
 	}

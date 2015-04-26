@@ -1,8 +1,8 @@
 <?php
 	
 	/*
-	 * Controller for rental's controls
-	 * This class manages the controls on rentals
+	 * Controller for rental controls
+	 * This class handles the controls on rentals
 	 * The guarantees must be controls by the camping chief
 	 *
 	 * @author Jérémie LIECHTI
@@ -17,6 +17,22 @@
 		 */
 		public function __construct() {
 			
+		}
+		
+		/**
+	     * @see RentalController::checkAccess()
+	     * @return boolean
+	     */
+	    public function checkAccess() {
+			return true;
+	    }
+
+		/**
+		 * @see RentalController::viewAccess()
+		 * @return boolean
+		 */
+		public function viewAccess() {
+			return true;
 		}
 		
 	}

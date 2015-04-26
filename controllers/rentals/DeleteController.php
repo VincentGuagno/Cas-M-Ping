@@ -1,8 +1,8 @@
 <?php
 	
 	/*
-	 * Controller for rental's suppressions
-	 * This class manages a rental's suppression
+	 * Controller for rental deletions
+	 * This class handles the deletion of a rental
 	 *
 	 * @author Jérémie LIECHTI
 	 * @version 0.0.1
@@ -16,6 +16,22 @@
 		 */
 		public function __construct() {
 			
+		}
+		
+		/**
+	     * @see RentalController::checkAccess()
+	     * @return boolean
+	     */
+	    public function checkAccess() {
+			return true;
+	    }
+
+		/**
+		 * @see RentalController::viewAccess()
+		 * @return boolean
+		 */
+		public function viewAccess() {
+			return true;
 		}
 		
 	}
