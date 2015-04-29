@@ -2,7 +2,7 @@
 <html>
 <head>
 	{% block head %}
-		<link rel="stylesheet" href="style.css" />
+		<link rel="stylesheet" href="dependencies/bootstrap/css/bootstrap.min.css" />
 		<title>{% block title %}{% endblock %} - Clients</title>
 	{% endblock %}
 </head>
