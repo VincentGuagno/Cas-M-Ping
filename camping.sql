@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Lun 27 Avril 2015 à 00:13
+-- Généré le :  Mer 29 Avril 2015 à 22:57
 -- Version du serveur :  5.6.17
 -- Version de PHP :  5.5.12
 
@@ -76,12 +76,56 @@ INSERT INTO `customer` (`cust_id`, `cust_name`, `cust_address`, `cust_postal_cod
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `link_car_location`
+--
+
+CREATE TABLE IF NOT EXISTS `link_car_location` (
+  `lcl_car_id` int(11) NOT NULL,
+  `lcl_rent_id` int(11) NOT NULL,
+  PRIMARY KEY (`lcl_car_id`,`lcl_rent_id`),
+  KEY `lcl_rend_constraint` (`lcl_rent_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `link_rent_rental`
+--
+
+CREATE TABLE IF NOT EXISTS `link_rent_rental` (
+  `lle_rent_id` int(11) NOT NULL,
+  `lle_loc_id` int(11) NOT NULL,
+  PRIMARY KEY (`lle_rent_id`,`lle_loc_id`),
+  KEY `rent_index` (`lle_rent_id`),
+  KEY `lle_location_constraint` (`lle_loc_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `link_season_location`
+--
+
+CREATE TABLE IF NOT EXISTS `link_season_location` (
+  `link_seas_id` int(11) NOT NULL,
+  `link_location_id` int(11) NOT NULL,
+  PRIMARY KEY (`link_seas_id`,`link_location_id`),
+  KEY `link_location_constraint` (`link_location_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `location`
 --
 
 CREATE TABLE IF NOT EXISTS `location` (
   `loc_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'location''s id',
-  PRIMARY KEY (`loc_id`)
+  `loc_sec_id` int(11) NOT NULL,
+  `loc_type_id` int(11) NOT NULL,
+  PRIMARY KEY (`loc_id`),
+  UNIQUE KEY `loc_sec_index` (`loc_sec_id`),
+  KEY `loc_type_index` (`loc_type_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -100,7 +144,9 @@ CREATE TABLE IF NOT EXISTS `rental` (
   `rent_caution_state` double NOT NULL COMMENT 'rent''s state payment',
   `rent_days_number` int(11) NOT NULL COMMENT 'rent''s days number',
   `rent_price` double NOT NULL COMMENT 'rent''s price',
-  PRIMARY KEY (`rent_id`)
+  `rent_cust_id` int(11) NOT NULL COMMENT 'foreign key from customer''s table',
+  PRIMARY KEY (`rent_id`),
+  KEY `cust_foreign_key` (`rent_cust_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -149,6 +195,68 @@ INSERT INTO `sector` (`sec_id`, `sec_name`) VALUES
 (2, 'Forêt'),
 (3, 'Jardin'),
 (4, 'Clairière');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `type_location`
+--
+
+CREATE TABLE IF NOT EXISTS `type_location` (
+  `type_location_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'type location''s id',
+  `type_location_name` varchar(20) NOT NULL COMMENT 'location''s name',
+  `type_location_price` double NOT NULL COMMENT 'location''s price',
+  PRIMARY KEY (`type_location_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
+
+--
+-- Contenu de la table `type_location`
+--
+
+INSERT INTO `type_location` (`type_location_id`, `type_location_name`, `type_location_price`) VALUES
+(1, 'terrain nu', 15),
+(2, 'mobil home standard', 50),
+(3, 'mobil home deluxe', 80),
+(4, 'caravans 3 places', 30),
+(5, 'caravans 5 places', 45);
+
+--
+-- Contraintes pour les tables exportées
+--
+
+--
+-- Contraintes pour la table `link_car_location`
+--
+ALTER TABLE `link_car_location`
+  ADD CONSTRAINT `lcl_rend_constraint` FOREIGN KEY (`lcl_rent_id`) REFERENCES `rental` (`rent_id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `lcl_car_constraint` FOREIGN KEY (`lcl_car_id`) REFERENCES `caravan` (`car_id`) ON DELETE CASCADE;
+
+--
+-- Contraintes pour la table `link_rent_rental`
+--
+ALTER TABLE `link_rent_rental`
+  ADD CONSTRAINT `lle_location_constraint` FOREIGN KEY (`lle_loc_id`) REFERENCES `location` (`loc_id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `lle_rent_constraint` FOREIGN KEY (`lle_rent_id`) REFERENCES `rental` (`rent_id`) ON DELETE CASCADE;
+
+--
+-- Contraintes pour la table `link_season_location`
+--
+ALTER TABLE `link_season_location`
+  ADD CONSTRAINT `link_location_constraint` FOREIGN KEY (`link_location_id`) REFERENCES `location` (`loc_id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `link_season_constraint` FOREIGN KEY (`link_seas_id`) REFERENCES `season` (`seas_id`) ON DELETE CASCADE;
+
+--
+-- Contraintes pour la table `location`
+--
+ALTER TABLE `location`
+  ADD CONSTRAINT `location_sector_constraint` FOREIGN KEY (`loc_sec_id`) REFERENCES `sector` (`sec_id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `location_type_location_constraint` FOREIGN KEY (`loc_type_id`) REFERENCES `type_location` (`type_location_id`) ON DELETE CASCADE;
+
+--
+-- Contraintes pour la table `rental`
+--
+ALTER TABLE `rental`
+  ADD CONSTRAINT `rental_customers_constraint` FOREIGN KEY (`rent_cust_id`) REFERENCES `customer` (`cust_id`) ON DELETE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
