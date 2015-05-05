@@ -9,7 +9,7 @@
 	 * @copyright 2015 3iL
 	 */
 
-	class DisplayController extends RentalController {
+	public class DisplayController extends RentalController {
 		
 		/**
 		 * The constructor of DisplayController

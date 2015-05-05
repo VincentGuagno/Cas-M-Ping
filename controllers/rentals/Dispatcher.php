@@ -9,7 +9,7 @@
 	 * @copyright 2015 3iL
 	 */
 
-	class Dispatcher {
+	public class Dispatcher {
 		
 		/**
 		 * The constructor of Dispatcher

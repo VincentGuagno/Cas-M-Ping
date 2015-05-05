@@ -10,7 +10,7 @@
 	 * @copyright 2015 3iL
 	 */
 
-	class CheckSettingsController extends RentalController {
+	public class CheckSettingsController extends RentalController {
 		
 		/**
 		 * The constructor of CheckSettingsController
