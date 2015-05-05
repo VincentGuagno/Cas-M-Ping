@@ -1,41 +1,51 @@
-
-
 <?php
 
-	/**********************     REQUEST     *********************/
-	/** Season                                          
-	/************************************************************/
+	/*
+	 * Model for seasons modifications
+	 * This class handles the display of a seasons
+	 *
+	 * @author Bastien VAUTIER
+	 * @version 0.0.1
+	 * @copyright 2015 3iL
+	 */
 
 	class displayModel {
 
 
-		/***
-		* display all season's informations
-		*
-		*/		
-		public function display_models() {
+		/**
+		 * Display all season's informations
+		 *
+		 * @param seas_id, season's name
+		 * @return 0 without errors, exception message any others cases
+		 */	
+		public function display_seasons() {	
 			try {
-				$model = $this->db->prepare('SELECT seas_name, seas_start_date, seas_end_date, seas_coeff FROM season');	
-				$model->execute();
-				$model->closeCursor();
+				$qry = $this->db->prepare('SELECT seas_name, seas_start_date, seas_end_date, seas_coeff FROM season');	
+				$qry->execute();
+				$qry->closeCursor();
+				return 0;
+			} catch(Exception $e) 
+				return $e->getMessage();
 			}
-			/catch(Exception $e) {header('Location: ./erreur/500');}
 		}
 
-		/***
-		*  all season's informations from one customer 
-		*
-		*/
-			public function display_model($seas_id) {
+		/**
+		 * All season's informations from one customer 
+		 *
+		 * @param seas_id, season's name
+		 * @return 0 without errors, exception message any others cases
+		 */
+		public function display_season($seas_id) {
 			try {
-				$model = $this->db->prepare('SELECT * FROM season WHERE seas_id = ?');	
-				$model->bindValue(1, $seas_id, PDO::PARAM_INT);
-				$model->execute();
-				$model->closeCursor();
+				$qry = $this->db->prepare('SELECT * FROM season WHERE seas_id = ?');	
+				$qry->bindValue(1, $seas_id, PDO::PARAM_INT);
+				$qry->execute();
+				$qry->closeCursor();
+				return 0;
+			} catch(Exception $e) {
+				return $e->getMessage();
 			}
-			/catch(Exception $e) {header('Location: ./erreur/500');}
 		}
-
 	}
 
 ?>

@@ -1,40 +1,50 @@
-
-
 <?php
 
-	/**********************     REQUEST     *********************/
-	/** Sector                                          
-	/************************************************************/
+	/*
+	 * Model for sectors modifications
+	 * This class handles the display of a sectors
+	 *
+	 * @author Bastien VAUTIER
+	 * @version 0.0.1
+	 * @copyright 2015 3iL
+	 */
 
 	class displayModel {
 
-
-		/***
-		* display all Sector's informations
-		*
-		*/		
-		public function display_models() {
+		/**
+		 * Display all Sector's informations
+		 *	
+		 * @param sec_id, sector's id
+		 * @return 0 without errors, exception message any others cases
+		 */	
+		public function display_sectors() {
 			try {
-				$model = $this->db->prepare('SELECT * FROM sector');	
-				$model->execute();
-				$model->closeCursor();
+				$qry = $this->db->prepare('SELECT * FROM sector');	
+				$qry->execute();
+				$qry->closeCursor();
+				return 0;
+			} catch(Exception $e) {
+				return $e->getMessage();
 			}
-			/catch(Exception $e) {header('Location: ./erreur/500');}
 		}
-		/***
-		*  all Sector's informations from one customer 
-		*
-		*/
-			public function display_model($sec_id) {
+		
+		/**
+		 * All Sector's informations from one customer 
+		 *
+		 * @param sec_id, sector's id
+		 * @return 0 without errors, exception message any others cases
+		 */	
+		public function display_sector($sec_id) {
 			try {
-				$model = $this->db->prepare('SELECT sec_name FROM sector WHERE sec_id');	
-				$model->bindValue(1, $sec_id, PDO::PARAM_INT);
-				$model->execute();
-				$model->closeCursor();
+				$qry = $this->db->prepare('SELECT sec_name FROM sector WHERE sec_id');	
+				$qry->bindValue(1, $sec_id, PDO::PARAM_INT);
+				$qry->execute();
+				$qry->closeCursor();
+				return 0;
+			} catch(Exception $e) {
+				return $e->getMessage();
 			}
-			/catch(Exception $e) {header('Location: ./erreur/500');}
 		}
-
-	}
+	}	
 
 ?>
