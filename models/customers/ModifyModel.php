@@ -14,7 +14,7 @@
 	class modifyModel {
 
 		/**
-		* modify all customer's informations from one customer 
+		* Modify all customer's informations from one customer 
 		*
 		* @param cust_id, customer's id
 		* @param cust_name, customer's name
