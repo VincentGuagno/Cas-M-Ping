@@ -9,7 +9,7 @@
 	 * @copyright 2015 3iL
 	 */
 
-	public class RentalController {
+	abstract class RentalController {
 		
 		/**
 	     * Check that the controller is available for the current user/visitor
@@ -25,7 +25,16 @@
 		 * The constructor of RentalController
 		 */
 		public function __construct() {
+			Tools::init();
+		}
 		
+		/**
+		 * Initialize the page
+		 */
+		public function init() {
+			if (!defined('_BASE_URL_')) {
+				define('_BASE_URL_', Util::getDomain());
+			}
 		}
 		
 	}

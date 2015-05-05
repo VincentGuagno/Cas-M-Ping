@@ -9,7 +9,7 @@
 	 * @copyright 2015 3iL
 	 */
 
-	public class DeleteController extends RentalController {
+	class DeleteController extends RentalController {
 		
 		/**
 		 * The constructor of DeleteController

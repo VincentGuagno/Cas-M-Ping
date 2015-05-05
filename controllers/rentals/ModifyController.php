@@ -9,7 +9,7 @@
 	 * @copyright 2015 3iL
 	 */
 
-	public class ModifyController extends RentalController {
+	class ModifyController extends RentalController {
 		
 		/**
 		 * The constructor of ModifyController
