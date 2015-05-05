@@ -15,7 +15,7 @@
 		*/
 		public function display_models() {
 			try {
-				$model = $this->db->prepare('SELECT * FROM `customer` WHERE 1 ORDER BY `customer`.`cust_name` DESC');	
+				$model = $this->db->prepare('SELECT * FROM customer ORDER BY customer.cust_name DESC');	
 				$model->execute();
 				$model->closeCursor();
 			}
@@ -26,10 +26,10 @@
 		*  all customer's informations from one customer 
 		*
 		*/
-			public function display_models($cust_name) {
+			public function display_model($cust_id) {
 			try {
-				$model = $this->db->prepare('SELECT * FROM `customer` WHERE `cust_name` = ?');	
-				$model->bindValue(1, $cust_name, PDO::PARAM_STR);
+				$model = $this->db->prepare('SELECT * FROM customer WHERE cust_id = ?');	
+				$model->bindValue(1, $cust_id, PDO::PARAM_INT);
 				$model->execute();
 				$model->closeCursor();
 			}
