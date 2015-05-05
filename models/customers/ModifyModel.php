@@ -1,5 +1,3 @@
-
-
 <?php
 
 	/*
@@ -26,7 +24,7 @@
 		*
 		* @return 0 without errors, exception message any others cases
 		*/
-		public function modify_model($cust_id, $cust_name, $cust_address, $cust_zipCode, $cust_city, $cust_phoneNumber, $cust_addNumber) {
+		public function modify_customer($cust_id, $cust_name, $cust_address, $cust_zipCode, $cust_city, $cust_phoneNumber, $cust_addNumber) {
 			try {
 				$qry = $this->db->prepare('UPDATE camping.customer SET cust_name =?, cust_address =?, cust_postal_code =?, cust_city =?, cust_phone_number =?, cust_record_number =? WHERE cust_id =?');
 				$qry->bindValue(1, $cust_name, PDO::PARAM_STR);
@@ -40,7 +38,9 @@
 				$qry->closeCursor();
 				
 				return 0;
-			} catch(Exception $e) {
+			} 
+			catch(Exception $e)
+			{
 				return $e->getMessage();
 			}
 		}
