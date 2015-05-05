@@ -19,7 +19,7 @@
 				$model->execute();
 				$model->closeCursor();
 			}
-			catch(Exception $e) {header('Location: ./erreur/500');}
+			/catch(Exception $e) {header('Location: ./erreur/500');}
 		}
 		/***
 		*  all Sector's informations from one customer 
@@ -32,7 +32,7 @@
 				$model->execute();
 				$model->closeCursor();
 			}
-			catch(Exception $e) {header('Location: ./erreur/500');}
+			/catch(Exception $e) {header('Location: ./erreur/500');}
 		}
 
 	}
