@@ -32,6 +32,29 @@
 				return $e->getMessage();
 			}
 		}
+
+		/**
+		 * Modify sector's informations
+		 *
+		 * @param sec_id, sector's name
+		 * @return 0 without errors, exception message any others cases
+		 */
+		public function has_sector($sec_id) {
+			try {
+	
+				$qry = $this->db->prepare('SELECT sector.sec_name FROM	sector
+                        					WHERE sector.sec_id =?');
+				
+				$qry->bindValue(1, $sec_id, PDO::PARAM_INT);
+				
+				$qry->execute();
+				$qry->closeCursor();
+				return 0;
+			} catch(Exception $e) {
+				return $e->getMessage();
+			}
+		}
+		
 	}
 
 ?>

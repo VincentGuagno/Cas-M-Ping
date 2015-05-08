@@ -9,7 +9,7 @@
 	 * @copyright 2015 3iL
 	 */
 
-	class addModel {
+	class addModel extends CustomerModel{
 		
 		/**
 		 * Modify all customer's informations from one customer 
@@ -39,6 +39,11 @@
 				return $e->getMessage();
 			}
 		}
+
+
+
+	//je cherche si il existe un CLI_ID dans CLIENT ou CLI_NOM = param et CLI_PRENOM = param2. Si il existe je le crée pas et j'utilise cet id pour l'insérer dans LOCATION. Sinon je le crée et je récupère son CLI_ID que je met dans LOCATION.
+	
 	}
 	
 ?>

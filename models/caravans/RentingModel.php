@@ -28,11 +28,24 @@
 		 * @param rent_custId, customer rent id
 		 * @return 0 without errors, exception message any others cases
 		 */
-		public function renting_caravan($rent_name, $rent_begin, $rent_end, $rent_nbPerson ,
-									 $rent_locationState, $rent_cautionState, $rent_daysNumber,
-									 $rent_price , $rent_custId) {
+		public function renting_caravan($rent_name, $rent_begin, 
+										$rent_end, $rent_nbPerson,
+									 	$rent_locationState, $rent_cautionState,
+									 	$rent_daysNumber,$rent_price , $rent_custId) {
 			try {
-				$qry = $this->db->prepare('INSERT INTO camping.rental (rent_id, rent_name, rent_begin, rent_end, rent_nb_person, rent_location_state, rent_caution_state, rent_days_number, rent_price, rent_cust_id) VALUES (NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?)');
+				$qry = $this->db->prepare('INSERT INTO camping.rental (rent_id,
+																	   rent_name, 
+																	   rent_begin, 
+																	   rent_end, 
+																	   rent_nb_person, 
+																	   rent_location_state, 
+																	   rent_caution_state, 
+																	   rent_days_number, 
+																	   rent_price, 
+																	   rent_cust_id) VALUES (NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?)');
+				
+
+
 				$qry->bindValue(1, $rent_name, PDO::PARAM_STR);
 				$qry->bindValue(2, $rent_begin, PDO::PARAM_STR);
 				$qry->bindValue(3, $rent_end, PDO::PARAM_STR);
