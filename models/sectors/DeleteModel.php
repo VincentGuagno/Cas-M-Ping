@@ -9,7 +9,7 @@
 	 * @copyright 2015 3iL
 	 */
 
-	class deleteModel {
+	public class deleteModel extends sectorModel{
 
 		/**
 		 * Delete a specified sector
@@ -19,7 +19,12 @@
 		 */
 		public function delete_sector($sec_id) {
 			try {
-				$qry = $this->db->prepare('DELETE FROM sector WHERE sec_id = ?');
+				// Supprestion des informations du sectors  avec commune avec la clé etrangère de la table link_season_location
+				$qry = $this->db->prepare('DELETE FROM sector 
+												INNER JOIN  link_season_location 
+												ON sector.sec_id = ?
+												AND sector.sec_id = link_season_location.link_seas_id ');
+				
 				$qry->bindValue(1, $sec_id, PDO::PARAM_INT);
 				$qry->execute();
 				$qry->closeCursor();

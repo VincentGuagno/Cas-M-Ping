@@ -9,7 +9,7 @@
 	 * @copyright 2015 3iL
 	 */
 
-	class deleteModel {
+	public class deleteModel extends seasonModel{
 
 		/**
 		 * Delete a specified season
@@ -19,7 +19,11 @@
 		 */
 		public function delete_season($seas_id) {
 			try {
-				$qry = $this->db->prepare('DELETE FROM season WHERE seas_id = ?');
+
+				
+				$qry = $this->db->prepare('DELETE FROM season 
+												   INNER JOIN link_season_location ON  season.seas_id = ? and season.seas_id = link_season_location.link_seas_id');
+				
 				$qry->bindValue(1, $seas_id, PDO::PARAM_INT);
 				$qry->execute();
 				$qry->closeCursor();

@@ -9,7 +9,7 @@
 	 * @copyright 2015 3iL
 	 */
 
-	class deleteModel {
+	public class deleteModel extends LocationModel{
 
 		/**
 		 * Delete a specified sector
@@ -22,7 +22,7 @@
 			try {
 				$qry = $this->db->prepare('DELETE FROM location WHERE `loc_id = ?');
 				$qry->bindValue(1, $loc_id, PDO::PARAM_INT);
-				$qry->execute();
+				$qry->execute();				
 				$qry->closeCursor();
 				return 0;
 			} catch(Exception $e) {

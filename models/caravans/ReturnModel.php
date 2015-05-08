@@ -1,7 +1,4 @@
 
-
-
-
 <?php
 
 	/*
@@ -13,7 +10,7 @@
 	 * @copyright 2015 3iL
 	 */
 
-	class returnModel {
+	public class returnModel extends CaravanModel {
 
 
 		/**
@@ -24,7 +21,12 @@
 		 */
 		public function return_caravan($rent_custId) {
 			try {
-				$qry = $this->db->prepare('DELETE FROM rental WHERE rent_cust_id = ?');	
+				// Suppréssion de la donnée custId et de son lien dans la table de liason caravan/location
+				$qry = $this->db->prepare('DELETE FROM rental 
+												INNER JOIN link_car_location 
+													ON  rental.rent_cust_id = ? 
+													and rental.rent_cust_id = link_car_location.lcl_car_id');	
+				
 				$qry->bindValue(1, $rent_custId, PDO::PARAM_INT);
 				$qry->execute();
 				$qry->closeCursor();

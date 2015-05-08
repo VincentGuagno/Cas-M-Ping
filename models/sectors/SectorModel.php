@@ -1,26 +1,27 @@
 <?php
-
 	/*
-	 * Model for sectors modifications
+	 * Model for sector modifications
 	 * This class handles the add  of a sector
 	 *
 	 * @author Bastien VAUTIER
 	 * @version 0.0.1
 	 * @copyright 2015 3iL
 	 */
-
-	public class addModel {
-
+	public class class sectorModel {
+	
 		/**
-		 * Add new sector 
+		 * Modify sector's informations
 		 *
-		 * @param sec_name, sector's name
+		 * @param sec_id, sector's name
 		 * @return 0 without errors, exception message any others cases
 		 */
-		public function add_sector($sec_name) {
+		public function has_sector($sec_id) {
 			try {
-				$qry = $this->db->prepare('INSERT INTO camping.sector (sec_id, sec_name) VALUES (NULL, theSecName)');
-				$qry->bindValue(1, $sec_name, PDO::PARAM_STR);			
+	
+				$qry = $this->db->prepare('SELECT sector.sec_id FROM sector WHERE sector.sec_id = ?');	
+
+				$qry->bindValue(1, $sec_id, PDO::PARAM_STR);				
+
 				$qry->execute();
 				$qry->closeCursor();
 				return 0;
@@ -28,6 +29,6 @@
 				return $e->getMessage();
 			}
 		}
+		
 	}
-
 ?>

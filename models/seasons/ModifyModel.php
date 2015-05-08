@@ -9,7 +9,7 @@
 	 * @copyright 2015 3iL
 	 */
 
-	class modifyModel {
+	public class modifyModel extends seasonModel{
 
 		/**
 		 * Modify season's informations
