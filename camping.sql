@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Mer 29 Avril 2015 à 22:57
+-- Généré le :  Ven 08 Mai 2015 à 17:15
 -- Version du serveur :  5.6.17
 -- Version de PHP :  5.5.12
 
@@ -33,7 +33,7 @@ CREATE TABLE IF NOT EXISTS `caravan` (
   `car_nb_person` int(11) NOT NULL COMMENT 'the number of person who can live into the caravan',
   `car_id_location` int(11) NOT NULL COMMENT 'location number where the caravans was rented',
   PRIMARY KEY (`car_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
 
 --
 -- Contenu de la table `caravan`
@@ -42,7 +42,9 @@ CREATE TABLE IF NOT EXISTS `caravan` (
 INSERT INTO `caravan` (`car_id`, `car_society_name`, `car_price`, `car_nb_person`, `car_id_location`) VALUES
 (5, 'zob', 545, 12, 1),
 (6, 'pignouf', 444, 12, 22),
-(7, 'glandu', 777, 7, 2);
+(7, 'glandu', 777, 7, 2),
+(8, 'theSocietyName', 44.44, 11, 0),
+(9, 'SocietyNAme', 44.44, 12, 1);
 
 -- --------------------------------------------------------
 
@@ -52,26 +54,29 @@ INSERT INTO `caravan` (`car_id`, `car_society_name`, `car_price`, `car_nb_person
 
 CREATE TABLE IF NOT EXISTS `customer` (
   `cust_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'customer''s ID ',
-  `cust_name` varchar(15) NOT NULL COMMENT 'customer''s name',
+  `cust_lastName` varchar(15) NOT NULL COMMENT 'customer''s last name',
   `cust_address` varchar(255) NOT NULL COMMENT 'customer''s address',
   `cust_postal_code` varchar(10) NOT NULL COMMENT 'customer''s postal code',
   `cust_city` varchar(20) NOT NULL COMMENT 'customer''s city',
   `cust_phone_number` varchar(13) NOT NULL COMMENT 'customer''s phone number',
   `cust_record_number` varchar(15) NOT NULL COMMENT 'customer''s record number',
+  `cust_firstName` varchar(15) NOT NULL,
   PRIMARY KEY (`cust_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
 
 --
 -- Contenu de la table `customer`
 --
 
-INSERT INTO `customer` (`cust_id`, `cust_name`, `cust_address`, `cust_postal_code`, `cust_city`, `cust_phone_number`, `cust_record_number`) VALUES
-(1, 'henrui', '9 res face nord', '31841', 'townToons', '+33561070707', 'B55A-C'),
-(2, 'Faufifonfec', '15 régiment de Nabo le liech ', '88756', 'chtimis', '069698985', 'AB5-66Z'),
-(3, 'Naboléon', '35 rue du grand grand', '78965', 'vieniVicci', '456123542', 'BBBBBBB-1'),
-(4, 'Supositwar', 'Dans ton *** ', '1111111', 'Rect***', '7878452654', 'BI*E'),
-(5, 'Huntermarché', 'ça pu des pieds', '87985', 'vanerque', '15678921', 'BEDEAU'),
-(6, 'Jackcélerre ', 'Avenus susain bold', 'tombouctou', 'pipout', '654456654', '007');
+INSERT INTO `customer` (`cust_id`, `cust_lastName`, `cust_address`, `cust_postal_code`, `cust_city`, `cust_phone_number`, `cust_record_number`, `cust_firstName`) VALUES
+(1, 'henrui', '9 res face nord', '31841', 'townToons', '+33561070707', 'B55A-C', ''),
+(2, 'Faufifonfec', '15 régiment de Nabo le liech ', '88756', 'chtimis', '069698985', 'AB5-66Z', ''),
+(3, 'Naboléon', '35 rue du grand grand', '78965', 'vieniVicci', '456123542', 'BBBBBBB-1', ''),
+(4, 'Supositwar', 'Dans ton *** ', '1111111', 'Rect***', '7878452654', 'BI*E', ''),
+(5, 'Huntermarché', 'ça pu des pieds', '87985', 'vanerque', '15678921', 'BEDEAU', ''),
+(6, 'Jackcélerre ', 'Avenus susain bold', 'tombouctou', 'pipout', '654456654', '007', ''),
+(7, 'bibemdom', 'korea', '88756', 'seoul', '+9855456215', '', ''),
+(9, 'theName', 'theAddress', 'thePostalC', 'thzCity', 'TheNumber', 'theVarchar', '');
 
 -- --------------------------------------------------------
 
@@ -126,7 +131,17 @@ CREATE TABLE IF NOT EXISTS `location` (
   PRIMARY KEY (`loc_id`),
   UNIQUE KEY `loc_sec_index` (`loc_sec_id`),
   KEY `loc_type_index` (`loc_type_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
+
+--
+-- Contenu de la table `location`
+--
+
+INSERT INTO `location` (`loc_id`, `loc_sec_id`, `loc_type_id`) VALUES
+(3, 2, 4),
+(4, 4, 5),
+(5, 5, 1),
+(8, 1, 2);
 
 -- --------------------------------------------------------
 
@@ -147,7 +162,14 @@ CREATE TABLE IF NOT EXISTS `rental` (
   `rent_cust_id` int(11) NOT NULL COMMENT 'foreign key from customer''s table',
   PRIMARY KEY (`rent_id`),
   KEY `cust_foreign_key` (`rent_cust_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+
+--
+-- Contenu de la table `rental`
+--
+
+INSERT INTO `rental` (`rent_id`, `rent_name`, `rent_begin`, `rent_end`, `rent_nb_person`, `rent_location_state`, `rent_caution_state`, `rent_days_number`, `rent_price`, `rent_cust_id`) VALUES
+(2, 'theRentName', '2015-05-06', '2015-05-29', 88, 'thenLocationSate', 7.5, 55, 4545, 1);
 
 -- --------------------------------------------------------
 
@@ -184,17 +206,18 @@ CREATE TABLE IF NOT EXISTS `sector` (
   `sec_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'sector''s id',
   `sec_name` varchar(30) NOT NULL COMMENT 'sector''s name',
   PRIMARY KEY (`sec_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
 
 --
 -- Contenu de la table `sector`
 --
 
 INSERT INTO `sector` (`sec_id`, `sec_name`) VALUES
-(1, 'Lac'),
+(1, 'fdgdfg '),
 (2, 'Forêt'),
 (3, 'Jardin'),
-(4, 'Clairière');
+(4, 'Clairière'),
+(5, 'theSecName');
 
 -- --------------------------------------------------------
 
@@ -228,8 +251,8 @@ INSERT INTO `type_location` (`type_location_id`, `type_location_name`, `type_loc
 -- Contraintes pour la table `link_car_location`
 --
 ALTER TABLE `link_car_location`
-  ADD CONSTRAINT `lcl_rend_constraint` FOREIGN KEY (`lcl_rent_id`) REFERENCES `rental` (`rent_id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `lcl_car_constraint` FOREIGN KEY (`lcl_car_id`) REFERENCES `caravan` (`car_id`) ON DELETE CASCADE;
+  ADD CONSTRAINT `lcl_car_constraint` FOREIGN KEY (`lcl_car_id`) REFERENCES `caravan` (`car_id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `lcl_rend_constraint` FOREIGN KEY (`lcl_rent_id`) REFERENCES `rental` (`rent_id`) ON DELETE CASCADE;
 
 --
 -- Contraintes pour la table `link_rent_rental`
