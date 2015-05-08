@@ -10,7 +10,7 @@
 	 * @copyright 2015 3iL
 	 */
 
-	class returnModel extends CaravanModel {
+	public class returnModel extends CaravanModel {
 
 
 		/**

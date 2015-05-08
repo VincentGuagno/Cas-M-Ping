@@ -7,7 +7,7 @@
 	 * @version 0.0.1
 	 * @copyright 2015 3iL
 	 */
-	public class LocationModel extends LocationModel{
+	public class LocationModel {
 	
 		/**
 		 * Modify location's informations

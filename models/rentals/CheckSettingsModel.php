@@ -9,7 +9,7 @@
 	 * @copyright 2015 3iL
 	 */
 
-	class CheckSettingsModel {
+	public class CheckSettingsModel extends rentalModel{
 		
 		/**
 		 * Modify all rental's informations from one rental 

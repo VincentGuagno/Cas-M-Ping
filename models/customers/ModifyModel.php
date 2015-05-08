@@ -9,7 +9,7 @@
 	 * @copyright 2015 3iL
 	 */
 
-	class modifyModel {
+	public class modifyModel extends CustomerModel{
 
 		/**
 		 * Modify all customer's informations from one customer 

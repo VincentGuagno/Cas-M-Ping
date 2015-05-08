@@ -9,7 +9,7 @@
 	 * @copyright 2015 3iL
 	 */
 
-	class CancelModel {
+	public class CancelModel extends rentalModel{
 		
 		/**
 		 * cancel rental's informations from one rental 

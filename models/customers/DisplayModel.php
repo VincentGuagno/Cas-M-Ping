@@ -9,7 +9,7 @@
 	 * @copyright 2015 3iL
 	 */
 
-	class displayModel extends CustomerModel{
+	public class displayModel extends CustomerModel{
 
 		/**
 		 * Display all customer's informations from one customer 

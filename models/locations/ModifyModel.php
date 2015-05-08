@@ -9,7 +9,7 @@
 	 * @copyright 2015 3iL
 	 */
 
-	class modifyModel extends LocationModel{
+	public class modifyModel extends LocationModel{
 
 		/**
 		 * Modify location's informations

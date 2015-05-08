@@ -9,7 +9,7 @@
 	 * @copyright 2015 3iL
 	 */
 
-	class addModel {
+	public class addModel {
 
 		/**
 		 * Add new sector 

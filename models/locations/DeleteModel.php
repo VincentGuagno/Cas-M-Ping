@@ -9,7 +9,7 @@
 	 * @copyright 2015 3iL
 	 */
 
-	class deleteModel extends LocationModel{
+	public class deleteModel extends LocationModel{
 
 		/**
 		 * Delete a specified sector

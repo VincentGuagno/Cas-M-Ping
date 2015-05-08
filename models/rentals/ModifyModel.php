@@ -9,7 +9,7 @@
 	 * @copyright 2015 3iL
 	 */
 
-	class ModifyModel {
+	public class ModifyModel {
 		
 		/**
 		 * Modify all rental's informations from one rental 

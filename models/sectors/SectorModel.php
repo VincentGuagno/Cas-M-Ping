@@ -7,7 +7,7 @@
 	 * @version 0.0.1
 	 * @copyright 2015 3iL
 	 */
-	public class sectorModel {
+	public class class sectorModel {
 	
 		/**
 		 * Modify sector's informations

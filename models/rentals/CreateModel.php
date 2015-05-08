@@ -9,7 +9,7 @@
 	 * @copyright 2015 3iL
 	 */
 
-	class CreateModel {
+	public class CreateModel extends rentalModel{
 		
 		/**
 		 * Modify all rental's informations from one rental 
@@ -30,6 +30,12 @@
 				return $e->getMessage();
 			}
 		}
+
+
+
+
+
+
 	}
 
 ?>

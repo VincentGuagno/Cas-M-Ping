@@ -11,7 +11,7 @@
 	 * @copyright 2015 3iL
 	 */
 
-	class rentingModel {
+	public class rentingModel extends CaravanModel {
 
 
 		/**

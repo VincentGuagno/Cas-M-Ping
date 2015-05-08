@@ -9,7 +9,7 @@
 	 * @copyright 2015 3iL
 	 */
 
-	class DeleteModel {
+	public class DeleteModel extends rentalModel{
 		
 		/**
 		 * Modify all rental's informations from one rental 

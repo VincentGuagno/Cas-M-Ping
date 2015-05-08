@@ -26,7 +26,7 @@
 				$return_qry = $this->db->fetch(PDO::FETCH_OBJ);
 
 				$qry->closeCursor();
-				return 0;
+				return $return_qry;
 			} catch(Exception $e) {
 				return $e->getMessage();
 			}
@@ -47,7 +47,8 @@
 				//get customer's ID      put  the result into an object
 				$return_qry = $this->db->fetchAll(PDO::FETCH_OBJ);
 
-				return 0;
+				$qry->closeCursor();
+				return $return_qry;
 			} catch(Exception $e) {
 				return $e->getMessage();
 			}

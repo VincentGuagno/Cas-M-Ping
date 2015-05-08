@@ -9,7 +9,7 @@
 	 * @copyright 2015 3iL
 	 */
 
-	class displayModel {
+	public class displayModel extends seasonModel{
 
 
 		/**

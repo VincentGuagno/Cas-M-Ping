@@ -9,7 +9,7 @@
 	 * @copyright 2015 3iL
 	 */
 
-	class deleteModel {
+	public class deleteModel extends seasonModel{
 
 		/**
 		 * Delete a specified season
