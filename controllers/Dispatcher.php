@@ -12,7 +12,7 @@
 	class Dispatcher {
 		
 		/**
-		 * Disatcher instance
+		 * Dispatcher instance
 		 */
 		public static $instance = null;
 
@@ -224,7 +224,7 @@
 		}
 		
 		/**
-		 * Get current instance of dispatcher (singleton)
+		 * Get current instance of Dispatcher (singleton)
 		 *
 		 * @return Dispatcher
 		 */
@@ -256,7 +256,7 @@
 				$this->controller['formatter'] = $this->routes['404-errors']['url-formatter'];
 			}
 					
-			include_once(_CONTROLLERS_DIR_ .'/'.$this->controller['directory'].$this->controller['controller'].'.php');
+			require_once(_CONTROLLERS_DIR_ .'/'.$this->controller['directory'].$this->controller['controller'].'.php');
 			$controllerInstance = new $this->controller['controller']();
 			
 			if(!$controllerInstance->checkAccess() || !$controllerInstance->viewAccess()) {
@@ -264,7 +264,7 @@
 				$this->controller['controller'] = $this->routes['403-errors']['controller'];
 				$this->controller['formatter'] = $this->routes['403-errors']['url-formatter'];
 				
-				include_once(_CONTROLLERS_DIR_ .'/'.$this->controller['directory'].$this->controller['controller'].'.php');
+				require_once(_CONTROLLERS_DIR_ .'/'.$this->controller['directory'].$this->controller['controller'].'.php');
 				$controllerInstance = new $this->controller['controller']();
 			}
 		}

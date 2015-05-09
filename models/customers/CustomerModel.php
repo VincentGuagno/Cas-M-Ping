@@ -7,8 +7,13 @@
 	 * @version 0.0.1
 	 * @copyright 2015 3iL
 	 */
-	public class CustomerModel {
-	
+	class CustomerModel {
+		
+		/**
+		 * Initialize the CustomerModel class
+		 */
+		public function init() {}
+		
 		/**
 		 * Modify customer's informations
 		 *

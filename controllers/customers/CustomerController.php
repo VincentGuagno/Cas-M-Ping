@@ -25,7 +25,7 @@
 	     * Check that the current user/visitor has valid view permissions
 	     */
 	    abstract protected function viewAccess();
-
+		
 		/**
 		 * Twig's instance (template's engine)
 		 */
@@ -40,12 +40,17 @@
 			}
 			self::$initialized = true;
 			
-			require_once(_DEPENDENCIES_DIR_ .'/twig/lib/Twig/Autoloader.php');
-			Twig_Autoloader::register();
+			if(file_exists(_TWIG_AUTOLOADER_)) {
+				require_once(_TWIG_AUTOLOADER_);
+				
+				Twig_Autoloader::register();
 			
-			$loader = new Twig_Loader_Filesystem(_VIEWS_DIR_ .'/customers/templates'); // Template folders 
-			$this->twig = new Twig_Environment($loader, array(
-			  'cache' => _TWIG_CACHE_
-			));
+				$loader = new Twig_Loader_Filesystem(_CUSTOMERS_VIEWS_); 
+				$this->twig = new Twig_Environment($loader, array(
+				  'cache' => _TWIG_CACHE_
+				));
+			} else {
+				throw new Exception('Il n\'existe pas le fichier de démarrage Twig à cet emplacement "'._TWIG_AUTOLOADER_ .'"!');
+			}
 		}
 	}
