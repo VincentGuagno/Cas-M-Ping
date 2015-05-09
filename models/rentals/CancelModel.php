@@ -8,9 +8,59 @@
 	 * @version 0.0.1
 	 * @copyright 2015 3iL
 	 */
-
-	public class CancelModel extends rentalModel{
+	require_once('RentalModel.php'); 
+	class CancelModel extends RentalModel{
+		/**
+		 * CancelModel instance
+		 */
+		public static $instance = null;
 		
+		/**
+		 * Database object
+		 */
+		private $db = null;
+		
+		/**
+		 * The constructor of CancelModel
+		 */
+		public function __construct() {
+			try {
+				CancelModel::init();
+			} catch(Exception $e) {
+				echo $e->getMessage();
+			}
+		}
+		
+		/**
+		 * Get current instance of CancelModel (singleton)
+		 *
+		 * @return CancelModel
+		 */
+		public static function getInstance() {
+			if (!self::$instance) {
+				self::$instance = new CancelModel();
+			}
+			return self::$instance;
+		}
+		
+		/**
+		 * Initialize the CancelModel class
+		 */
+		public function init() {
+			try {
+				parent::init();	
+			} catch(Exception $e) {
+				throw new Exception('Une erreur est survenue durant le chargement du module: '.$e->getMessage());
+			}
+			try {	
+				$pdo_options[PDO::ATTR_ERRMODE] = PDO::ERRMODE_EXCEPTION;
+				$this->db = new PDO('mysql:host='._HOST_ .';dbname='._DATABASE_, _LOGIN_, _PASSWORD_, $pdo_options);
+				$this->db->exec('SET NAMES utf8');
+			} catch(Exception $e) {
+				throw new Exception('Connexion à la base de données impossible: '.$e->getMessage());
+			}
+		}
+
 		/**
 		 * cancel rental's informations from one rental 
 		 *

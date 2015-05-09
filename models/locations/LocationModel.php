@@ -7,8 +7,14 @@
 	 * @version 0.0.1
 	 * @copyright 2015 3iL
 	 */
-	public class LocationModel {
+	class LocationModel {
 	
+
+		/**
+		 * Initialize the CustomerModel class
+		 */
+		public function init() {}
+
 		/**
 		 * Modify location's informations
 		 *

@@ -7,8 +7,13 @@
 	 * @version 0.0.1
 	 * @copyright 2015 3iL
 	 */
-	public class seasonModel extends seasonModel{
+	class SeasonModel {
 	
+		/**
+		 * Initialize the SeasonModel class
+		 */
+		public function init() {}
+
 		/**
 		 * Modify season's informations
 		 *

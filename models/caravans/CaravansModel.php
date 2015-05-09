@@ -7,8 +7,13 @@
 	 * @version 0.0.1
 	 * @copyright 2015 3iL
 	 */
-	public class CaravanModel {
-	
+	require_once('CaravanModel.php'); 
+	class CaravanModel {
+
+		/**
+		 * Initialize the CaravanModel class
+		 */
+		public function init() {}
 		/**
 		 * Modify caravan's informations
 		 *

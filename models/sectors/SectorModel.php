@@ -7,8 +7,14 @@
 	 * @version 0.0.1
 	 * @copyright 2015 3iL
 	 */
-	public class class sectorModel {
+	 class SectorModel {
 	
+
+		/**
+		 * Initialize the SectorModel class
+		 */
+		public function init() {}
+
 		/**
 		 * Modify sector's informations
 		 *

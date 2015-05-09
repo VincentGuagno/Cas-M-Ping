@@ -8,9 +8,61 @@
 	 * @version 0.0.1
 	 * @copyright 2015 3iL
 	 */
-
-	class displayModel extends LocationModel{
+	require_once('LocationModel.php'); 
+	class DisplayModel extends LocationModel{
 	
+
+		/**
+		 * DisplayModel instance
+		 */
+		public static $instance = null;
+		
+		/**
+		 * Database object
+		 */
+		private $db = null;
+		
+		/**
+		 * The constructor of DisplayModel
+		 */
+		public function __construct() {
+			try {
+				DisplayModel::init();
+			} catch(Exception $e) {
+				echo $e->getMessage();
+			}
+		}
+		
+		/**
+		 * Get current instance of DisplayModel (singleton)
+		 *
+		 * @return DisplayModel
+		 */
+		public static function getInstance() {
+			if (!self::$instance) {
+				self::$instance = new DisplayModel();
+			}
+			return self::$instance;
+		}
+		
+		/**
+		 * Initialize the DisplayModel class
+		 */
+		public function init() {
+			try {
+				parent::init();	
+			} catch(Exception $e) {
+				throw new Exception('Une erreur est survenue durant le chargement du module: '.$e->getMessage());
+			}
+			try {	
+				$pdo_options[PDO::ATTR_ERRMODE] = PDO::ERRMODE_EXCEPTION;
+				$this->db = new PDO('mysql:host='._HOST_ .';dbname='._DATABASE_, _LOGIN_, _PASSWORD_, $pdo_options);
+				$this->db->exec('SET NAMES utf8');
+			} catch(Exception $e) {
+				throw new Exception('Connexion à la base de données impossible: '.$e->getMessage());
+			}
+		}
+
 		/**
 		 * All location's informations
 		 * @param loc_id, location's id
@@ -27,7 +79,7 @@
 				
 				$model->execute();
 				//get customer's ID      put  the result into an object
-				$return_qry = $this->db->fetch(PDO::FETCH_OBJ);
+				$return_qry = $qry->fetchAll();
 
 				$qry->closeCursor();
 				return $return_qry;
@@ -47,7 +99,7 @@
 				$model->bindValue(1, $loc_id, PDO::PARAM_INT);
 				$model->execute();
 				//get customer's ID      put  the result into an object
-				$return_qry = $this->db->fetch(PDO::FETCH_OBJ);
+				$return_qry = $qry->fetch(PDO::FETCH_OBJ);
 
 				$qry->closeCursor();
 				return $return_qry;
@@ -71,7 +123,7 @@
 				
 				$qry->execute();
 				//get customer's ID      put  the result into an object
-				$return_qry = $this->db->fetch(PDO::FETCH_OBJ);
+				$return_qry = $qry->fetch(PDO::FETCH_OBJ);
 
 				$qry->closeCursor();
 				return $return_qry;

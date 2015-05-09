@@ -7,8 +7,15 @@
 	 * @version 0.0.1
 	 * @copyright 2015 3iL
 	 */
-	public class rentalModel {
 	
+	class RentalModel {
+	
+
+		/**
+		 * Initialize the RentalModel class
+		 */
+		public function init() {}
+
 		/**
 		 * Modify rental's informations
 		 *
