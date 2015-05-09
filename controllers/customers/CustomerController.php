@@ -9,7 +9,7 @@
 	 * @copyright 2015 3iL
 	 */
 
-	public class CustomerController {
+	abstract class CustomerController {
 		
 		/**
 		 * State of CustomerController
@@ -19,21 +19,33 @@
 		/**
 	     * Check that the controller is available for the current user/visitor
 	     */
-	    abstract public function checkAccess();
+	    abstract protected function checkAccess();
 
 	    /**
 	     * Check that the current user/visitor has valid view permissions
 	     */
-	    abstract public function viewAccess();
+	    abstract protected function viewAccess();
+
+		/**
+		 * Twig's instance (template's engine)
+		 */
+		public $twig = null;
 		
 		/**
-		 * The constructor of CustomerController
+		 * Initialize the CustomerController class
 		 */
-		public function __construct() {
+		public function init() {
 			if (self::$initialized) {
 				return;
 			}
 			self::$initialized = true;
+			
+			require_once(_DEPENDENCIES_DIR_ .'/twig/lib/Twig/Autoloader.php');
+			Twig_Autoloader::register();
+			
+			$loader = new Twig_Loader_Filesystem(_VIEWS_DIR_ .'/customers/templates'); // Template folders 
+			$this->twig = new Twig_Environment($loader, array(
+			  'cache' => _TWIG_CACHE_
+			));
 		}
-		
 	}

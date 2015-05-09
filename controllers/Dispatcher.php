@@ -72,8 +72,9 @@
 			
 			// Home routes
 			'home' => array(
-				'controller' => '',
-				'url-formatter' => ''
+				'controller' => 'DisplayController',
+				'directory' => 'home/',
+				'url-formatter' => 'home'
 			),
 			
 			// Location routes
@@ -254,9 +255,18 @@
 				$this->controller['controller'] = $this->routes['404-errors']['controller'];
 				$this->controller['formatter'] = $this->routes['404-errors']['url-formatter'];
 			}
-			
-			echo Dispatcher::createUrl();			
+					
 			include_once(_CONTROLLERS_DIR_ .'/'.$this->controller['directory'].$this->controller['controller'].'.php');
+			$controllerInstance = new $this->controller['controller']();
+			
+			if(!$controllerInstance->checkAccess() || !$controllerInstance->viewAccess()) {
+				$this->controller['directory'] = $this->routes['403-errors']['directory'];
+				$this->controller['controller'] = $this->routes['403-errors']['controller'];
+				$this->controller['formatter'] = $this->routes['403-errors']['url-formatter'];
+				
+				include_once(_CONTROLLERS_DIR_ .'/'.$this->controller['directory'].$this->controller['controller'].'.php');
+				$controllerInstance = new $this->controller['controller']();
+			}
 		}
 		
 		/**

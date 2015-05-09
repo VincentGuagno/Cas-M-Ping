@@ -38,3 +38,8 @@
 	 * Domain's path
 	 */
 	define('_BASE_URL_', __DIR__ .'/'. _PROJECT_NAME_);
+	
+	/**
+	 * Put Twig's results into cache part
+	 */
+	define('_TWIG_CACHE_', false);
