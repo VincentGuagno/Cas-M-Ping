@@ -2,7 +2,10 @@
 <html>
 <head>
 	{% block head %}
-		<link rel="stylesheet" href="dependencies/bootstrap/css/bootstrap.min.css" />
+		{% block stylesheets %}
+			<link rel="stylesheet" href="{{bootstrapPath}}">
+		{% endblock %}
+		<meta charset="utf-8">
 		<title>{% block title %}{% endblock %} - Clients</title>
 	{% endblock %}
 </head>
@@ -12,7 +15,7 @@
 	
 	<table class="table">
 		<tr>
-			<th> Société </th>
+			<th> SociÃ©tÃ© </th>
 			<th> Prix </th>
 			<th> Nombre de personnes </th>
 			<th> Emplacement </th>
