@@ -12,10 +12,10 @@
 	/**
 	 * Directories
 	 */
-	define('_MODELS_DIR_', __DIR__ .'/models');
-	define('_VIEWS_DIR_', __DIR__ .'/views');
-	define('_CONTROLLERS_DIR_', __DIR__ .'/controllers');
-	define('_DEPENDENCIES_DIR_', __DIR__ .'/dependencies');
+	define('_MODELS_DIR_', str_replace('\\', '/', __DIR__) .'/models');
+	define('_VIEWS_DIR_', str_replace('\\', '/', __DIR__) .'/views');
+	define('_CONTROLLERS_DIR_', str_replace('\\', '/', __DIR__) .'/controllers');
+	define('_DEPENDENCIES_DIR_', str_replace('\\', '/', __DIR__) .'/dependencies');
 	
 	/**
 	 * Project's name
@@ -23,15 +23,15 @@
 	define('_PROJECT_NAME_', 'Cas-M-Ping');
 	
 	/**
-	 * Domain's path
-	 */
-	define('_BASE_URL_', __DIR__ .'/'. _PROJECT_NAME_);
-	
-	/**
 	 * Twig settings
 	 */
 	define('_TWIG_AUTOLOADER_', _DEPENDENCIES_DIR_ .'/twig/lib/Twig/Autoloader.php');
 	define('_TWIG_CACHE_', false);
+	
+	/**
+	 * Bootstrap settings
+	 */
+	define('_BOOTSTRAP_FILE_', '/'._PROJECT_NAME_ .'/dependencies/bootstrap/css/bootstrap.min.css'); 
 	
 	/**
 	 * Twig views's directories

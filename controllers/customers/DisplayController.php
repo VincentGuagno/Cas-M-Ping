@@ -29,7 +29,7 @@
 		public function __construct() {
 			try {
 				$this->init();
-			} catch(Exception $e) {
+			} catch (Exception $e) {
 				echo $e->getMessage();
 			}
 		}
@@ -40,43 +40,45 @@
 		public function init() {
 			try {
 				parent::init();	
-			} catch(Exception $e) {
+			} catch (Exception $e) {
 				throw new Exception('Une erreur est survenue durant le chargement du module: '.$e->getMessage());
 			}
 			
-			if (file_exists(_CUSTOMERS_MODELS_ .'/'. $this->model_name .'Model.php')) {			
-				if(file_exists(_CUSTOMERS_VIEWS_ .'/'. $this->view_name .'.tpl')) {	
-					require_once(_CUSTOMERS_MODELS_ .'/'. $this->model_name .'Model.php');
-					
-					try {
-						$data = DisplayModel::getInstance()->display_customers();
-						print_r($data);
-						/*$customers[0] = new stdClass();
-						$customers[1] = new stdClass();
-						
-						$customers[0]->renting_Id = 13;
-						$customers[0]->firstName = 'Liechti';
-						$customers[0]->lastName = 'Jeremie';
-						$customers[0]->zipCode = '12000';
-						$customers[0]->city = 'Rodez';
-						$customers[0]->telephone = 'chatte';
-
-						$customers[1]->renting_Id = 14;
-						$customers[1]->firstName = 'Guagno';
-						$customers[1]->lastName = 'Vincent';
-						$customers[1]->zipCode = '12000';
-						$customers[1]->city = 'Rodez';
-						$customers[1]->telephone = 'AAAAAAAAAAAAAiiiiiiiiiiiiiiiiiigggggggggggghhhhhhhhhhhhhhhhhht';*/
-						
-						echo $this->twig->render($this->view_name .'.tpl', array('customers' => $data));
-					} catch(Exception $e) {
-						throw new Exception('Une erreur est survenue durant la récupération des données: '.$e->getMessage());
+			if (file_exists (_CONTROLLERS_DIR_ .'/Tools.php')) {
+				$url = Tools::getInstance()->request_url;
+				$controller = Tools::getInstance()->getUrl_controller($url);
+				
+				if ($controller == 'DisplayController') {
+					if (file_exists (_CUSTOMERS_MODELS_ .'/'. $this->model_name .'Model.php')) {			
+						if (file_exists (_CUSTOMERS_VIEWS_ .'/'. $this->view_name .'.tpl')) {	
+							try {	
+								require_once (_CUSTOMERS_MODELS_ .'/'. $this->model_name .'Model.php');
+								$id = Tools::getInstance()->getUrl_id($url);
+								
+								switch ($id) {
+									case 'all':
+										$data = DisplayModel::getInstance()->display_customers();
+										break;
+									default:
+										$data = DisplayModel::getInstance()->display_customer($id);
+										break;
+								}
+								echo $this->twig->render($this->view_name .'.tpl', array('customers' => $data, 'bootstrapPath' => _BOOTSTRAP_FILE_));
+								
+							} catch (Exception $e) {
+								throw new Exception('Une erreur est survenue durant la récupération des données: '.$e->getMessage());
+							}
+						} else {
+							throw new Exception('Le template "'.$this->view_name .'" n\'existe pas dans "'._CUSTOMERS_VIEWS_ .'"!');
+						}
+					} else {
+						throw new Exception('Le modèle "'. $this->model_name .'" n\'existe pas dans "'._CUSTOMERS_MODELS_ .'"!');
 					}
 				} else {
-					throw new Exception('Le template "'.$this->view_name .'" n\'existe pas dans "'._CUSTOMERS_VIEWS_ .'"!');
+					throw new Exception('Une erreur est survenue durant la phase de routage!');
 				}
 			} else {
-				throw new Exception('Le modèle "'. $this->model_name .'" n\'existe pas dans "'._CUSTOMERS_MODELS_ .'"!');
+				throw new Exception('L\'URL n\'est pas évaluable!');
 			}
 		}
 		

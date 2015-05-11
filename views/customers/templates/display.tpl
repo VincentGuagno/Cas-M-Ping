@@ -1,8 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
 	{% block head %}
-		<link rel="stylesheet" href="dependencies/bootstrap/css/bootstrap.min.css" />
+		{% block stylesheets %}
+			<link rel="stylesheet" href="{{bootstrapPath}}">
+		{% endblock %}
+		<meta charset="utf-8">
 		<title>{% block title %}{% endblock %} - Clients</title>
 	{% endblock %}
 </head>
@@ -12,21 +15,23 @@
 	
 	<table class="table">
 		<tr>
-			<th> Numéro de dossier </th>
+			<th> Identifiant </th>
+			<th> NumÃ©ro de dossier </th>
 			<th> Nom </th>
-			<th> Prénom </th>
+			<th> PrÃ©nom </th>
 			<th> Code Postal </th>
 			<th> Ville </th>
-			<th> Téléphone </th>
+			<th> TÃ©lÃ©phone </th>
 		</tr>
 	{% for customer in customers %}
 		<tr>
-			<td>{{customer.renting_Id}}</td>
-			<td>{{customer.firstName}}</td>
-			<td>{{customer.lastName}}</td>
-			<td>{{customer.zipCode}}</td>
-			<td>{{customer.city}}</td>
-			<td>{{customer.telephone}}</td>
+			<td>{{customer.cust_id}}</td>
+			<td>{{customer.cust_record_number}}</td>
+			<td>{{customer.cust_name}}</td>
+			<td>{{customer.cust_name}}</td>
+			<td>{{customer.cust_postal_code}}</td>
+			<td>{{customer.cust_city}}</td>
+			<td>{{customer.cust_phone_number}}</td>
 		</tr>
 	{% endfor %}
 	</table>

@@ -71,7 +71,7 @@
 		 */
 		public function display_customers() {
 			try {
-				$qry = $this->db->prepare('SELECT * FROM customer');				
+				$qry = $this->db->prepare('SELECT * FROM customer ORDER BY cust_id');				
 				$qry->execute();
 				//put  the result into an object
 				$return_qry = $qry->fetchAll();
@@ -96,7 +96,7 @@
 
 				$qry->execute();
 				//get customer's ID      put  the result into an object
-				$return_qry = $qry->fetch(PDO::FETCH_OBJ);
+				$return_qry = $qry->fetchAll();
 
 				$qry->closeCursor();
 				return $return_qry;

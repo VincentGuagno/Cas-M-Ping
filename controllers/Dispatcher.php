@@ -1,10 +1,10 @@
 <?php
 	
 	/*
-	 * Dispatcher for rental controllers
-	 * This class handles the routes for rental controllers
+	 * Dispatcher for all controllers
+	 * This class handles the routes for all controllers
 	 *
-	 * @author Jérémie LIECHTI
+	 * @author JÃ©rÃ©mie LIECHTI
 	 * @version 0.0.1
 	 * @copyright 2015 3iL
 	 */
@@ -239,38 +239,59 @@
 		 * Find the controller and instantiate it
 		 */
 		public function dispatch() {
-			Dispatcher::get_requestUri();
+			try {
+				Dispatcher::get_requestUri();
 
-			foreach ($this->routes as $key => $value) {
-				if (Dispatcher::hasRoute($this->routes[$key]['url-formatter'])) {
-					$this->controller['directory'] = $this->routes[$key]['directory'];
-					$this->controller['controller'] = $this->routes[$key]['controller'];
-					$this->controller['formatter'] = $this->routes[$key]['url-formatter'];
-					break;
+				foreach ($this->routes as $key => $value) {
+					if (Dispatcher::hasRoute($this->routes[$key]['url-formatter'])) {
+						$this->controller['directory'] = $this->routes[$key]['directory'];
+						$this->controller['controller'] = $this->routes[$key]['controller'];
+						$this->controller['formatter'] = $this->routes[$key]['url-formatter'];
+						break;
+					}
 				}
-			}
-			
-			if($this->controller == null) {
-				$this->controller['directory'] = $this->routes['404-errors']['directory'];
-				$this->controller['controller'] = $this->routes['404-errors']['controller'];
-				$this->controller['formatter'] = $this->routes['404-errors']['url-formatter'];
-			}
-					
-			require_once(_CONTROLLERS_DIR_ .'/'.$this->controller['directory'].$this->controller['controller'].'.php');
-			$controllerInstance = new $this->controller['controller']();
-			
-			if(!$controllerInstance->checkAccess() || !$controllerInstance->viewAccess()) {
-				$this->controller['directory'] = $this->routes['403-errors']['directory'];
-				$this->controller['controller'] = $this->routes['403-errors']['controller'];
-				$this->controller['formatter'] = $this->routes['403-errors']['url-formatter'];
 				
-				require_once(_CONTROLLERS_DIR_ .'/'.$this->controller['directory'].$this->controller['controller'].'.php');
+				if($this->controller == null) {
+					$this->controller['directory'] = $this->routes['404-errors']['directory'];
+					$this->controller['controller'] = $this->routes['404-errors']['controller'];
+					$this->controller['formatter'] = $this->routes['404-errors']['url-formatter'];
+				}
+				
+				if (file_exists(_CONTROLLERS_DIR_ .'/Tools.php')) {
+					require_once(_CONTROLLERS_DIR_ .'/Tools.php');		
+				} else {
+					throw new Exception('Fichier "'._CONTROLLERS_DIR_ .'/Tool.php" introuvable!');
+				}	
+				
+				if (file_exists(_CONTROLLERS_DIR_ .'/'.$this->controller['directory'].$this->controller['controller'].'.php')) {
+					require_once(_CONTROLLERS_DIR_ .'/'.$this->controller['directory'].$this->controller['controller'].'.php');		
+				} else {
+					throw new Exception('Fichier "'._CONTROLLERS_DIR_ .'/'.$this->controller['directory'].$this->controller['controller'].'.php" introuvable!');
+				}
+				
+				Tools::getInstance()->createUrl($this->controller['controller'], $this->request_uri);
 				$controllerInstance = new $this->controller['controller']();
+				
+				if(!$controllerInstance->checkAccess() || !$controllerInstance->viewAccess()) {
+					$this->controller['directory'] = $this->routes['403-errors']['directory'];
+					$this->controller['controller'] = $this->routes['403-errors']['controller'];
+					$this->controller['formatter'] = $this->routes['403-errors']['url-formatter'];
+					
+					if (file_exists(_CONTROLLERS_DIR_ .'/'.$this->controller['directory'].$this->controller['controller'].'.php')) {
+						require_once(_CONTROLLERS_DIR_ .'/'.$this->controller['directory'].$this->controller['controller'].'.php');		
+					} else {
+						throw new Exception('Fichier "'._CONTROLLERS_DIR_ .'/'.$this->controller['directory'].$this->controller['controller'].'.php" introuvable!');
+					}
+					
+					$controllerInstance = new $this->controller['controller']();
+				}
+			} catch (Exception $e) {
+				throw new Exception('Une erreur est survenue durant la phase de routage: '.$e->getMessage());
 			}
 		}
 		
 		/**
-		 * Get uri of request
+		 * Get request's uri
 		 */
 		private function get_requestUri() {
 			if (isset($_SERVER['REQUEST_URI'])) { // Any servers without IIS 
@@ -285,7 +306,7 @@
 		}
 		
 		/**
-		 * Check if this route exists
+		 * Check if the route exists
 		 *
 		 * @param route, route to test
 		 * @return true if exist, false any others cases
@@ -298,21 +319,6 @@
 				return (preg_match('#^'.$urlBody.'/(.+)#', $route)) ? true : false;
 			} else {
 				return (preg_match('#^'.$this->request_uri .'$#', $route)) ? true : false;
-			}
-		}
-		
-		/**
-		 * Create a backend url with url rewrites parameters
-		 *
-		 * @return backend url with our without parameters
-		 */
-		private function createUrl() {
-			if(preg_match('#errors/[0-9]{3}$#', $this->request_uri)) {
-				return 'index.php?controller='.$this->controller['controller'];
-			} elseif(preg_match('#/[0-9]{1,}#', $this->request_uri) || preg_match('#all$#', $this->request_uri)) {
-				return 'index.php?controller='.$this->controller['controller'].'&id='.preg_replace('#^(.+)/(.+)$#', '$2', $this->request_uri);
-			} else {
-				return 'index.php?controller='.$this->controller['controller'];
 			}
 		}	
 	}
