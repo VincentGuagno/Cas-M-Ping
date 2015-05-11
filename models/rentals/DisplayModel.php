@@ -65,16 +65,17 @@
 
 
 		/**
-		 * All rental's informations		
+		* All rental's informations		
 		* @return return_qry : result into an object, exception message any others cases
-		 */		
+		*/		
 		public function display_rentals() {
 			try {
 
 //TODO NOT FINISHED
 				$qry = $this->db->prepare('SELECT  * FROM rental 
 												   INNER JOIN customer ON  sector.sec_id = rental.
-												   INNER JOIN location ON location.loc_type_id = rental.');
+												   INNER JOIN location ON location.loc_type_id = rental.
+												   ORDER BY rental.rent_id');
 				
 				$qry = $this->db->prepare('SELECT * FROM rental');	
 				$qry->execute();
@@ -98,10 +99,10 @@
 				$qry = $this->db->prepare('SELECT * FROM rental WHERE rent_id = ?');	
 				$qry->bindValue(1, $rent_id, PDO::PARAM_INT);
 				$qry->execute();
-				//get customer's ID      put  the result into an object
-				$return_qry = $qry->fetch(PDO::FETCH_OBJ);
+				//put  the result into an object
+				$return_qry = $qry->fetchAll();
 				$qry->closeCursor();
-				return return_qry;
+				return $return_qry;
 			} catch(Exception $e) {
 				return $e->getMessage();
 			}

@@ -27,9 +27,10 @@
 
 				$qry->bindValue(1, $car_id, PDO::PARAM_STR);				
 
-				$qry->execute();
+				//put  the result into an object
+				$return_qry = $qry->fetchAll();
 				$qry->closeCursor();
-				return 0;
+				return $return_qry;
 			} catch(Exception $e) {
 				return $e->getMessage();
 			}

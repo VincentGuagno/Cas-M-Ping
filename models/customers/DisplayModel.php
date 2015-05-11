@@ -67,7 +67,7 @@
 		/**
 		 * Display all customer's informations from one customer 
 		 *
-		 * @return 0 without errors, exception message any others cases
+	     * @return return_qry : result into an object, exception message any others cases
 		 */
 		public function display_customers() {
 			try {
@@ -122,9 +122,8 @@
 				$qry->bindValue(2, $cust_lastName, PDO::PARAM_STR);
 
 				$qry->execute();
-				//get customer's ID      put  the result into an object
-				$return_qry = $qry->fetch(PDO::FETCH_OBJ);
-
+					//put  the result into an object
+				$return_qry = $qry->fetchAll();
 				$qry->closeCursor();
 				return $return_qry;
 

@@ -69,7 +69,7 @@
 		 */	
 		public function display_caravans() {
 			try {
-				$qry = $this->db->prepare('SELECT * FROM caravan');	
+				$qry = $this->db->prepare('SELECT * FROM caravan ORDER BY caravan.car_id');	
 				$qry->execute();
 
 				//get customer's ID      put  the result into an object
@@ -94,10 +94,11 @@
 				$qry->bindValue(1, $car_id, PDO::PARAM_INT);
 				$qry->execute();
 
-				//get customer's ID      put  the result into an object				
-				$return_qry = $qry->fetch(PDO::FETCH_OBJ);
+					//put  the result into an object
+				$return_qry = $qry->fetchAll();
 				$qry->closeCursor();
 				return $return_qry;
+				
 			} catch(Exception $e) {
 				return $e->getMessage();
 			}
@@ -118,8 +119,8 @@
 				$qry->bindValue(1, $car_id, PDO::PARAM_STR);
 				
 				$qry->execute();
-				//get customer's ID      put  the result into an object
-				$return_qry = $qry->fetch(PDO::FETCH_OBJ);
+					//put  the result into an object
+				$return_qry = $qry->fetchAll();
 				$qry->closeCursor();
 				return $return_qry;
 

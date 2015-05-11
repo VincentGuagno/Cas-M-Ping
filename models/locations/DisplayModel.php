@@ -75,12 +75,12 @@
 												   type_location.type_location_name,
 												   type_location.type_location_price FROM location 
 												   INNER JOIN sector ON  sector.sec_id = location.loc_sec_id
-												   INNER JOIN type_location ON location.loc_type_id = type_location.type_location_id');
+												   INNER JOIN type_location ON location.loc_type_id = type_location.type_location_id
+												   ORDER BY location.loc_id');
 				
 				$model->execute();
-				//get customer's ID      put  the result into an object
+					//put  the result into an object
 				$return_qry = $qry->fetchAll();
-
 				$qry->closeCursor();
 				return $return_qry;
 			} catch(Exception $e) {
@@ -98,9 +98,8 @@
 				$model = $this->db->prepare('SELECT * FROM location WHERE loc_id = ?');	
 				$model->bindValue(1, $loc_id, PDO::PARAM_INT);
 				$model->execute();
-				//get customer's ID      put  the result into an object
-				$return_qry = $qry->fetch(PDO::FETCH_OBJ);
-
+					//put  the result into an object
+				$return_qry = $qry->fetchAll();
 				$qry->closeCursor();
 				return $return_qry;
 			} catch(Exception $e) {
@@ -122,9 +121,8 @@
 				$qry->bindValue(1, $loc_id, PDO::PARAM_STR);
 				
 				$qry->execute();
-				//get customer's ID      put  the result into an object
-				$return_qry = $qry->fetch(PDO::FETCH_OBJ);
-
+					//put  the result into an object
+				$return_qry = $qry->fetchAll();
 				$qry->closeCursor();
 				return $return_qry;
 

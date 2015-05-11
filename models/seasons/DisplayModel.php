@@ -66,11 +66,13 @@
 		 * Display all season's informations
 		 *
 		 * @param seas_id, season's name
-		 * @return 0 without errors, exception message any others cases
+		 * @return return_qry : result into an object, exception message any others cases
 		 */	
 		public function display_seasons() {	
 			try {
-				$qry = $this->db->prepare('SELECT seas_name, seas_start_date, seas_end_date, seas_coeff FROM season');	
+				$qry = $this->db->prepare('SELECT seas_name, seas_start_date, seas_end_date, seas_coeff
+										   FROM season
+										   ORDER BY season.seas_id');	
 				$qry->execute();
 				//get customer's ID      put  the result into an object
 				$return_qry = $qry->fetchAll();
@@ -94,9 +96,8 @@
 				$qry = $this->db->prepare('SELECT * FROM season WHERE seas_id = ?');	
 				$qry->bindValue(1, $seas_id, PDO::PARAM_INT);
 				$qry->execute();
-				//get customer's ID      put  the result into an object
-				$return_qry = $qry->fetch(PDO::FETCH_OBJ);
-
+					//put  the result into an object
+				$return_qry = $qry->fetchAll();
 				$qry->closeCursor();
 				return $return_qry;
 			} catch(Exception $e) {
@@ -118,9 +119,8 @@
 				$qry->bindValue(1, $seas_id, PDO::PARAM_STR);		
 
 				$qry->execute();
-				//get customer's ID      put  the result into an object
-				$return_qry = $qry->fetch(PDO::FETCH_OBJ);
-
+					//put  the result into an object
+				$return_qry = $qry->fetchAll();
 				$qry->closeCursor();
 				return $return_qry;
 

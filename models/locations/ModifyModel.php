@@ -109,8 +109,10 @@
 				
 				$qry->bindValue(1, $loc_id, PDO::PARAM_INT);
 				
-				$qry->execute();
+				//put  the result into an object
+				$return_qry = $qry->fetchAll();
 				$qry->closeCursor();
+				return $return_qry;
 				return 0;
 			} catch(Exception $e) {
 				return $e->getMessage();

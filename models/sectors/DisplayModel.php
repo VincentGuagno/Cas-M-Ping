@@ -76,7 +76,8 @@
 				//et récupération de la jointure location et type_location
 				$qry = $this->db->prepare('SELECT sector.*, location.loc_id, type_location.type_location_name FROM sector 
 												INNER JOIN location ON  sector.sec_id = location.loc_sec_id
-												INNER JOIN type_location ON location.loc_type_id = type_location.type_location_id');
+												INNER JOIN type_location ON location.loc_type_id = type_location.type_location_id
+												ORDER BY sector.sec_id');
 				
 				$qry->execute();
 				//get customer's ID      put  the result into an object				
@@ -100,9 +101,9 @@
 				$qry = $this->db->prepare('SELECT sec_name FROM sector WHERE sec_id');	
 				$qry->bindValue(1, $sec_id, PDO::PARAM_INT);
 				$qry->execute();
-				//get customer's ID      put  the result into an object
-				$return_qry = $qry->fetch(PDO::FETCH_OBJ);
 
+				//put  the result into an object
+				$return_qry = $qry->fetchAll();
 				$qry->closeCursor();
 				return $return_qry;
 			} catch(Exception $e) {
@@ -124,9 +125,8 @@
 				$qry->bindValue(1, $sec_id, PDO::PARAM_STR);		
 
 				$qry->execute();
-				//get customer's ID      put  the result into an object
-				$return_qry = $qry->fetch(PDO::FETCH_OBJ);
-
+				//put  the result into an object
+				$return_qry = $qry->fetchAll();
 				$qry->closeCursor();
 				return $return_qry;
 
