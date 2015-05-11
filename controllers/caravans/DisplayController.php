@@ -54,7 +54,7 @@
 							try {	
 								require_once (_CARAVANS_MODELS_ .'/'. $this->model_name .'Model.php');
 								$id = Tools::getInstance()->getUrl_id($url);
-								
+
 								switch ($id) {
 									case 'all':
 										$data = DisplayModel::getInstance()->display_caravans();
@@ -63,7 +63,7 @@
 										$data = DisplayModel::getInstance()->display_caravan($id);
 										break;
 								}
-								echo $this->twig->render($this->view_name .'.tpl', array('caravan' => $data, 'bootstrapPath' => _BOOTSTRAP_FILE_));
+								echo $this->twig->render($this->view_name .'.tpl', array('caravans' => $data, 'bootstrapPath' => _BOOTSTRAP_FILE_));
 								
 							} catch (Exception $e) {
 								throw new Exception('Une erreur est survenue durant la récupération des données: '.$e->getMessage());

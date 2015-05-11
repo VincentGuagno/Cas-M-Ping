@@ -11,10 +11,11 @@
 </head>
 <body>
 	<div id="content">{% block content %}{% endblock %}</div>
-	<h1> Clients </h1>
+	<h1> Caravanes </h1>
 	
 	<table class="table">
 		<tr>
+			<th> Identifiant </th>
 			<th> Société </th>
 			<th> Prix </th>
 			<th> Nombre de personnes </th>
@@ -22,10 +23,11 @@
 		</tr>
 	{% for caravan in caravans %}
 		<tr>
-			<td>{{caravan.company}}</td>
-			<td>{{caravan.price}}</td>
-			<td>{{caravan.size}}</td>
-			<td>{{caravan.location}}</td>
+			<td>{{caravan.car_id}}</td>
+			<td>{{caravan.car_society_name}}</td>
+			<td>{{caravan.car_price}}</td>
+			<td>{{caravan.car_nb_person}}</td>
+			<td>{{caravan.car_id_location}}</td>
 		</tr>
 	{% endfor %}
 	</table>
