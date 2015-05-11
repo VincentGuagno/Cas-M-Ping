@@ -57,7 +57,7 @@
 								
 								switch ($id) {
 									case 'all':
-										$data = DisplayModel::getInstance()->display_caravan();
+										$data = DisplayModel::getInstance()->display_caravans();
 										break;
 									default:
 										$data = DisplayModel::getInstance()->display_caravan($id);
