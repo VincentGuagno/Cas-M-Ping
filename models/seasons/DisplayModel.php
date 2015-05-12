@@ -70,17 +70,15 @@
 		 */	
 		public function display_seasons() {	
 			try {
-				$qry = $this->db->prepare('SELECT seas_name, seas_start_date, seas_end_date, seas_coeff
+				$qry = $this->db->prepare('SELECT seas_id, seas_name, seas_start_date, seas_end_date, seas_coeff
 										   FROM season
 										   ORDER BY season.seas_id');	
 				$qry->execute();
 				//get customer's ID      put  the result into an object
 				$return_qry = $qry->fetchAll();
-
-
 				$qry->closeCursor();
 				return $return_qry;
-			} catch(Exception $e) 
+			} catch(Exception $e) {
 				return $e->getMessage();
 			}
 		}

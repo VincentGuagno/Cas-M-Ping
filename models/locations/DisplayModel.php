@@ -78,7 +78,7 @@
 												   INNER JOIN type_location ON location.loc_type_id = type_location.type_location_id
 												   ORDER BY location.loc_id');
 				
-				$model->execute();
+				$qry->execute();
 					//put  the result into an object
 				$return_qry = $qry->fetchAll();
 				$qry->closeCursor();
@@ -95,9 +95,9 @@
 		 */		
 		public function display_location($loc_id) {
 			try {
-				$model = $this->db->prepare('SELECT * FROM location WHERE loc_id = ?');	
-				$model->bindValue(1, $loc_id, PDO::PARAM_INT);
-				$model->execute();
+				$qry = $this->db->prepare('SELECT * FROM location WHERE loc_id = ?');	
+				$qry->bindValue(1, $loc_id, PDO::PARAM_INT);
+				$qry->execute();
 					//put  the result into an object
 				$return_qry = $qry->fetchAll();
 				$qry->closeCursor();

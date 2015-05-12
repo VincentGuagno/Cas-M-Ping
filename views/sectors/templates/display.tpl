@@ -2,7 +2,10 @@
 <html>
 <head>
 	{% block head %}
-		<link rel="stylesheet" href="dependencies/bootstrap/css/bootstrap.min.css" />
+		{% block stylesheets %}
+			<link rel="stylesheet" href="{{bootstrapPath}}">
+		{% endblock %}
+		<meta charset="utf-8">
 		<title>{% block title %}{% endblock %} - Secteur</title>
 	{% endblock %}
 </head>
@@ -12,7 +15,7 @@
 	
 	{% for sector in sectors %}
 		<div>
-		{{sector.name}}
+		{{sector.sec_name}}
 		<div id="nav">
 			<button class="btn btn-default"> Modifier </button>
 			<button class="btn btn-default"> Supprimer </button>
@@ -23,10 +26,10 @@
 				<th> Numero d'emplacement </th>
 				<th> Type de location </th>
 			</tr>
-		{% for location in sector.locations %}
+		{% for location in sector.sec_id %}
 			<tr>
-				<td>{{location.id}}</td>
-				<td>{{location.locationType}}</td>
+				<td>{{location.loc_id}}</td>
+				<td>{{location.type_location_name}}</td>
 			</tr>
 		{% endfor %}
 		<table class="table">

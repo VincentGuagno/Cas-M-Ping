@@ -72,10 +72,10 @@
 			try {
 
 //TODO NOT FINISHED
-				$qry = $this->db->prepare('SELECT  * FROM rental 
+				/*$qry = $this->db->prepare('SELECT  * FROM rental 
 												   INNER JOIN customer ON  sector.sec_id = rental.
 												   INNER JOIN location ON location.loc_type_id = rental.
-												   ORDER BY rental.rent_id');
+												   ORDER BY rental.rent_id');*/
 				
 				$qry = $this->db->prepare('SELECT * FROM rental');	
 				$qry->execute();
@@ -83,7 +83,7 @@
 				$return_qry = $qry->fetchAll();
 
 				$qry->closeCursor();
-				return return_qry;
+				return $return_qry;
 			} catch(Exception $e) {
 				return $e->getMessage();
 			}

@@ -9,7 +9,7 @@
 	 * @copyright 2015 3iL
 	 */
 	require_once('SectorModel.php'); 
-	public class DisplayModel extends SectorModel{
+	class DisplayModel extends SectorModel{
 
 
 		/**
@@ -98,7 +98,7 @@
 		public function display_sector($sec_id) {
 			try {
 				// select secteur left join emplacement(location) )				
-				$qry = $this->db->prepare('SELECT sec_name FROM sector WHERE sec_id');	
+				$qry = $this->db->prepare('SELECT sec_name FROM sector WHERE sec_id = ?');	
 				$qry->bindValue(1, $sec_id, PDO::PARAM_INT);
 				$qry->execute();
 

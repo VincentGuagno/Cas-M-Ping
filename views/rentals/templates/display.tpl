@@ -2,19 +2,23 @@
 <html>
 <head>
 	{% block head %}
-		<link rel="stylesheet" href="dependencies/bootstrap/css/bootstrap.min.css" />
+		{% block stylesheets %}
+			<link rel="stylesheet" href="{{bootstrapPath}}">
+		{% endblock %}
+		<meta charset="utf-8">
 		<title>{% block title %}{% endblock %} - Clients</title>
 	{% endblock %}
 </head>
 <body>
 	<div id="content">{% block content %}{% endblock %}</div>
-	<h1> Clients </h1>
+	<h1> Locations </h1>
 	
 	<table class="table">
 		<tr>
+			<th> Identifiant </th>
 			<th> Nom </th>
 			<th> Client </th>
-			<th> Date de début </th>
+			<th> Date de dÃ©but </th>
 			<th> Date de fin </th>
 			<th> Nombre de personnes </th>
 			<th> Etat des lieux </th>
@@ -23,11 +27,12 @@
 		</tr>
 	{% for rental in rentals %}
 		<tr>
-			<td>{{rental.name}}</td>
-			<td>{{rental.customer}}</td>
-			<td>{{rental.beginDate}}</td>
-			<td>{{rental.endDate}}</td>
-			<td>{{rental.peopleNumber}}</td>
+			<td>{{rental.rent_id}}</td>
+			<td>{{rental.rent_name}}</td>
+			<td>{{rental.rent_cust_id}}</td>
+			<td>{{rental.rent_begin}}</td>
+			<td>{{rental.rent_end}}</td>
+			<td>{{rental.rent_nb_person}}</td>
 			<td>{{rental.inventory}}</td>
 			<td>{{rental.paymentState}}</td>
 			<td>{{rental.deposit}}</td>

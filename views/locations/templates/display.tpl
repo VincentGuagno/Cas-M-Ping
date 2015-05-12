@@ -2,22 +2,24 @@
 <html>
 <head>
 	{% block head %}
-		<link rel="stylesheet" href="dependencies/bootstrap/css/bootstrap.min.css" />
+		{% block stylesheets %}
+			<link rel="stylesheet" href="{{bootstrapPath}}">
+		{% endblock %}
 		<title>{% block title %}{% endblock %} - Clients</title>
 	{% endblock %}
 </head>
 <body>
 	<div id="content">{% block content %}{% endblock %}</div>
-	<h1> Clients </h1>
+	<h1> Emplacements </h1>
 	
 	<table class="table">
 		<tr>
-			<th> Numéro d'emplacement </th>
+			<th> NumÃ©ro d'emplacement </th>
 			<th> Secteur </th>
 		</tr>
 	{% for location in locations %}
 		<tr>
-			<td>{{location.id}}</td>
+			<td>{{location.sec_name}}</td>
 			<td>{{location.sector}}</td>
 		</tr>
 	{% endfor %}
