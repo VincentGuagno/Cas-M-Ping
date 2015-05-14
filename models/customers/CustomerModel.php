@@ -24,8 +24,8 @@
 		public function has_customer($cust_firstName, $cust_lastName) {
 			try {
 	
-				$qry = $this->db->prepare('SELECT customer.cust_id FROM	customer
-                        					WHERE customer.cust_firstName =? and customer.cust_lastName =? ');	
+				$qry = $this->db->prepare('SELECT customer.cust_id FROM customer 
+											WHERE customer.cust_firstName = ? AND customer.cust_lastName =?');	
 
 				$qry->bindValue(1, $cust_firstName, PDO::PARAM_STR);
 				$qry->bindValue(2, $cust_lastName, PDO::PARAM_STR);

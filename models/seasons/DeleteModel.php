@@ -72,11 +72,15 @@
 		public function delete_season($seas_id) {
 			try {
 
-				
-				$qry = $this->db->prepare('DELETE FROM season 
-												   INNER JOIN link_season_location ON  season.seas_id = ? and season.seas_id = link_season_location.link_seas_id');
-				
+
+				$qry = $this->db->prepare('DELETE FROM season WHERE season.seas_id = ?');
 				$qry->bindValue(1, $seas_id, PDO::PARAM_INT);
+				$qry->execute();
+
+				$qry = $this->db->prepare('DELETE FROM link_season_location WHERE link_season_location.link_seas_id = ?');
+				$qry->bindValue(1, $seas_id, PDO::PARAM_INT);
+				$qry->execute();
+				
 				$qry->execute();
 				$qry->closeCursor();
 				return 0;

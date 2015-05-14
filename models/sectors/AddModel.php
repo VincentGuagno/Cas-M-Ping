@@ -71,7 +71,7 @@
 		 */
 		public function add_sector($sec_name) {
 			try {
-				$qry = $this->db->prepare('INSERT INTO camping.sector (sec_id, sec_name) VALUES (NULL, theSecName)');
+				$qry = $this->db->prepare('INSERT INTO camping.sector (sec_id, sec_name) VALUES (NULL, ?)');
 				$qry->bindValue(1, $sec_name, PDO::PARAM_STR);			
 				$qry->execute();
 				$qry->closeCursor();
