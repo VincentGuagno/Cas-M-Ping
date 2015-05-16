@@ -1,7 +1,7 @@
 <?php
 	
 	/*
-	 * Controller for rental modifications
+	 * Controller for confirm rental modifications
 	 * This class handles modifications rentals
 	 *
 	 * @author Jérémie LIECHTI
@@ -11,12 +11,12 @@
 
 	require_once('RentalController.php');
 	 
-	class ModifyController extends RentalController {
+	class ConfirmModifyController extends RentalController {
 		
 		/**
 		 * Name of called model
 		 */
-		private $model_name = 'Display';
+		private $model_name = 'Modify';
 		
 		/**
 		 * Name of called view
@@ -48,16 +48,16 @@
 				$url = Tools::getInstance()->request_url;
 				$controller = Tools::getInstance()->getUrl_controller($url);
 				
-				if ($controller == 'ModifyController') {
+				if ($controller == 'ConfirmModifyController') {
 					if (file_exists (_RENTALS_MODELS_ .'/'. $this->model_name .'Model.php')) {			
 						if (file_exists (_RENTALS_VIEWS_ .'/'. $this->view_name .'.tpl')) {	
 							try {	
 								require_once (_RENTALS_MODELS_ .'/'. $this->model_name .'Model.php');
 								$id = Tools::getInstance()->getUrl_id($url);
 								
-								$data = DisplayModel::getInstance()->display_rental($id);
-								echo $this->twig->render($this->view_name .'.tpl', array('rental' => $data[0], 'bootstrapPath' => _BOOTSTRAP_FILE_));
-								
+								$data = ModifyModel::getInstance()->modify_model();
+								header('Location: /Cas-M-Ping/rentals/show/'.$id);
+	
 							} catch (Exception $e) {
 								throw new Exception('Une erreur est survenue durant la récupération des données: '.$e->getMessage());
 							}

@@ -64,6 +64,9 @@
 		<form method="post" ACTION="/Cas-M-Ping/rentals/modify/{{rental.rent_id}}">
 			<button type="submit" > Modifier </button>
 		</form>
+		<form method="post" ACTION="/Cas-M-Ping/rentals/cancel/{{rental.rent_id}}">
+			<button type="submit" > Annuler </button>
+		</form>
 		<form method="post" ACTION="/Cas-M-Ping/rentals/delete/{{rental.rent_id}}">
 			<button type="submit" > Supprimer </button>
 		</form>

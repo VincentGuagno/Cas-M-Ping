@@ -130,6 +130,11 @@
 				'directory' => 'rentals/',
 				'url-formatter' => 'rentals/modify/{id}'
 			),
+			'confirm-modify-rentals' => array(
+				'controller' => 'ConfirmModifyController',
+				'directory' => 'rentals/',
+				'url-formatter' => 'rentals/modify/confirm/{id}'
+			),
 			
 			// Season routes
 			'add-seasons' => array(
