@@ -77,12 +77,13 @@
 		 * @param rent_days_number, rent's days_number
 		 * @param rent_price, rent's price
 		 * @param rent_cust_id, rent's cust_id 
+		 * @param rent_validity, rent's validity
 		 * @return 0 without errors, exception message any others cases
 		 */
 		public function create_rental($rent_name, $rent_begin, 
 										$rent_end, $rent_nbPerson,
 									 	$rent_locationState, $rent_cautionState,
-									 	$rent_daysNumber,$rent_price , $rent_cust_id) {
+									 	$rent_daysNumber,$rent_price , $rent_cust_id, $rent_validity) {
 			try {
 				$qry = $this->db->prepare('INSERT INTO camping.rental (rent_id,
 																	   rent_name, 
@@ -93,7 +94,8 @@
 																	   rent_caution_state, 
 																	   rent_days_number, 
 																	   rent_price, 
-																	   rent_cust_id) VALUES (NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?)');
+																	   rent_cust_id,
+																	   rent_validity) VALUES (NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)');
 				
 				$qry->bindValue(1, $rent_name, PDO::PARAM_STR);
 				$qry->bindValue(2, $rent_begin, PDO::PARAM_STR);
@@ -104,6 +106,7 @@
 				$qry->bindValue(7, $rent_daysNumber, PDO::PARAM_STR);
 				$qry->bindValue(8, $rent_price, PDO::PARAM_STR);
 				$qry->bindValue(9, $rent_cust_id, PDO::PARAM_STR);
+				$qry->bindValue(10, $rent_cust_id, PDO::PARAM_INT);
 				$qry->execute();
 
 				$qry->execute();

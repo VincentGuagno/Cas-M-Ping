@@ -67,15 +67,15 @@
 		/**
 		 * cancel rental's informations from one rental 
 		 *
-		 * @param iii, rental's id
-		 * @param iii, rental's name
+		 * @param rent_cust_id, cust_id's rent
+		 * @param rent_validity, rental's validity
 		 * @return 0 without errors, exception message any others cases
 		 */
-		public function cancel_rental() {
+		public function cancel_rental($rent_validity, $rent_cust_id) {
 			try {
-				$qry = $this->db->prepare('INSERT INTO iii (iii) VALUES (NULL, ?, ?)');
-				$qry->bindValue(1, $iii, PDO::PARAM_STR);
-				$qry->bindValue(2, $iii, PDO::PARAM_STR);
+				$qry = $this->db->prepare('UPDATE rental SET rent_validity=? WHERE rent_cust_id =?');
+				$qry->bindValue(1, $rent_validity, PDO::PARAM_INT);
+				$qry->bindValue(2, $rent_cust_id, PDO::PARAM_INT);
 				$qry->execute();
 				$qry->closeCursor();
 				return 0;
