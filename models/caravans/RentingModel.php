@@ -85,6 +85,7 @@
 									 	$rent_locationState, $rent_cautionState,
 									 	$rent_daysNumber,$rent_price , $rent_cust_id) {
 			try {
+
 				$qry = $this->db->prepare('INSERT INTO camping.rental (rent_id,
 																	   rent_name, 
 																	   rent_begin, 
@@ -96,8 +97,6 @@
 																	   rent_price, 
 																	   rent_cust_id) VALUES (NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?)');
 				
-
-
 				$qry->bindValue(1, $rent_name, PDO::PARAM_STR);
 				$qry->bindValue(2, $rent_begin, PDO::PARAM_STR);
 				$qry->bindValue(3, $rent_end, PDO::PARAM_STR);
@@ -108,7 +107,7 @@
 				$qry->bindValue(8, $rent_price, PDO::PARAM_STR);
 				$qry->bindValue(9, $rent_cust_id, PDO::PARAM_STR);
 
-				
+
 				$qry->execute();
 				$qry->closeCursor();
 				return 0;
