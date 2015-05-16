@@ -65,15 +65,44 @@
 		/**
 		 * Modify all rental's informations from one rental 
 		 *
-		 * @param iii, rental's id
-		 * @param iii, rental's name
+		 * @param rent_name, rent_name's name
+		 * @param rent_begin, rent_begin's date
+		 * @param rent_end, rent_end's date
+		 * @param rent_nb_person, the rent's number person
+		 * @param rent_location_state, rent's location state
+		 * @param rent_caution_state, rent's caution_state
+		 * @param rent_days_number, rent's days_number
+		 * @param rent_price, rent's price
+		 * @param rent_cust_id, rent's cust_id 
 		 * @return 0 without errors, exception message any others cases
 		 */
-		public function create_rental() {
+		public function create_rental($rent_name, $rent_begin, 
+										$rent_end, $rent_nbPerson,
+									 	$rent_locationState, $rent_cautionState,
+									 	$rent_daysNumber,$rent_price , $rent_cust_id) {
 			try {
-				$qry = $this->db->prepare('INSERT INTO iii (iii) VALUES (NULL, ?, ?)');
-				$qry->bindValue(1, $iii, PDO::PARAM_STR);
-				$qry->bindValue(2, $iii, PDO::PARAM_STR);
+				$qry = $this->db->prepare('INSERT INTO camping.rental (rent_id,
+																	   rent_name, 
+																	   rent_begin, 
+																	   rent_end, 
+																	   rent_nb_person, 
+																	   rent_location_state, 
+																	   rent_caution_state, 
+																	   rent_days_number, 
+																	   rent_price, 
+																	   rent_cust_id) VALUES (NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?)');
+				
+				$qry->bindValue(1, $rent_name, PDO::PARAM_STR);
+				$qry->bindValue(2, $rent_begin, PDO::PARAM_STR);
+				$qry->bindValue(3, $rent_end, PDO::PARAM_STR);
+				$qry->bindValue(4, $rent_nbPerson, PDO::PARAM_STR);		
+				$qry->bindValue(5, $rent_locationState, PDO::PARAM_STR);
+				$qry->bindValue(6, $rent_cautionState, PDO::PARAM_STR);
+				$qry->bindValue(7, $rent_daysNumber, PDO::PARAM_STR);
+				$qry->bindValue(8, $rent_price, PDO::PARAM_STR);
+				$qry->bindValue(9, $rent_cust_id, PDO::PARAM_STR);
+				$qry->execute();
+
 				$qry->execute();
 				$qry->closeCursor();
 				return 0;
@@ -82,6 +111,7 @@
 			}
 		}
 
+		
 
 
 
