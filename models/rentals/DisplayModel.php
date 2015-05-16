@@ -67,7 +67,9 @@
 		*/		
 		public function display_rentals() {
 			try {
-				$qry = $this->db->prepare('SELECT * FROM rental ORDER BY rent_id');
+				$qry = $this->db->prepare('SELECT rental.*, cust_firstName + ' ' + cust_lastName FROM rental 
+												INNER JOIN customer ON  customer.cust_id = rental.rent_cust_id 
+												ORDER BY rent_id');
 				$qry->execute();
 				$return_qry = $qry->fetchAll();
 
@@ -85,7 +87,9 @@
 		 */		
 		public function display_rental($rent_id) {
 			try {
-				$qry = $this->db->prepare('SELECT * FROM rental WHERE rent_id = ?');	
+				$qry = $this->db->prepare('SELECT rental.*, cust_firstName + ' ' + cust_lastName FROM rental 
+											INNER JOIN customer ON  customer.cust_id = rental.rent_cust_id 
+												 WHERE rent_id = ?');	
 				$qry->bindValue(1, $rent_id, \PDO::PARAM_INT);
 				$qry->execute();
 				//put  the result into an object
