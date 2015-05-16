@@ -71,8 +71,28 @@
 										break;
 									default:
 										if(\Rental\DisplayModel::getInstance()->has_rental($id) == 1) {
-											$data = \Rental\DisplayModel::getInstance()->display_rental($id);
-											echo $this->twig->render($this->view_nameId .'.tpl', array('rental' => $data[0], 'bootstrapPath' => _BOOTSTRAP_FILE_));
+											$rentals = \Rental\DisplayModel::getInstance()->display_rental($id);
+											
+											$seasons = array();
+											$caravans = array();
+											$locations = array();
+											$buffer = null;
+
+											for($i=0; $i<count($rentals); $i++) {
+												$buffer = \Season\DisplayModel::getInstance()->get_SeasonByRental($rentals[$i]['rent_id']);											
+												if(count($buffer) > 0) $seasons = array_merge($seasons, $buffer);
+												$buffer = null;
+												
+												$buffer = \Caravan\DisplayModel::getInstance()->get_caravanByRental($rentals[$i]['rent_id']);											
+												if(count($buffer) > 0) $caravans = array_merge($caravans, $buffer);
+												$buffer = null;
+												
+												$buffer = \Location\DisplayModel::getInstance()->get_LocationByRental($rentals[$i]['rent_id']);											
+												if(count($buffer) > 0) $locations = array_merge($locations, $buffer);
+												$buffer = null;
+											}
+											
+											echo $this->twig->render($this->view_nameId .'.tpl', array('rental' => $rentals, 'seasons' => $seasons, 'caravans' => $caravans, 'locations' => $locations, 'bootstrapPath' => _BOOTSTRAP_FILE_));
 										} else {
 											header('Location: /Cas-M-Ping/errors/404');
 										}	
