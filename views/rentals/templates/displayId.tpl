@@ -54,7 +54,7 @@
 		</tr>
 	{% for rental in rentals if car_id is not empty %}
 		<tr>
-			<td>{{rental.seas_name}</td>
+			<td>{{rental.seas_name}}</td>
 			<td>{{rental.seas_end_date - rental.seas_start_date}}</td>
 			<td>{{rental.seas_coeff}}</td>
 		</tr>
