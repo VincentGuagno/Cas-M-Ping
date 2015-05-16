@@ -62,18 +62,36 @@
 		}
 
 		/**
-		 * Modify all rental's informations from one rental 
+		 * delete rental informations from one rental 
 		 *
-		 * @param iii, rental's id
-		 * @param iii, rental's name
+		 * @param rent_id, rental's id
+		 *	
 		 * @return 0 without errors, exception message any others cases
 		 */
-		public function delete_rental() {
+		public function delete_rental($rent_id) {
 			try {
-				$qry = $this->db->prepare('DELETE INTO iii (iii) VALUES (NULL, ?, ?)');
-				$qry->bindValue(1, $iii, PDO::PARAM_STR);
-				$qry->bindValue(2, $iii, PDO::PARAM_STR);
+
+				//suppression dans link_season_location
+				$qry = $this->db->prepare('DELETE FROM link_season_location WHERE link_season_location.link_location_id = ?');
+				$qry->bindValue(1, $rent_id, PDO::PARAM_INT);
 				$qry->execute();
+
+
+				// suppression dans lien loc emp
+				$qry = $this->db->prepare('DELETE FROM link_rent_rental WHERE link_rent_rental.lle_loc_id = ?');
+				$qry->bindValue(1, $rent_id, PDO::PARAM_INT);
+				$qry->execute();
+
+				//suppression dans link_car_location
+				$qry = $this->db->prepare('DELETE FROM link_car_location WHERE link_car_location.lcl_rent_id = ?');
+				$qry->bindValue(1, $rent_id, PDO::PARAM_INT);
+				$qry->execute();
+
+				// suppression dans location
+				$qry = $this->db->prepare('DELETE FROM rental WHERE rental.rent_id = ?');
+				$qry->bindValue(1, $rent_id, PDO::PARAM_INT);
+				$qry->execute();
+
 				$qry->closeCursor();
 				return 0;
 			} catch(Exception $e) {
