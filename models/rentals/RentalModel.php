@@ -12,7 +12,11 @@
 	
 	class RentalModel {
 	
-
+		/**
+		 * Database object
+		 */
+		public $db = null;
+	
 		/**
 		 * Initialize the RentalModel class
 		 */
@@ -25,11 +29,10 @@
 		 * @return 0 without errors, exception message any others cases
 		 */
 		public function has_rental($car_id) {
-			try {
-	
+			try {	
 				$qry = $this->db->prepare('SELECT rental.car_id FROM rental WHERE rental.car_id = ?');	
 
-				$qry->bindValue(1, $car_id, PDO::PARAM_STR);				
+				$qry->bindValue(1, $car_id, \PDO::PARAM_STR);				
 
 				//put  the result into an object
 				$return_qry = $qry->fetchAll();

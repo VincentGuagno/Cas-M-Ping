@@ -14,16 +14,10 @@
 	
 	class DisplayModel extends RentalModel{
 
-
 		/**
 		 * DisplayModel instance
 		 */
 		public static $instance = null;
-		
-		/**
-		 * Database object
-		 */
-		private $db = null;
 		
 		/**
 		 * The constructor of DisplayModel
@@ -58,8 +52,8 @@
 				throw new Exception('Une erreur est survenue durant le chargement du module: '.$e->getMessage());
 			}
 			try {	
-				$pdo_options[PDO::ATTR_ERRMODE] = PDO::ERRMODE_EXCEPTION;
-				$this->db = new PDO('mysql:host='._HOST_ .';dbname='._DATABASE_, _LOGIN_, _PASSWORD_, $pdo_options);
+				$pdo_options[\PDO::ATTR_ERRMODE] = \PDO::ERRMODE_EXCEPTION;
+				$this->db = new \PDO('mysql:host='._HOST_ .';dbname='._DATABASE_, _LOGIN_, _PASSWORD_, $pdo_options);
 				$this->db->exec('SET NAMES utf8');
 			} catch(Exception $e) {
 				throw new Exception('Connexion à la base de données impossible: '.$e->getMessage());
@@ -76,26 +70,26 @@
 
 				$query = "SELECT  rental.*, location.* ,customer.*,caravan.* FROM rental ";
 				// inner join customer => rental
-				$query+= " INNER JOIN customer ON customer.cust_id = rental.rent_cust_id ";
+				$query.= " INNER JOIN customer ON customer.cust_id = rental.rent_cust_id ";
 
 
 
 				// inner join rental => link_rent_rental
-				$query+= " INNER JOIN link_rent_rental ON rental.rent_id = link_rent_rental.lle_rent_id ";
+				$query.= " INNER JOIN link_rent_rental ON rental.rent_id = link_rent_rental.lle_rent_id ";
 
 				// inner join link_rent_rental => location 
-				$query+= " INNER JOIN location ON link_rent_rental.lle_loc_id = location.loc_id ";
+				$query.= " INNER JOIN location ON link_rent_rental.lle_loc_id = location.loc_id ";
 				
 				//iner join location =>  type_location
-				$query+= " INNER JOIN type_location ON location.loc_type_id = type_location.type_location_id ";
+				$query.= " INNER JOIN type_location ON location.loc_type_id = type_location.type_location_id ";
 
 				// inner join rental => link_car_location
-				$query+= " INNER JOIN link_car_location ON rental.rent_id = link_car_location.lcl_rent_id ";
+				$query.= " INNER JOIN link_car_location ON rental.rent_id = link_car_location.lcl_rent_id ";
 
 				// inner join link_car_location => caravan 
-				$query+= " INNER JOIN caravan ON link_car_location.lcl_rent_id = caravan.car_id ";
+				$query.= " INNER JOIN caravan ON link_car_location.lcl_rent_id = caravan.car_id ";
 				
-				$query+= " ORDER BY rental.rent_id";
+				$query.= " ORDER BY rental.rent_id";
 			
 				$qry = $this->db->prepare($query);
 				
@@ -119,7 +113,7 @@
 		public function display_rental($rent_id) {
 			try {
 				$qry = $this->db->prepare('SELECT * FROM rental WHERE rent_id = ?');	
-				$qry->bindValue(1, $rent_id, PDO::PARAM_INT);
+				$qry->bindValue(1, $rent_id, \PDO::PARAM_INT);
 				$qry->execute();
 				//put  the result into an object
 				$return_qry = $qry->fetchAll();
@@ -141,11 +135,11 @@
 	
 				$qry = $this->db->prepare('SELECT * FROM rental WHERE rent_id = ?');	
 														
-				$qry->bindValue(1, $rent_id, PDO::PARAM_STR);		
+				$qry->bindValue(1, $rent_id, \PDO::PARAM_STR);		
 
 				$qry->execute();
 				//get customer's ID      put  the result into an object
-				$return_qry = $qry->fetch(PDO::FETCH_OBJ);
+				$return_qry = $qry->fetch(\PDO::FETCH_OBJ);
 
 				$qry->closeCursor();
 				return $return_qry;
@@ -166,11 +160,11 @@
 	
 				$qry = $this->db->prepare('SELECT * FROM rental WHERE rent_cust_id = ?');	
 														
-				$qry->bindValue(1, $rent_id, PDO::PARAM_STR);		
+				$qry->bindValue(1, $rent_id, \PDO::PARAM_STR);		
 
 				$qry->execute();
 				//get customer's ID      put  the result into an object
-				$return_qry = $qry->fetch(PDO::FETCH_OBJ);
+				$return_qry = $qry->fetch(\PDO::FETCH_OBJ);
 
 				$qry->closeCursor();
 				return $return_qry;

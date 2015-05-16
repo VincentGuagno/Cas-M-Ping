@@ -20,11 +20,6 @@
 		public static $instance = null;
 		
 		/**
-		 * Database object
-		 */
-		private $db = null;
-		
-		/**
 		 * The constructor of DeleteModel
 		 */
 		public function __construct() {
@@ -57,8 +52,8 @@
 				throw new Exception('Une erreur est survenue durant le chargement du module: '.$e->getMessage());
 			}
 			try {	
-				$pdo_options[PDO::ATTR_ERRMODE] = PDO::ERRMODE_EXCEPTION;
-				$this->db = new PDO('mysql:host='._HOST_ .';dbname='._DATABASE_, _LOGIN_, _PASSWORD_, $pdo_options);
+				$pdo_options[\PDO::ATTR_ERRMODE] = \PDO::ERRMODE_EXCEPTION;
+				$this->db = new \PDO('mysql:host='._HOST_ .';dbname='._DATABASE_, _LOGIN_, _PASSWORD_, $pdo_options);
 				$this->db->exec('SET NAMES utf8');
 			} catch(Exception $e) {
 				throw new Exception('Connexion à la base de données impossible: '.$e->getMessage());
@@ -75,7 +70,7 @@
 		public function delete_location($loc_id) {
 			try {
 				$qry = $this->db->prepare('DELETE FROM location WHERE `loc_id = ?');
-				$qry->bindValue(1, $loc_id, PDO::PARAM_INT);
+				$qry->bindValue(1, $loc_id, \PDO::PARAM_INT);
 				$qry->execute();				
 				$qry->closeCursor();
 				return 0;

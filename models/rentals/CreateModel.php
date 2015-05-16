@@ -20,11 +20,6 @@
 		public static $instance = null;
 		
 		/**
-		 * Database object
-		 */
-		private $db = null;
-		
-		/**
 		 * The constructor of CreateModel
 		 */
 		public function __construct() {
@@ -57,8 +52,8 @@
 				throw new Exception('Une erreur est survenue durant le chargement du module: '.$e->getMessage());
 			}
 			try {	
-				$pdo_options[PDO::ATTR_ERRMODE] = PDO::ERRMODE_EXCEPTION;
-				$this->db = new PDO('mysql:host='._HOST_ .';dbname='._DATABASE_, _LOGIN_, _PASSWORD_, $pdo_options);
+				$pdo_options[\PDO::ATTR_ERRMODE] = \PDO::ERRMODE_EXCEPTION;
+				$this->db = new \PDO('mysql:host='._HOST_ .';dbname='._DATABASE_, _LOGIN_, _PASSWORD_, $pdo_options);
 				$this->db->exec('SET NAMES utf8');
 			} catch(Exception $e) {
 				throw new Exception('Connexion à la base de données impossible: '.$e->getMessage());
@@ -97,16 +92,16 @@
 																	   rent_cust_id,
 																	   rent_validity) VALUES (NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)');
 				
-				$qry->bindValue(1, $rent_name, PDO::PARAM_STR);
-				$qry->bindValue(2, $rent_begin, PDO::PARAM_STR);
-				$qry->bindValue(3, $rent_end, PDO::PARAM_STR);
-				$qry->bindValue(4, $rent_nbPerson, PDO::PARAM_STR);		
-				$qry->bindValue(5, $rent_locationState, PDO::PARAM_STR);
-				$qry->bindValue(6, $rent_cautionState, PDO::PARAM_STR);
-				$qry->bindValue(7, $rent_daysNumber, PDO::PARAM_STR);
-				$qry->bindValue(8, $rent_price, PDO::PARAM_STR);
-				$qry->bindValue(9, $rent_cust_id, PDO::PARAM_STR);
-				$qry->bindValue(10, $rent_cust_id, PDO::PARAM_INT);
+				$qry->bindValue(1, $rent_name, \PDO::PARAM_STR);
+				$qry->bindValue(2, $rent_begin, \PDO::PARAM_STR);
+				$qry->bindValue(3, $rent_end, \PDO::PARAM_STR);
+				$qry->bindValue(4, $rent_nbPerson, \PDO::PARAM_STR);		
+				$qry->bindValue(5, $rent_locationState, \PDO::PARAM_STR);
+				$qry->bindValue(6, $rent_cautionState, \PDO::PARAM_STR);
+				$qry->bindValue(7, $rent_daysNumber, \PDO::PARAM_STR);
+				$qry->bindValue(8, $rent_price, \PDO::PARAM_STR);
+				$qry->bindValue(9, $rent_cust_id, \PDO::PARAM_STR);
+				$qry->bindValue(10, $rent_cust_id, \PDO::PARAM_INT);
 				$qry->execute();
 
 				$qry->execute();

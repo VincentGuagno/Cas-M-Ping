@@ -12,7 +12,11 @@
 	
 	class SectorModel {
 	
-
+		/**
+		 * Database object
+		 */
+		public $db = null;
+	
 		/**
 		 * Initialize the SectorModel class
 		 */
@@ -29,7 +33,7 @@
 	
 				$qry = $this->db->prepare('SELECT sector.sec_id FROM sector WHERE sector.sec_id = ?');	
 
-				$qry->bindValue(1, $sec_id, PDO::PARAM_STR);				
+				$qry->bindValue(1, $sec_id, \PDO::PARAM_STR);				
 
 				$qry->execute();
 				$qry->closeCursor();

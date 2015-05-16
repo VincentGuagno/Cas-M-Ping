@@ -20,11 +20,6 @@
 		public static $instance = null;
 		
 		/**
-		 * Database object
-		 */
-		private $db = null;
-		
-		/**
 		 * The constructor of ModifyModel
 		 */
 		public function __construct() {
@@ -57,8 +52,8 @@
 				throw new Exception('Une erreur est survenue durant le chargement du module: '.$e->getMessage());
 			}
 			try {	
-				$pdo_options[PDO::ATTR_ERRMODE] = PDO::ERRMODE_EXCEPTION;
-				$this->db = new PDO('mysql:host='._HOST_ .';dbname='._DATABASE_, _LOGIN_, _PASSWORD_, $pdo_options);
+				$pdo_options[\PDO::ATTR_ERRMODE] = \PDO::ERRMODE_EXCEPTION;
+				$this->db = new \PDO('mysql:host='._HOST_ .';dbname='._DATABASE_, _LOGIN_, _PASSWORD_, $pdo_options);
 				$this->db->exec('SET NAMES utf8');
 			} catch(Exception $e) {
 				throw new Exception('Connexion à la base de données impossible: '.$e->getMessage());
@@ -77,11 +72,11 @@
 		public function modify_season($seas_id, $seas_name, $seas_StartDate, $seas_EndDate, $seas_coeff) {
 			try {
 				$qry = $this->db->prepare('UPDATE season SET seas_name = "?",seas_start_date = "?", seas_end_date = "?",seas_coeff = "?" WHERE seas_id = ?');
-				$qry->bindValue(1, $seas_name, PDO::PARAM_STR);
-				$qry->bindValue(2, $seas_StartDate, PDO::PARAM_STR);
-				$qry->bindValue(3, $seas_EndDate, PDO::PARAM_STR);
-				$qry->bindValue(4, $seas_coeff, PDO::PARAM_STR);					
-				$qry->bindValue(5, $seas_id, PDO::PARAM_INT);
+				$qry->bindValue(1, $seas_name, \PDO::PARAM_STR);
+				$qry->bindValue(2, $seas_StartDate, \PDO::PARAM_STR);
+				$qry->bindValue(3, $seas_EndDate, \PDO::PARAM_STR);
+				$qry->bindValue(4, $seas_coeff, \PDO::PARAM_STR);					
+				$qry->bindValue(5, $seas_id, \PDO::PARAM_INT);
 				$qry->execute();
 				$qry->closeCursor();
 				return 0;

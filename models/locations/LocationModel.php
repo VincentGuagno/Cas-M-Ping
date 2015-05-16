@@ -12,6 +12,10 @@
 	 
 	class LocationModel {
 	
+		/**
+		 * Database object
+		 */
+		public $db = null;
 
 		/**
 		 * Initialize the CustomerModel class
@@ -29,7 +33,7 @@
 	
 				$qry = $this->db->prepare('SELECT location.loc_id FROM location WHERE location.loc_id = ?');	
 
-				$qry->bindValue(1, $loc_id, PDO::PARAM_STR);				
+				$qry->bindValue(1, $loc_id, \PDO::PARAM_STR);				
 
 				//put  the result into an object
 				$return_qry = $qry->fetchAll();

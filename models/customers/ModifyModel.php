@@ -20,11 +20,6 @@
 		public static $instance = null;
 		
 		/**
-		 * Database object
-		 */
-		private $db = null;
-		
-		/**
 		 * The constructor of ModifyModel
 		 */
 		public function __construct() {
@@ -57,8 +52,8 @@
 				throw new Exception('Une erreur est survenue durant le chargement du module: '.$e->getMessage());
 			}
 			try {	
-				$pdo_options[PDO::ATTR_ERRMODE] = PDO::ERRMODE_EXCEPTION;
-				$this->db = new PDO('mysql:host='._HOST_ .';dbname='._DATABASE_, _LOGIN_, _PASSWORD_, $pdo_options);
+				$pdo_options[\PDO::ATTR_ERRMODE] = \PDO::ERRMODE_EXCEPTION;
+				$this->db = new \PDO('mysql:host='._HOST_ .';dbname='._DATABASE_, _LOGIN_, _PASSWORD_, $pdo_options);
 				$this->db->exec('SET NAMES utf8');
 			} catch(Exception $e) {
 				throw new Exception('Connexion à la base de données impossible: '.$e->getMessage());
@@ -81,14 +76,14 @@
 			try {
 				$qry = $this->db->prepare('UPDATE camping.customer SET cust_lastName =?, cust_address =?, cust_postal_code =?, cust_city =?, cust_phone_number =?, cust_record_number =?, cust_firstName =? WHERE cust_id =?');
 				
-				$qry->bindValue(1, $cust_lastName, PDO::PARAM_STR);
-				$qry->bindValue(2, $cust_address, PDO::PARAM_STR);
-				$qry->bindValue(3, $cust_zipCode, PDO::PARAM_STR);
-				$qry->bindValue(4, $cust_city, PDO::PARAM_STR);
-				$qry->bindValue(5, $cust_phoneNumber, PDO::PARAM_STR);
-				$qry->bindValue(6, $cust_addNumber, PDO::PARAM_STR);
-				$qry->bindValue(7, $cust_id, PDO::PARAM_INT);
-				$qry->bindValue(1, $cust_firstName, PDO::PARAM_STR);
+				$qry->bindValue(1, $cust_lastName, \PDO::PARAM_STR);
+				$qry->bindValue(2, $cust_address, \PDO::PARAM_STR);
+				$qry->bindValue(3, $cust_zipCode, \PDO::PARAM_STR);
+				$qry->bindValue(4, $cust_city, \PDO::PARAM_STR);
+				$qry->bindValue(5, $cust_phoneNumber, \PDO::PARAM_STR);
+				$qry->bindValue(6, $cust_addNumber, \PDO::PARAM_STR);
+				$qry->bindValue(7, $cust_id, \PDO::PARAM_INT);
+				$qry->bindValue(1, $cust_firstName, \PDO::PARAM_STR);
 				$qry->execute();
 				$qry->closeCursor();
 				return 0;

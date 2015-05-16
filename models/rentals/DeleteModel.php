@@ -19,11 +19,6 @@
 		public static $instance = null;
 		
 		/**
-		 * Database object
-		 */
-		private $db = null;
-		
-		/**
 		 * The constructor of DeleteModel
 		 */
 		public function __construct() {
@@ -56,8 +51,8 @@
 				throw new Exception('Une erreur est survenue durant le chargement du module: '.$e->getMessage());
 			}
 			try {	
-				$pdo_options[PDO::ATTR_ERRMODE] = PDO::ERRMODE_EXCEPTION;
-				$this->db = new PDO('mysql:host='._HOST_ .';dbname='._DATABASE_, _LOGIN_, _PASSWORD_, $pdo_options);
+				$pdo_options[\PDO::ATTR_ERRMODE] = \PDO::ERRMODE_EXCEPTION;
+				$this->db = new \PDO('mysql:host='._HOST_ .';dbname='._DATABASE_, _LOGIN_, _PASSWORD_, $pdo_options);
 				$this->db->exec('SET NAMES utf8');
 			} catch(Exception $e) {
 				throw new Exception('Connexion à la base de données impossible: '.$e->getMessage());
@@ -76,23 +71,23 @@
 
 				//suppression dans link_season_location
 				$qry = $this->db->prepare('DELETE FROM link_season_location WHERE link_season_location.link_location_id = ?');
-				$qry->bindValue(1, $rent_id, PDO::PARAM_INT);
+				$qry->bindValue(1, $rent_id, \PDO::PARAM_INT);
 				$qry->execute();
 
 
 				// suppression dans lien loc emp
 				$qry = $this->db->prepare('DELETE FROM link_rent_rental WHERE link_rent_rental.lle_loc_id = ?');
-				$qry->bindValue(1, $rent_id, PDO::PARAM_INT);
+				$qry->bindValue(1, $rent_id, \PDO::PARAM_INT);
 				$qry->execute();
 
 				//suppression dans link_car_location
 				$qry = $this->db->prepare('DELETE FROM link_car_location WHERE link_car_location.lcl_rent_id = ?');
-				$qry->bindValue(1, $rent_id, PDO::PARAM_INT);
+				$qry->bindValue(1, $rent_id, \PDO::PARAM_INT);
 				$qry->execute();
 
 				// suppression dans location
 				$qry = $this->db->prepare('DELETE FROM rental WHERE rental.rent_id = ?');
-				$qry->bindValue(1, $rent_id, PDO::PARAM_INT);
+				$qry->bindValue(1, $rent_id, \PDO::PARAM_INT);
 				$qry->execute();
 
 				$qry->closeCursor();

@@ -13,6 +13,11 @@
 	class CaravanModel {
 
 		/**
+		 * Database object
+		 */
+		public $db = null;
+	
+		/**
 		 * Initialize the CaravanModel class
 		 */
 		public function init() {}
@@ -27,7 +32,7 @@
 	
 				$qry = $this->db->prepare('SELECT caravan.car_id FROM caravan WHERE caravan.car_id = ?');	
 
-				$qry->bindValue(1, $car_id, PDO::PARAM_STR);				
+				$qry->bindValue(1, $car_id, \PDO::PARAM_STR);				
 
 				$qry->execute();
 				//put  the result into an object

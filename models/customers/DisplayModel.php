@@ -20,11 +20,6 @@
 		public static $instance = null;
 		
 		/**
-		 * Database object
-		 */
-		private $db = null;
-		
-		/**
 		 * The constructor of DisplayModel
 		 */
 		public function __construct() {
@@ -57,8 +52,8 @@
 				throw new Exception('Une erreur est survenue durant le chargement du module: '.$e->getMessage());
 			}
 			try {	
-				$pdo_options[PDO::ATTR_ERRMODE] = PDO::ERRMODE_EXCEPTION;
-				$this->db = new PDO('mysql:host='._HOST_ .';dbname='._DATABASE_, _LOGIN_, _PASSWORD_, $pdo_options);
+				$pdo_options[\PDO::ATTR_ERRMODE] = \PDO::ERRMODE_EXCEPTION;
+				$this->db = new \PDO('mysql:host='._HOST_ .';dbname='._DATABASE_, _LOGIN_, _PASSWORD_, $pdo_options);
 				$this->db->exec('SET NAMES utf8');
 			} catch(Exception $e) {
 				throw new Exception('Connexion à la base de données impossible: '.$e->getMessage());
@@ -93,7 +88,7 @@
 			try {
 				$qry = $this->db->prepare('SELECT * FROM customer WHERE customer.cust_id  =?');	
                         								
-				$qry->bindValue(1, $cust_id, PDO::PARAM_STR);				
+				$qry->bindValue(1, $cust_id, \PDO::PARAM_STR);				
 
 				$qry->execute();
 				//get customer's ID      put  the result into an object
@@ -119,8 +114,8 @@
 				$qry = $this->db->prepare('SELECT customer.cust_id FROM	customer
                         					WHERE customer.cust_firstName =? and customer.cust_lastName =?');	
                         								
-				$qry->bindValue(1, $cust_firstName, PDO::PARAM_STR);
-				$qry->bindValue(2, $cust_lastName, PDO::PARAM_STR);
+				$qry->bindValue(1, $cust_firstName, \PDO::PARAM_STR);
+				$qry->bindValue(2, $cust_lastName, \PDO::PARAM_STR);
 
 				$qry->execute();
 					//put  the result into an object

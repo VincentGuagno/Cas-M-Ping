@@ -20,11 +20,6 @@
 		public static $instance = null;
 		
 		/**
-		 * Database object
-		 */
-		private $db = null;
-		
-		/**
 		 * The constructor of ModifyModel
 		 */
 		public function __construct() {
@@ -57,8 +52,8 @@
 				throw new Exception('Une erreur est survenue durant le chargement du module: '.$e->getMessage());
 			}
 			try {	
-				$pdo_options[PDO::ATTR_ERRMODE] = PDO::ERRMODE_EXCEPTION;
-				$this->db = new PDO('mysql:host='._HOST_ .';dbname='._DATABASE_, _LOGIN_, _PASSWORD_, $pdo_options);
+				$pdo_options[\PDO::ATTR_ERRMODE] = \PDO::ERRMODE_EXCEPTION;
+				$this->db = new \PDO('mysql:host='._HOST_ .';dbname='._DATABASE_, _LOGIN_, _PASSWORD_, $pdo_options);
 				$this->db->exec('SET NAMES utf8');
 			} catch(Exception $e) {
 				throw new Exception('Connexion à la base de données impossible: '.$e->getMessage());
@@ -83,12 +78,12 @@
                         					WHERE location.loc_sec_id =? AND location.loc_type_id = ?');
 
 				// Values SET
-				$qry->bindValue(1, $after_locSecId, PDO::PARAM_INT);
-				$qry->bindValue(2, $after_locTypeId, PDO::PARAM_INT);
+				$qry->bindValue(1, $after_locSecId, \PDO::PARAM_INT);
+				$qry->bindValue(2, $after_locTypeId, \PDO::PARAM_INT);
 
 				// Values WHERE
-				$qry->bindValue(3, $before_locSecId, PDO::PARAM_INT);
-				$qry->bindValue(4, $before_locTypeId, PDO::PARAM_INT);				
+				$qry->bindValue(3, $before_locSecId, \PDO::PARAM_INT);
+				$qry->bindValue(4, $before_locTypeId, \PDO::PARAM_INT);				
 
 				$qry->execute();
 				$qry->closeCursor();
@@ -110,7 +105,7 @@
 				$qry = $this->db->prepare('SELECT location.loc_id FROM	location
                         					WHERE location.loc_type_id =?');
 				
-				$qry->bindValue(1, $loc_id, PDO::PARAM_INT);
+				$qry->bindValue(1, $loc_id, \PDO::PARAM_INT);
 				
 				//put  the result into an object
 				$return_qry = $qry->fetchAll();

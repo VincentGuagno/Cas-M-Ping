@@ -21,11 +21,6 @@
 		public static $instance = null;
 		
 		/**
-		 * Database object
-		 */
-		private $db = null;
-		
-		/**
 		 * The constructor of CreateModel
 		 */
 		public function __construct() {
@@ -58,8 +53,8 @@
 				throw new Exception('Une erreur est survenue durant le chargement du module: '.$e->getMessage());
 			}
 			try {	
-				$pdo_options[PDO::ATTR_ERRMODE] = PDO::ERRMODE_EXCEPTION;
-				$this->db = new PDO('mysql:host='._HOST_ .';dbname='._DATABASE_, _LOGIN_, _PASSWORD_, $pdo_options);
+				$pdo_options[\PDO::ATTR_ERRMODE] = \PDO::ERRMODE_EXCEPTION;
+				$this->db = new \PDO('mysql:host='._HOST_ .';dbname='._DATABASE_, _LOGIN_, _PASSWORD_, $pdo_options);
 				$this->db->exec('SET NAMES utf8');
 			} catch(Exception $e) {
 				throw new Exception('Connexion à la base de données impossible: '.$e->getMessage());
@@ -78,8 +73,8 @@
 		public function add_location($loc_secId, $loc_typeId) {
 			try {
 				$qry = $this->db->prepare('INSERT INTO camping.location (loc_id, loc_sec_id, loc_type_id) VALUES (NULL, ?, ?)');
-				$qry->bindValue(1, $loc_secId, PDO::PARAM_STR);
-				$qry->bindValue(2, $loc_typeId, PDO::PARAM_STR);
+				$qry->bindValue(1, $loc_secId, \PDO::PARAM_STR);
+				$qry->bindValue(2, $loc_typeId, \PDO::PARAM_STR);
 				$qry->execute();
 				$qry->closeCursor();
 				return 0;
