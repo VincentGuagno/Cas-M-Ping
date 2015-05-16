@@ -55,7 +55,7 @@
 								require_once (_RENTALS_MODELS_ .'/'. $this->model_name .'Model.php');
 								$id = Tools::getInstance()->getUrl_id($url);
 								
-								$data = ModifyModel::getInstance()->modify_model();
+								$data = \Rental\ModifyModel::getInstance()->modify_model();
 								header('Location: /Cas-M-Ping/rentals/show/'.$id);
 	
 							} catch (Exception $e) {

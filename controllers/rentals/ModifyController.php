@@ -55,7 +55,7 @@
 								require_once (_RENTALS_MODELS_ .'/'. $this->model_name .'Model.php');
 								$id = Tools::getInstance()->getUrl_id($url);
 								
-								$data = DisplayModel::getInstance()->display_rental($id);
+								$data = \Rental\DisplayModel::getInstance()->display_rental($id);
 								echo $this->twig->render($this->view_name .'.tpl', array('rental' => $data[0], 'bootstrapPath' => _BOOTSTRAP_FILE_));
 								
 							} catch (Exception $e) {
