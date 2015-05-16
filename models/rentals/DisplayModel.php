@@ -71,13 +71,32 @@
 		public function display_rentals() {
 			try {
 
-//TODO NOT FINISHED
-				/*$qry = $this->db->prepare('SELECT  * FROM rental 
-												   INNER JOIN customer ON  sector.sec_id = rental.
-												   INNER JOIN location ON location.loc_type_id = rental.
-												   ORDER BY rental.rent_id');*/
+				$query = "SELECT  rental.*, location.* ,customer.*,caravan.* FROM rental ";
+				// inner join customer => rental
+				$query+= " INNER JOIN customer ON customer.cust_id = rental.rent_cust_id ";
+
+
+
+				// inner join rental => link_rent_rental
+				$query+= " INNER JOIN link_rent_rental ON rental.rent_id = link_rent_rental.lle_rent_id ";
+
+				// inner join link_rent_rental => location 
+				$query+= " INNER JOIN location ON link_rent_rental.lle_loc_id = location.loc_id ";
 				
-				$qry = $this->db->prepare('SELECT * FROM rental');	
+				//iner join location =>  type_location
+				$query+= " INNER JOIN type_location ON location.loc_type_id = type_location.type_location_id ";
+
+				// inner join rental => link_car_location
+				$query+= " INNER JOIN link_car_location ON rental.rent_id = link_car_location.lcl_rent_id ";
+
+				// inner join link_car_location => caravan 
+				$query+= " INNER JOIN caravan ON link_car_location.lcl_rent_id = caravan.car_id ";
+				
+				$query+= " ORDER BY rental.rent_id";
+			
+				$qry = $this->db->prepare($query);
+				
+				
 				$qry->execute();
 
 				$return_qry = $qry->fetchAll();
@@ -132,6 +151,33 @@
 				return $e->getMessage();
 			}
 		}
+
+		/**
+		 * return rental's id
+		 *
+		 * @param rent_cust_id, rent_cust_id's id		
+		 * @return return_qry : result into an object, exception message any others cases
+		 */
+		public function get_rentalByClientId($rent_cust_id) {
+			try {
+	
+				$qry = $this->db->prepare('SELECT * FROM rental WHERE rent_cust_id = ?');	
+                        								
+				$qry->bindValue(1, $rent_id, PDO::PARAM_STR);		
+
+				$qry->execute();
+				//get customer's ID      put  the result into an object
+				$return_qry = $qry->fetch(PDO::FETCH_OBJ);
+
+				$qry->closeCursor();
+				return $return_qry;
+
+			} catch(Exception $e) {
+				return $e->getMessage();
+			}
+		}
+
+
 
 	}
 

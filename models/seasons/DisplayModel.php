@@ -126,6 +126,34 @@
 				return $e->getMessage();
 			}
 		}
+
+
+		/**
+		 * return season's id
+		 *
+		 * @param link_location_id, link_location_id's name		
+		 * @return return_qry : result into an object, exception message any others cases
+		 */
+		public function get_SeasonByRental($link_location_id) {
+			try {
+	
+				$qry = $this->db->prepare('SELECT * FROM season
+													INNER JOIN link_season_location ON link_season_location.link_seas_id = season.seas_id
+        											WHERE link_season_location.link_location_id = ?');	
+                        								
+				$qry->bindValue(1, $link_location_id, PDO::PARAM_STR);
+				
+				$qry->execute();
+					//put  the result into an object
+				$return_qry = $qry->fetchAll();
+				$qry->closeCursor();
+				return $return_qry;
+
+			} catch(Exception $e) {
+				return $e->getMessage();
+			}
+		}
+
 	}
 
 ?>

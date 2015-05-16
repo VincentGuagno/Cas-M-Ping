@@ -128,5 +128,33 @@
 				return $e->getMessage();
 			}
 		}
+
+
+		/**
+		 * return caravan's id
+		 *
+		 * @param lcl_rent_id, lcl_rent_id's name		
+		 * @return return_qry : result into an object, exception message any others cases
+		 */
+		public function get_caravanByRental($lcl_rent_id) {
+			try {
+	
+				$qry = $this->db->prepare('SELECT * FROM caravan
+													INNER JOIN link_car_location ON link_car_location.lcl_car_id = caravan.car_id
+        											WHERE link_car_location.lcl_rent_id = ?');	
+                        								
+				$qry->bindValue(1, $lcl_rent_id, PDO::PARAM_STR);
+				
+				$qry->execute();
+					//put  the result into an object
+				$return_qry = $qry->fetchAll();
+				$qry->closeCursor();
+				return $return_qry;
+
+			} catch(Exception $e) {
+				return $e->getMessage();
+			}
+		}
+
 	}
 ?>

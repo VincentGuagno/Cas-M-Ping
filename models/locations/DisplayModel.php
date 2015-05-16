@@ -131,6 +131,32 @@
 			}
 		}
 
+		/**
+		 * return location's id
+		 *
+		 * @param lle_rent_id, lle_rent_id's name		
+		 * @return return_qry : result into an object, exception message any others cases
+		 */
+		public function get_LocationByRental($lle_rent_id) {
+			try {
+	
+				$qry = $this->db->prepare('SELECT * FROM location
+													INNER JOIN link_rent_rental ON link_rent_rental.lle_loc_id = location.loc_id 
+       												WHERE link_rent_rental.lle_rent_id = ?');	
+                        								
+				$qry->bindValue(1, $lle_rent_id, PDO::PARAM_STR);
+				
+				$qry->execute();
+					//put  the result into an object
+				$return_qry = $qry->fetchAll();
+				$qry->closeCursor();
+				return $return_qry;
+
+			} catch(Exception $e) {
+				return $e->getMessage();
+			}
+		}
+
 	}
 
 ?>
