@@ -8,7 +8,10 @@
 	 * @version 0.0.1
 	 * @copyright 2015 3iL
 	 */
+	 
+	namespace Location;  
 	require_once('LocationModel.php'); 
+	
 	class ModifyModel extends LocationModel{
 
 		/**

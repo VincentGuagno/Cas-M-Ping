@@ -9,6 +9,7 @@
 	 * @copyright 2015 3iL
 	 */
 	 
+	namespace Customer;  
 	require_once('CustomerModel.php'); 
 
 	class DisplayModel extends CustomerModel{

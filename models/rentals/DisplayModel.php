@@ -8,7 +8,10 @@
 	 * @version 0.0.1
 	 * @copyright 2015 3iL
 	 */
+	 
+	namespace Rental;		
 	require_once('RentalModel.php'); 
+	
 	class DisplayModel extends RentalModel{
 
 
@@ -137,7 +140,7 @@
 			try {
 	
 				$qry = $this->db->prepare('SELECT * FROM rental WHERE rent_id = ?');	
-                        								
+														
 				$qry->bindValue(1, $rent_id, PDO::PARAM_STR);		
 
 				$qry->execute();
@@ -162,7 +165,7 @@
 			try {
 	
 				$qry = $this->db->prepare('SELECT * FROM rental WHERE rent_cust_id = ?');	
-                        								
+														
 				$qry->bindValue(1, $rent_id, PDO::PARAM_STR);		
 
 				$qry->execute();
@@ -176,9 +179,4 @@
 				return $e->getMessage();
 			}
 		}
-
-
-
 	}
-
-?>

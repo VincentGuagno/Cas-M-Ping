@@ -8,7 +8,10 @@
 	 * @version 0.0.1
 	 * @copyright 2015 3iL
 	 */
+	 
+	namespace Season; 
 	require_once('SeasonModel.php'); 
+	
 	class ModifyModel extends SeasonModel{
 
 		/**

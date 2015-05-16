@@ -8,8 +8,10 @@
 	 * @version 0.0.1
 	 * @copyright 2015 3iL
 	 */
-
+	 
+	namespace Customer;
 	require_once('CustomerModel.php'); 
+	
 	class ModifyModel extends CustomerModel{
 
 		/**

@@ -8,6 +8,8 @@
 	 * @copyright 2015 3iL
 	 */
 
+	namespace Caravan; 
+	 
 	class CaravanModel {
 
 		/**

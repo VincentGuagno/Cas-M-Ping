@@ -8,7 +8,10 @@
 	 * @version 0.0.1
 	 * @copyright 2015 3iL
 	 */
+	 
+	namespace Sector; 
 	require_once('SectorModel.php'); 
+	
 	class ModifyModel extends SectorModel{
 
 		/**

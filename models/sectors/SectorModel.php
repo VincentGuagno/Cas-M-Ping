@@ -7,7 +7,10 @@
 	 * @version 0.0.1
 	 * @copyright 2015 3iL
 	 */
-	 class SectorModel {
+	 
+	namespace Sector;
+	
+	class SectorModel {
 	
 
 		/**

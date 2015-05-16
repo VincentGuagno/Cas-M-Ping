@@ -10,7 +10,9 @@
 	 * @version 0.0.1
 	 * @copyright 2015 3iL
 	 */
+	namespace Caravan; 
 	require_once('CaravanModel.php'); 
+	
 	class RentingModel extends CaravanModel {
 
 		/**
