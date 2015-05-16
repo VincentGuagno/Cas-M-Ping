@@ -39,22 +39,22 @@
 			<td>{{rental.rent_caution_state}}</td>
 			<td>{{rental.deposit}}</td>
 			<td> 
-				<form method="link" ACTION="/Cas-M-Ping/rentals/modify/{{rental.rent_id}}">
+				<form method="post" ACTION="/Cas-M-Ping/rentals/modify/{{rental.rent_id}}">
 				<button type="submit" > Modifier </button>
 				</form>
 			</td>
 			<td> 
-				<form method="link" ACTION="/Cas-M-Ping/rentals/cancel/{{rental.rent_id}}">
+				<form method="post" ACTION="/Cas-M-Ping/rentals/cancel/{{rental.rent_id}}">
 				<button type="submit" > Annuler </button>
 				</form>
 			</td>
 			<td> 
-				<form method="link" ACTION="/Cas-M-Ping/rentals/delete/{{rental.rent_id}}">
+				<form method="post" ACTION="/Cas-M-Ping/rentals/delete/{{rental.rent_id}}">
 				<button type="submit" > Suppression </button>
 				</form>
 			</td>
 			<td> 
-				<form method="link" ACTION="{{rental.rent_id}}">
+				<form method="post" ACTION="{{rental.rent_id}}">
 				<button type="submit" > En savoir plus </button>
 				</form>
 			</td>

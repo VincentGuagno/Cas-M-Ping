@@ -63,7 +63,7 @@
 										break;
 									default:
 										$data = DisplayModel::getInstance()->display_rental($id);
-										echo $this->twig->render($this->view_nameId .'.tpl', array('rentals' => $data, 'bootstrapPath' => _BOOTSTRAP_FILE_));
+										echo $this->twig->render($this->view_nameId .'.tpl', array('rental' => $data[0], 'bootstrapPath' => _BOOTSTRAP_FILE_));
 										break;
 								}	
 							} catch (Exception $e) {
