@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.1.14
+-- version 4.0.4
 -- http://www.phpmyadmin.net
 --
--- Client :  127.0.0.1
--- Généré le :  Sam 16 Mai 2015 à 22:16
--- Version du serveur :  5.6.17
--- Version de PHP :  5.5.12
+-- Client: localhost
+-- Généré le: Sam 16 Mai 2015 à 22:05
+-- Version du serveur: 5.6.12-log
+-- Version de PHP: 5.4.16
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,8 +17,10 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Base de données :  `camping`
+-- Base de données: `camping`
 --
+CREATE DATABASE IF NOT EXISTS `camping` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `camping`;
 
 -- --------------------------------------------------------
 
@@ -100,7 +102,9 @@ CREATE TABLE IF NOT EXISTS `link_car_location` (
 INSERT INTO `link_car_location` (`lcl_car_id`, `lcl_rent_id`) VALUES
 (5, 2),
 (6, 2),
-(9, 2);
+(9, 2),
+(6, 3),
+(7, 3);
 
 -- --------------------------------------------------------
 
@@ -121,7 +125,9 @@ CREATE TABLE IF NOT EXISTS `link_rent_rental` (
 --
 
 INSERT INTO `link_rent_rental` (`lle_rent_id`, `lle_loc_id`) VALUES
-(2, 4);
+(2, 4),
+(3, 4),
+(3, 5);
 
 -- --------------------------------------------------------
 
