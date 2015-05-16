@@ -138,8 +138,9 @@
 		public function get_LocationByRental($lle_rent_id) {
 			try {
 	
-				$qry = $this->db->prepare('SELECT * FROM location
+				$qry = $this->db->prepare('SELECT location.*,type_location.type_location_price, type_location.type_location_name  FROM location
 													INNER JOIN link_rent_rental ON link_rent_rental.lle_loc_id = location.loc_id 
+													INNER JOIN type_location ON type_location.type_location_id = location.loc_type_id 
        												WHERE link_rent_rental.lle_rent_id = ?');	
                         								
 				$qry->bindValue(1, $lle_rent_id, \PDO::PARAM_STR);
