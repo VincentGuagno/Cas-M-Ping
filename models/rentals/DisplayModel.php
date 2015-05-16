@@ -67,35 +67,8 @@
 		*/		
 		public function display_rentals() {
 			try {
-
-				$query = "SELECT  rental.*, location.* ,customer.*,caravan.* FROM rental ";
-				// inner join customer => rental
-				$query.= " INNER JOIN customer ON customer.cust_id = rental.rent_cust_id ";
-
-
-
-				// inner join rental => link_rent_rental
-				$query.= " INNER JOIN link_rent_rental ON rental.rent_id = link_rent_rental.lle_rent_id ";
-
-				// inner join link_rent_rental => location 
-				$query.= " INNER JOIN location ON link_rent_rental.lle_loc_id = location.loc_id ";
-				
-				//iner join location =>  type_location
-				$query.= " INNER JOIN type_location ON location.loc_type_id = type_location.type_location_id ";
-
-				// inner join rental => link_car_location
-				$query.= " INNER JOIN link_car_location ON rental.rent_id = link_car_location.lcl_rent_id ";
-
-				// inner join link_car_location => caravan 
-				$query.= " INNER JOIN caravan ON link_car_location.lcl_rent_id = caravan.car_id ";
-				
-				$query.= " ORDER BY rental.rent_id";
-			
-				$qry = $this->db->prepare($query);
-				
-				
+				$qry = $this->db->prepare('SELECT * FROM rental ORDER BY rent_id');
 				$qry->execute();
-
 				$return_qry = $qry->fetchAll();
 
 				$qry->closeCursor();

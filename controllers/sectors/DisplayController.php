@@ -58,10 +58,10 @@ echo $url;
 echo $id;
 								switch ($id) {
 									case 'all':
-										$data = DisplayModel::getInstance()->display_sectors();
+										$data = \Sector\DisplayModel::getInstance()->display_sectors();
 										break;
 									default:
-										$data = DisplayModel::getInstance()->display_sector($id);
+										$data = \Sector\DisplayModel::getInstance()->display_sector($id);
 										break;
 								}
 								print_r($data);

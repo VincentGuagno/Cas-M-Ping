@@ -24,7 +24,7 @@
 		private $view_name = 'modify';
 		
 		/**
-		 * The constructor of ModifyController
+		 * The constructor of ConfirmModifyController
 		 */
 		public function __construct() {
 			try {
@@ -35,7 +35,7 @@
 		}
 		
 		/**
-		 * Initialize the DisplayController class and their parents
+		 * Initialize the ConfirmModifyController class and their parents
 		 */
 		public function init() {
 			try {

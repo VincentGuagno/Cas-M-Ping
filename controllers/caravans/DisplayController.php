@@ -57,10 +57,10 @@
 
 								switch ($id) {
 									case 'all':
-										$data = DisplayModel::getInstance()->display_caravans();
+										$data = \Caravan\DisplayModel::getInstance()->display_caravans();
 										break;
 									default:
-										$data = DisplayModel::getInstance()->display_caravan($id);
+										$data = \Caravan\DisplayModel::getInstance()->display_caravan($id);
 										break;
 								}
 								echo $this->twig->render($this->view_name .'.tpl', array('caravans' => $data, 'bootstrapPath' => _BOOTSTRAP_FILE_));

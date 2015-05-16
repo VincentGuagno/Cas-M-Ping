@@ -35,7 +35,7 @@
 		}
 		
 		/**
-		 * Initialize the DisplayController class and their parents
+		 * Initialize the ModifyController class and their parents
 		 */
 		public function init() {
 			try {

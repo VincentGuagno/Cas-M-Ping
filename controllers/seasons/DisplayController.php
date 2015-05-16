@@ -57,10 +57,10 @@
 								
 								switch ($id) {
 									case 'all':
-										$data = DisplayModel::getInstance()->display_seasons();
+										$data = \Season\DisplayModel::getInstance()->display_seasons();
 										break;
 									default:
-										$data = DisplayModel::getInstance()->display_season($id);
+										$data = \Season\DisplayModel::getInstance()->display_season($id);
 										break;
 								}
 								echo $this->twig->render($this->view_name .'.tpl', array('seasons' => $data, 'bootstrapPath' => _BOOTSTRAP_FILE_));

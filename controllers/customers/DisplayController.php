@@ -57,10 +57,10 @@
 								
 								switch ($id) {
 									case 'all':
-										$data = DisplayModel::getInstance()->display_customers();
+										$data = \Customer\DisplayModel::getInstance()->display_customers();
 										break;
 									default:
-										$data = DisplayModel::getInstance()->display_customer($id);
+										$data = \Customer\DisplayModel::getInstance()->display_customer($id);
 										break;
 								}
 								echo $this->twig->render($this->view_name .'.tpl', array('customers' => $data, 'bootstrapPath' => _BOOTSTRAP_FILE_));
