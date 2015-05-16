@@ -19,8 +19,8 @@
 		</tr>
 	{% for location in locations %}
 		<tr>
+			<td>{{location.loc_id}}</td>
 			<td>{{location.sec_name}}</td>
-			<td>{{location.sector}}</td>
 		</tr>
 	{% endfor %}
 	</table>

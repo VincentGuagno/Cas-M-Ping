@@ -24,6 +24,8 @@
 			<th> Etat des lieux </th>
 			<th> Etat du paiement </th>
 			<th> Caution </th>
+			<th> </th>
+			<th> </th> 
 		</tr>
 	{% for rental in rentals %}
 		<tr>
@@ -33,9 +35,24 @@
 			<td>{{rental.rent_begin}}</td>
 			<td>{{rental.rent_end}}</td>
 			<td>{{rental.rent_nb_person}}</td>
-			<td>{{rental.inventory}}</td>
-			<td>{{rental.paymentState}}</td>
+			<td>{{rental.rent_location_state}}</td>
+			<td>{{rental.rent_caution_state}}</td>
 			<td>{{rental.deposit}}</td>
+			<td> 
+				<form method="link" ACTION="/Cas-M-Ping/rentals/modify/{{rental.rent_id}}">
+				<button type="submit" > Modifier </button>
+				</form>
+			</td>
+			<td> 
+				<form method="link" ACTION="/Cas-M-Ping/rentals/cancel/{{rental.rent_id}}">
+				<button type="submit" > Annuler </button>
+				</form>
+			</td>
+			<td> 
+				<form method="link" ACTION="{{rental.rent_id}}">
+				<button type="submit" > En savoir plus </button>
+				</form>
+			</td>
 		</tr>
 	{% endfor %}
 	</table>
