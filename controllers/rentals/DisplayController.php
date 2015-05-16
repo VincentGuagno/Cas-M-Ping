@@ -21,7 +21,8 @@
 		/**
 		 * Name of called view
 		 */
-		private $view_name = 'display';
+		private $view_nameAll = 'display';
+		private $view_nameId = 'displayId';
 		
 		/**
 		 * The constructor of DisplayController
@@ -50,7 +51,7 @@
 				
 				if ($controller == 'DisplayController') {
 					if (file_exists (_RENTALS_MODELS_ .'/'. $this->model_name .'Model.php')) {			
-						if (file_exists (_RENTALS_VIEWS_ .'/'. $this->view_name .'.tpl')) {	
+						if (file_exists (_RENTALS_VIEWS_ .'/'. $this->view_nameAll .'.tpl') && file_exists (_RENTALS_VIEWS_ .'/'. $this->view_nameId .'.tpl')) {	
 							try {	
 								require_once (_RENTALS_MODELS_ .'/'. $this->model_name .'Model.php');
 								$id = Tools::getInstance()->getUrl_id($url);
@@ -58,18 +59,18 @@
 								switch ($id) {
 									case 'all':
 										$data = DisplayModel::getInstance()->display_rentals();
+										echo $this->twig->render($this->view_nameAll .'.tpl', array('rentals' => $data, 'bootstrapPath' => _BOOTSTRAP_FILE_));
 										break;
 									default:
 										$data = DisplayModel::getInstance()->display_rental($id);
+										echo $this->twig->render($this->view_nameId .'.tpl', array('rentals' => $data, 'bootstrapPath' => _BOOTSTRAP_FILE_));
 										break;
-								}
-								echo $this->twig->render($this->view_name .'.tpl', array('rentals' => $data, 'bootstrapPath' => _BOOTSTRAP_FILE_));
-								
+								}	
 							} catch (Exception $e) {
 								throw new Exception('Une erreur est survenue durant la récupération des données: '.$e->getMessage());
 							}
 						} else {
-							throw new Exception('Le template "'.$this->view_name .'" n\'existe pas dans "'._RENTALS_VIEWS_ .'"!');
+							throw new Exception('Le template "'.$this->view_nameAll .'" ou "'.$this->view_nameId .'" n\'existe pas dans "'._RENTALS_VIEWS_ .'"!');
 						}
 					} else {
 						throw new Exception('Le modèle "'. $this->model_name .'" n\'existe pas dans "'._RENTALS_MODELS_ .'"!');

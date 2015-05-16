@@ -38,7 +38,7 @@
 		</tr>
 	{% for rental in rentals if car_id is not empty %}
 		<tr>
-			<td>{{rental.car_nb_person}</td>
+			<td>{{rental.car_nb_person}}</td>
 			<td>{{rental.car_id_location}}</td>
 			<td>{{rental.car_price}} €</td>
 		</tr>
