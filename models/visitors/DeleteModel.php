@@ -76,7 +76,7 @@
 				// Supprestion des informations du sectors  avec commune avec la clé etrangère de la table 	
 
 				$qry = $this->db->prepare('DELETE FROM visitor WHERE vis_id= ?');
-				$qry->bindValue(1, $vis_id, PDO::PARAM_INT);
+				$qry->bindValue(1, $vis_id, \PDO::PARAM_INT);
 				$qry->execute();
 					
 				$qry->execute();

@@ -20,7 +20,7 @@
 	
 				$qry = $this->db->prepare('SELECT visitor.vis_id FROM visitor WHERE visitor.vis_id = ?');	
 
-				$qry->bindValue(1, $vis_id, PDO::PARAM_STR);				
+				$qry->bindValue(1, $vis_id, \PDO::PARAM_STR);				
 
 				$qry->execute();
 				$qry->closeCursor();

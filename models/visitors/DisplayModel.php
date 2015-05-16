@@ -99,7 +99,7 @@
 			try {
 				// select secteur left join emplacement(location) )				
 				$qry = $this->db->prepare('SELECT * FROM visitor WHERE visitor.vis_id =?');	
-				$qry->bindValue(1, $vis_id, PDO::PARAM_INT);
+				$qry->bindValue(1, $vis_id, \PDO::PARAM_INT);
 				$qry->execute();
 
 				//put  the result into an object
@@ -122,7 +122,7 @@
 	
 				$qry = $this->db->prepare('SELECT * FROM sector WHERE sec_id = ?');	
                         								
-				$qry->bindValue(1, $sec_id, PDO::PARAM_STR);		
+				$qry->bindValue(1, $sec_id, \PDO::PARAM_STR);		
 
 				$qry->execute();
 				//put  the result into an object
