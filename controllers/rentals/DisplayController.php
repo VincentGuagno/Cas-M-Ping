@@ -72,7 +72,6 @@
 									default:
 										if(\Rental\DisplayModel::getInstance()->has_rental($id) == 1) {
 											$rentals = \Rental\DisplayModel::getInstance()->display_rental($id);
-											
 											$seasons = array();
 											$caravans = array();
 											$locations = array();

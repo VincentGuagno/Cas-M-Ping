@@ -12,28 +12,28 @@
 	
 	<form role="form" method="post" action="/Cas-M-Ping/rentals/modify/>
 		
-		<label for="name">Nom de la location : </label>
-		<input class="form-control" id="name" placeholder="{{rental.name}}">
+		<label for="rent_name">Nom de la location : </label>
+		<input class="form-control" id="rent_name">
 		
-		<label for="beginDate">Date de début : </label>
-		<input class="form-control" id="beginDate" placeholder="{{rental.beginDate}}">
+		<label for="rent_begin">Date de début : </label>
+		<input class="form-control" id="rent_begin">
 		
-		<label for="endDate">Date de fin : </label>
-		<input class="form-control" id="endDate" placeholder="{{rental.endDate}}">
+		<label for="rent_end">Date de fin : </label>
+		<input class="form-control" id="rent_end">
 		
-		<label for="peopleNumber">Nombre de personnes : </label>
-		<input class="form-control" id="peopleNumber" placeholder="{{rental.peopleNumber}}">
+		<label for="rent_nb_person">Nombre de personnes : </label>
+		<input class="form-control" id="rent_nb_person">
 		
-		<label for="inventory">Etat des lieux : </label>
-		<input class="form-control" id="inventory" placeholder="{{rental.inventory}}">
+		<label for="rent_location_state">Etat des lieux : </label>
+		<input class="form-control" id="rent_location_state">
 		
-		<label for="paymentState">Etat du paiement : </label>
-		<input class="form-control" id="paymentState" placeholder="{{rental.paymentState}}">
+		<label for="rent_caution_state">Caution : </label>
+		<input class="form-control" id="rent_caution_state">
 		
-		<label for="deposit">Caution : </label>
-		<input class="form-control" id="deposit" placeholder="{{rental.deposit}}">
+		<label for="rent_validity">Paiement effectué : </label>
+		<input class="form-control" id="rent_validity">
 		
-		<button type="submit" class="btn btn-default">Modifier</button>
+		<button type="submit" class="btn btn-default">Paiement effectué</button>
 	</form>
 </body>
 </html>
