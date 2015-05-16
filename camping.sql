@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Sam 16 Mai 2015 à 20:28
+-- Généré le :  Sam 16 Mai 2015 à 22:16
 -- Version du serveur :  5.6.17
 -- Version de PHP :  5.5.12
 
@@ -147,6 +147,19 @@ INSERT INTO `link_season_location` (`link_seas_id`, `link_location_id`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `link_visitor_rental`
+--
+
+CREATE TABLE IF NOT EXISTS `link_visitor_rental` (
+  `lvr_visitor_id` int(11) NOT NULL,
+  `lvr_rental_id` int(11) NOT NULL,
+  KEY `index_rental_id` (`lvr_rental_id`),
+  KEY `index_visitor_id` (`lvr_visitor_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `location`
 --
 
@@ -186,6 +199,7 @@ CREATE TABLE IF NOT EXISTS `rental` (
   `rent_days_number` int(11) NOT NULL COMMENT 'rent''s days number',
   `rent_price` double NOT NULL COMMENT 'rent''s price',
   `rent_cust_id` int(11) NOT NULL COMMENT 'foreign key from customer''s table',
+  `rent_validity` tinyint(1) NOT NULL DEFAULT '1' COMMENT 'rent''s state of the validity',
   PRIMARY KEY (`rent_id`),
   KEY `cust_foreign_key` (`rent_cust_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
@@ -194,9 +208,9 @@ CREATE TABLE IF NOT EXISTS `rental` (
 -- Contenu de la table `rental`
 --
 
-INSERT INTO `rental` (`rent_id`, `rent_name`, `rent_begin`, `rent_end`, `rent_nb_person`, `rent_location_state`, `rent_caution_state`, `rent_days_number`, `rent_price`, `rent_cust_id`) VALUES
-(2, 'theRentName', '2015-05-06', '2015-05-29', 88, 'thenLocationSate', 7.5, 55, 4545, 1),
-(3, 'theName', '2015-05-03', '2015-05-04', 15, 'the_rent_location_sate', 47, 4, 474, 9);
+INSERT INTO `rental` (`rent_id`, `rent_name`, `rent_begin`, `rent_end`, `rent_nb_person`, `rent_location_state`, `rent_caution_state`, `rent_days_number`, `rent_price`, `rent_cust_id`, `rent_validity`) VALUES
+(2, 'theRentName', '2015-05-06', '2015-05-29', 88, 'thenLocationSate', 7.5, 55, 4545, 1, 1),
+(3, 'theName', '2015-05-03', '2015-05-04', 15, 'the_rent_location_sate', 47, 4, 474, 9, 1);
 
 -- --------------------------------------------------------
 
@@ -271,6 +285,28 @@ INSERT INTO `type_location` (`type_location_id`, `type_location_name`, `type_loc
 (4, 'caravans 3 places', 30),
 (5, 'caravans 5 places', 45);
 
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `visitor`
+--
+
+CREATE TABLE IF NOT EXISTS `visitor` (
+  `vis_id` int(11) NOT NULL AUTO_INCREMENT,
+  `vis_firstName` varchar(20) NOT NULL,
+  `vis_lastName` varchar(20) NOT NULL,
+  `vis_personNumber` int(11) NOT NULL,
+  `vis_date` date NOT NULL,
+  PRIMARY KEY (`vis_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+
+--
+-- Contenu de la table `visitor`
+--
+
+INSERT INTO `visitor` (`vis_id`, `vis_firstName`, `vis_lastName`, `vis_personNumber`, `vis_date`) VALUES
+(2, 'theName', 'theLastName', 444, '2015-05-12');
+
 --
 -- Contraintes pour les tables exportées
 --
@@ -295,6 +331,13 @@ ALTER TABLE `link_rent_rental`
 ALTER TABLE `link_season_location`
   ADD CONSTRAINT `link_location_constraint` FOREIGN KEY (`link_location_id`) REFERENCES `location` (`loc_id`) ON DELETE CASCADE,
   ADD CONSTRAINT `link_season_constraint` FOREIGN KEY (`link_seas_id`) REFERENCES `season` (`seas_id`) ON DELETE CASCADE;
+
+--
+-- Contraintes pour la table `link_visitor_rental`
+--
+ALTER TABLE `link_visitor_rental`
+  ADD CONSTRAINT `link_visitor_rental_ibfk_1` FOREIGN KEY (`lvr_rental_id`) REFERENCES `rental` (`rent_id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `visitor_id_constraint` FOREIGN KEY (`lvr_visitor_id`) REFERENCES `visitor` (`vis_id`) ON DELETE CASCADE;
 
 --
 -- Contraintes pour la table `location`
