@@ -49,6 +49,11 @@
 				</form>
 			</td>
 			<td> 
+				<form method="link" ACTION="/Cas-M-Ping/rentals/delete/{{rental.rent_id}}">
+				<button type="submit" > Suppression </button>
+				</form>
+			</td>
+			<td> 
 				<form method="link" ACTION="{{rental.rent_id}}">
 				<button type="submit" > En savoir plus </button>
 				</form>

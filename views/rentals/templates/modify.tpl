@@ -8,9 +8,9 @@
 </head>
 <body>
 	<div id="content">{% block content %}{% endblock %}</div>
-	<h1>Ajout d'un clients </h1>
+	<h1>Modification d'une location </h1>
 	
-	<form role="form">
+	<form role="form" method="post" action="/Cas-M-Ping/rentals/modify/>
 		
 		<label for="name">Nom de la location : </label>
 		<input class="form-control" id="name" placeholder="{{rental.name}}">
