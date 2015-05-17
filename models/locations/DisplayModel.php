@@ -131,6 +131,33 @@
 
 		/**
 		 * return location's id
+		 * tout les emplacement d'un secteur 
+		 * @param sec_id, location's name		
+		 * @return return_qry : result into an object, exception message any others cases
+		 */
+		public function get_allLocationForSectorId($sec_id) {
+			try {
+	
+				$qry = $this->db->prepare('SELECT * FROM location
+											 INNER JOIN sector ON  sector.sec_id = location.loc_sec_id											
+											WHERE sector.sec_id = ?');	
+                        								
+				$qry->bindValue(1, $sec_id, \PDO::PARAM_STR);
+				
+				$qry->execute();
+					//put  the result into an object
+				$return_qry = $qry->fetchAll();
+				$qry->closeCursor();
+				return $return_qry;
+
+			} catch(Exception $e) {
+				return $e->getMessage();
+			}
+		}
+
+
+		/**
+		 * return location's id
 		 *
 		 * @param lle_rent_id, lle_rent_id's name		
 		 * @return return_qry : result into an object, exception message any others cases
