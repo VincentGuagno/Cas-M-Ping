@@ -10,10 +10,9 @@
 {% endblock %}
 
 {% block content %}
-	<form method="post" ACTION="/Cas-M-Ping/seasons/add/confirm">
 		
 		<label for="sec_name">Nom de saison : </label>
-		<input class="form-control" id="seas_name" placeholder="{{sector.sec_name}}>
+		<input class="form-control" id="sec_name" name="sec_name" placeholder="{{sector.sec_name}}>
 		
 		<button type="submit" class="btn btn-default">Envoyer</button>
 	</form>
