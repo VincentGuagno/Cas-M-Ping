@@ -45,7 +45,7 @@
 					require_once(_TWIG_AUTOLOADER_);
 					Twig_Autoloader::register();
 				
-					$loader = new Twig_Loader_Filesystem(_RENTALS_VIEWS_); 
+					$loader = new Twig_Loader_Filesystem(array(_DEPENDENCIES_DIR_, _RENTALS_VIEWS_)); 
 					$this->twig = new Twig_Environment($loader, array(
 					  'cache' => _TWIG_CACHE_
 					));
