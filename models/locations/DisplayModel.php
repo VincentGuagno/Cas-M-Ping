@@ -93,7 +93,12 @@
 		 */		
 		public function display_location($loc_id) {
 			try {
-				$qry = $this->db->prepare('SELECT * FROM location WHERE loc_id = ?');	
+				$qry = $this->db->prepare('SELECT location.loc_id,sector.sec_name,
+												   type_location.type_location_name,
+												   type_location.type_location_price FROM location
+ 												   INNER JOIN sector ON  sector.sec_id = location.loc_sec_id
+												   INNER JOIN type_location ON location.loc_type_id = type_location.type_location_id
+												   WHERE loc_id = ?');	
 				$qry->bindValue(1, $loc_id, \PDO::PARAM_INT);
 				$qry->execute();
 					//put  the result into an object
