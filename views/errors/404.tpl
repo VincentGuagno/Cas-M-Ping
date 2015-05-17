@@ -1,3 +1,6 @@
+{# views/rentals/templates/displayId.tpl #}
+	{%extends "layout.tpl" %}
+
 {% block header %}
 Erreur 404
 {% endblock %}
