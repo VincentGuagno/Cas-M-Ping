@@ -1,5 +1,5 @@
 {# views/sectors/templates/display.tpl #}
-	{%extends "layout.twig" %}
+	{%extends "layout.tpl" %}
 
 {% block title %}
 	Ajout de secteur
@@ -13,7 +13,7 @@
 	<form method="post" ACTION="/Cas-M-Ping/sectors/add/confirm">
 		
 		<label for="sec_name">Nom de secteur : </label>
-		<input class="form-control" id="sec_name" name="name">
+		<input class="form-control" id="sec_name" name="sec_name">
 		
 		<button type="submit" class="btn btn-default">Envoyer</button>
 	</form>
