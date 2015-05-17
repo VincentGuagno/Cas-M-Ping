@@ -16,18 +16,21 @@ Création d'une location
 		<label for="rent_cust_id">Client : </label>
 		<select name="rent_cust_id">
 		{% for customer in customers %}
-		<option value="{{customer.cust_id}}">{{sector.cust_lastName}} {{sector.cust_firstName}}</option>
+		<option value="{{customer.cust_id}}">{{customer.cust_lastName}} {{customer.cust_firstName}}</option>
 		{% endfor %}
 		</select> 
+		</br></br>
 		
 		<label for="rent_name">Nom de la location : </label>
 		<input class="form-control" id="rent_name">
 		
-		<label for="rent_begin">Date de début : </label>
-		<input class="form-control" id="rent_begin">
+		<strong>Date de début:</strong></br>     
+		<input class="form-control" type="date" id="beginDate" name="beginDate" value=""/></br>
+		<div class = "form-group">
 		
-		<label for="rent_end">Date de fin : </label>
-		<input class="form-control" id="rent_end">
+		<strong>Date de fin:</strong></br>     
+		<input class="form-control" type="date" id="endDate" name="endDate"  value=""/></br>
+		</div>
 		
 		<label for="rent_nb_person">Nombre de personnes : </label>
 		<input class="form-control" id="rent_nb_person">
