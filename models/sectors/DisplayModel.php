@@ -72,11 +72,7 @@
 			try {
 				// Récupèration de tout les secteur avec la liste de leurs emplacement	
 				//et récupération de la jointure location et type_location
-				$qry = $this->db->prepare('SELECT sector.*, location.loc_id, type_location.type_location_name FROM sector 
-												INNER JOIN location ON  sector.sec_id = location.loc_sec_id
-												INNER JOIN type_location ON location.loc_type_id = type_location.type_location_id
-												ORDER BY sector.sec_id');
-				
+				$qry = $this->db->prepare('SELECT sector.* FROM sector ORDER BY sector.sec_id');
 				$qry->execute();
 				//get customer's ID      put  the result into an object				
 				$return_qry = $qry->fetchAll();

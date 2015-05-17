@@ -109,6 +109,11 @@
 				'directory' => 'locations/',
 				'url-formatter' => 'locations/add'
 			),
+			'confirm-create-locations' => array(
+				'controller' => 'ConfirmAddController',
+				'directory' => 'locations/',
+				'url-formatter' => 'locations/add/confirm'
+			),
 			'delete-locations' => array(
 				'controller' => 'DeleteController',
 				'directory' => 'locations/',

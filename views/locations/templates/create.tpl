@@ -10,20 +10,20 @@
 {% endblock %}
 
 {% block content %}
-	<form method="post" ACTION="/Cas-M-Ping/rentals/add/confirm">
+	<form method="post" ACTION="/Cas-M-Ping/locations/add/confirm">
 		
 		<label for="loc_sec_id">Secteur : </label>
-		<select id="loc_sec_id">
+		<select id="loc_sec_id" name="sector">
 		{% for sector in sectors %}
-		<option value="{{sec_id}}">{{sec_name}}</option>
+		<option value="{{sector.sec_id}}">{{sector.sec_name}}</option>
 		{% endfor %}
 		</select> 
 		
 		
 		<label for="loc_type_id">Type d'emplacement : </label>
-		<select id="loc_type_id">
+		<select id="loc_type_id" name="location">
 		{% for typeLocation in typeLocations %}
-		<option value="{{type_location_id}}">{{type_location_name}}</option>
+		<option value="{{typeLocation.type_location_id}}">{{typeLocation.type_location_name}}</option>
 		{% endfor %}
 		</select> 
 		
