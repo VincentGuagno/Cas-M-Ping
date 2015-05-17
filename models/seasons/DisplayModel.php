@@ -101,29 +101,7 @@
 			}
 		}
 
-		/**
-		 * return season's id
-		 *
-		 * @param seas_id, season's id		
-		 * @return return_qry : result into an object, exception message any others cases
-		 */
-		public function get_seasonId($seas_id) {
-			try {
 	
-				$qry = $this->db->prepare('SELECT * FROM season WHERE seas_id = ?');	
-                        								
-				$qry->bindValue(1, $seas_id, \PDO::PARAM_STR);		
-
-				$qry->execute();
-					//put  the result into an object
-				$return_qry = $qry->fetchAll();
-				$qry->closeCursor();
-				return $return_qry;
-
-			} catch(Exception $e) {
-				return $e->getMessage();
-			}
-		}
 
 
 		/**
@@ -141,6 +119,30 @@
                         								
 				$qry->bindValue(1, $link_location_id, \PDO::PARAM_STR);
 				
+				$qry->execute();
+					//put  the result into an object
+				$return_qry = $qry->fetchAll();
+				$qry->closeCursor();
+				return $return_qry;
+
+			} catch(Exception $e) {
+				return $e->getMessage();
+			}
+		}
+
+		/**
+		 * return season's id
+		 *
+		 * @param seas_id, season's id		
+		 * @return return_qry : result into an object, exception message any others cases
+		 */
+		public function get_seasonId($seas_id) {
+			try {
+	
+				$qry = $this->db->prepare('SELECT * FROM season WHERE seas_id = ?');	
+                        								
+				$qry->bindValue(1, $seas_id, \PDO::PARAM_STR);		
+
 				$qry->execute();
 					//put  the result into an object
 				$return_qry = $qry->fetchAll();
