@@ -86,6 +86,30 @@
 				return $e->getMessage();
 			}
 		}
+
+		/**
+		 * Delete a specified season
+		 *		
+		 * @return 0 without errors, exception message any others cases
+		 */
+		public function delete_season() {
+			try {
+
+				$qry = $this->db->prepare('DELETE FROM season WHERE 1');
+				$qry->bindValue(1, $seas_id, \PDO::PARAM_INT);
+				$qry->execute();
+
+				$qry = $this->db->prepare('DELETE FROM link_season_location WHERE 1');
+				$qry->bindValue(1, $seas_id, \PDO::PARAM_INT);
+				$qry->execute();
+				
+				$qry->execute();
+				$qry->closeCursor();
+				return 0;
+			} catch(Exception $e) {
+				return $e->getMessage();
+			}
+		}
 	}
 
 ?>
