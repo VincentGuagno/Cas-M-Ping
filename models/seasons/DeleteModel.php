@@ -92,7 +92,7 @@
 		 *		
 		 * @return 0 without errors, exception message any others cases
 		 */
-		public function delete_season() {
+		public function delete_seasons() {
 			try {
 
 				$qry = $this->db->prepare('DELETE FROM season');
