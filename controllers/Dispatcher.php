@@ -205,6 +205,11 @@
 				'directory' => 'sectors/',
 				'url-formatter' => 'sectors/add'
 			),
+			'confirm-add-sectors' => array(
+				'controller' => 'ConfirmAddController',
+				'directory' => 'sectors/',
+				'url-formatter' => 'sectors/add/confirm'
+			),
 			'delete-sectors' => array(
 				'controller' => 'DeleteController',
 				'directory' => 'sectors/',
