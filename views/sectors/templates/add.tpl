@@ -10,10 +10,10 @@
 {% endblock %}
 
 {% block content %}
-	<form method="post" ACTION="/Cas-M-Ping/seasons/add/confirm">
+	<form method="post" ACTION="/Cas-M-Ping/sectors/add/confirm">
 		
-		<label for="sec_name">Nom de saison : </label>
-		<input class="form-control" id="seas_name">
+		<label for="sec_name">Nom de secteur : </label>
+		<input class="form-control" id="sec_name" name="name">
 		
 		<button type="submit" class="btn btn-default">Envoyer</button>
 	</form>
