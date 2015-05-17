@@ -51,7 +51,7 @@
 							
 							switch ($id) {
 								case 'all':
-									\Season\DeleteModel::getInstance()->display_seasons();
+									\Season\DeleteModel::getInstance()->delete_seasons();
 									break;
 								default:
 									if(\Season\DeleteModel::getInstance()->has_season($id) == 1) {
@@ -61,7 +61,7 @@
 									}	
 									break;
 							}
-							header('Location /seasons/show/all');
+							header('Location: /Cas-M-Ping/seasons/show/all');
 							
 						} catch (Exception $e) {
 							throw new Exception('Une erreur est survenue durant la récupération des données: '.$e->getMessage());
