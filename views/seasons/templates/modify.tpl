@@ -17,11 +17,11 @@ Modification d'une saison
 		<input class="form-control" id="name" name="name" value="{{season.seas_name}}" placeholder="{{season.seas_name}}">
 		</br>
 		<strong>Date de début:</strong></br>     
-		<input class="form-control" type="date" id="beginDate" name="beginDate" value="" placeholder="{{season.seas_start_date}}"/></br>
+		<input class="form-control" type="date" id="beginDate" name="beginDate" value="{{season.seas_start_date}}" placeholder="{{season.seas_start_date}}"/></br>
 		<div class = "form-group">
 		
 		<strong>Date de fin:</strong></br>     
-		<input class="form-control" type="date" id="endDate" name="endDate" value="" placeholder="{{season.seas_end_date}}"/></br>
+		<input class="form-control" type="date" id="endDate" name="endDate" value="{{season.seas_end_date}}" placeholder="{{season.seas_end_date}}"/></br>
 		</div>
 		
 		<label for="coefficient">Coefficient : </label>
