@@ -157,6 +157,25 @@
 		}
 
 		/**
+		 * All location's informations		
+		 * @return return_qry : result into an object, exception message any others cases
+		 */
+		public function display_locationAll() {
+			try {
+
+				$qry = $this->db->prepare('SELECT * FROM location');
+				
+				$qry->execute();
+				//put  the result into an object
+				$return_qry = $qry->fetchAll();
+				$qry->closeCursor();
+				return $return_qry;
+			} catch(Exception $e) {
+				return $e->getMessage();
+			}
+		}
+
+		/**
 		 * Display all TypeLocationModel's informations from one TypeLocationModel 
 		 *
 	     * @return return_qry : result into an object, exception message any others cases
