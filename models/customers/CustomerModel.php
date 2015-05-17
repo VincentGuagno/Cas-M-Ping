@@ -12,6 +12,9 @@
 	 
 	class CustomerModel {
 		
+
+
+		
 		/**
 		 * Database object
 		 */

@@ -61,7 +61,7 @@
 		}
 		/**
 		 * Modify all customer's informations from one customer 
-		 *NOT IN ORDER
+		 * NOT IN ORDER
 		 * @param cust_id, customer's id
 		 * @param cust_lastName, customer's name
 		 * @param cust_firstName, customer's name
