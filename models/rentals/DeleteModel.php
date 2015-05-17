@@ -95,6 +95,39 @@
 				return $e->getMessage();
 			}
 		}
+
+		/**
+		 * delete rental informations from one rental 
+		 *
+		 * @param rent_id, rental's id
+		 *	
+		 * @return 0 without errors, exception message any others cases
+		 */
+		public function delete_rentals($) {
+			try {
+
+				//suppression dans link_season_location
+				$qry = $this->db->prepare('DELETE FROM link_season_location');				
+				$qry->execute();
+
+				// suppression dans lien loc emp
+				$qry = $this->db->prepare('DELETE FROM link_rent_rental');				
+				$qry->execute();
+
+				//suppression dans link_car_location
+				$qry = $this->db->prepare('DELETE FROM link_car_location');			
+				$qry->execute();
+
+				// suppression dans location
+				$qry = $this->db->prepare('DELETE FROM rental');			
+				$qry->execute();
+
+				$qry->closeCursor();
+				return 0;
+			} catch(Exception $e) {
+				return $e->getMessage();
+			}
+		}
 	}
 
 ?>
