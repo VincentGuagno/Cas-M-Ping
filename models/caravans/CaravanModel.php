@@ -31,15 +31,12 @@
 			try {
 	
 				$qry = $this->db->prepare('SELECT caravan.car_id FROM caravan WHERE caravan.car_id = ?');	
-
 				$qry->bindValue(1, $car_id, \PDO::PARAM_STR);				
-
 				$qry->execute();
 				//put  the result into an object
-				$return_qry = $qry->fetchAll();
+				$return_qry = $qry->fetch(\PDO::FETCH_OBJ);
 				$qry->closeCursor();
-				return $return_qry;
-				return 0;
+				return (!empty($return_qry->car_id)) ? 1 : 0;
 			} catch(Exception $e) {
 				return $e->getMessage();
 			}

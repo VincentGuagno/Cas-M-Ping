@@ -54,17 +54,20 @@
 							try {	
 								require_once (_SECTORS_MODELS_ .'/'. $this->model_name .'Model.php');
 								$id = Tools::getInstance()->getUrl_id($url);
-echo $url;
-echo $id;
+								
 								switch ($id) {
 									case 'all':
 										$data = \Sector\DisplayModel::getInstance()->display_sectors();
 										break;
 									default:
-										$data = \Sector\DisplayModel::getInstance()->display_sector($id);
+										if(\Sector\DisplayModel::getInstance()->has_sector($id) == 1) {
+											$data = \Sector\DisplayModel::getInstance()->display_sector($id);
+										} else {
+											header('Location: /Cas-M-Ping/errors/404');
+										}
 										break;
 								}
-								print_r($data);
+								
 								echo $this->twig->render($this->view_name .'.tpl', array('sectors' => $data, 'bootstrapPath' => _BOOTSTRAP_FILE_));
 								
 							} catch (Exception $e) {

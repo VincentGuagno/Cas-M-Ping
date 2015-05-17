@@ -60,7 +60,11 @@
 										$data = \Caravan\DisplayModel::getInstance()->display_caravans();
 										break;
 									default:
-										$data = \Caravan\DisplayModel::getInstance()->display_caravan($id);
+										if(\Caravan\DisplayModel::getInstance()->has_Caravan($id) == 1) {
+											$data = \Caravan\DisplayModel::getInstance()->display_caravan($id);
+										} else {
+											header('Location: /Cas-M-Ping/errors/404');
+										}
 										break;
 								}
 								echo $this->twig->render($this->view_name .'.tpl', array('caravans' => $data, 'bootstrapPath' => _BOOTSTRAP_FILE_));

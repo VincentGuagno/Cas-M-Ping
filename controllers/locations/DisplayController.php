@@ -60,7 +60,11 @@
 										$data = \Location\DisplayModel::getInstance()->display_locations();
 										break;
 									default:
-										$data = \Location\DisplayModel::getInstance()->display_location($id);
+										if(\Location\DisplayModel::getInstance()->has_location($id) == 1) {
+											$data = \Location\DisplayModel::getInstance()->display_location($id);
+										} else {
+											header('Location: /Cas-M-Ping/errors/404');
+										}
 										break;
 								}
 								echo $this->twig->render($this->view_name .'.tpl', array('seasons' => $data, 'bootstrapPath' => _BOOTSTRAP_FILE_));

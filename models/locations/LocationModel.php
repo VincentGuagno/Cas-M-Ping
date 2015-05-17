@@ -32,13 +32,12 @@
 			try {
 	
 				$qry = $this->db->prepare('SELECT location.loc_id FROM location WHERE location.loc_id = ?');	
-
 				$qry->bindValue(1, $loc_id, \PDO::PARAM_STR);				
 
 				//put  the result into an object
-				$return_qry = $qry->fetchAll();
+				$return_qry = $qry->fetch(\PDO::FETCH_OBJ);
 				$qry->closeCursor();
-				return $return_qry;
+				return (!empty($return_qry->loc_id)) ? 1 : 0;
 			} catch(Exception $e) {
 				return $e->getMessage();
 			}

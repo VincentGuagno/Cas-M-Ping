@@ -60,7 +60,11 @@
 										$data = \Season\DisplayModel::getInstance()->display_seasons();
 										break;
 									default:
-										$data = \Season\DisplayModel::getInstance()->display_season($id);
+										if(\Season\DisplayModel::getInstance()->has_season($id) == 1) {
+											$data = \Season\DisplayModel::getInstance()->display_season($id);
+										} else {
+											header('Location: /Cas-M-Ping/errors/404');
+										}
 										break;
 								}
 								echo $this->twig->render($this->view_name .'.tpl', array('seasons' => $data, 'bootstrapPath' => _BOOTSTRAP_FILE_));
