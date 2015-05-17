@@ -67,12 +67,10 @@
 		*/		
 		public function display_rentals() {
 			try {
-				$qry = $this->db->prepare("SELECT rental.*,CONCAT(cust_firstName,' ',cust_lastName) as cust_name, 
-											DATEDIFF(rental.rent_end, rental.rent_begin ) as rent_duration
+				$qry = $this->db->prepare("SELECT rental.*,CONCAT(cust_firstName,' ',cust_lastName) as cust_name 
 											FROM rental
 					 						INNER JOIN customer ON customer.cust_id = rental.rent_cust_id
 					 						ORDER BY rent_id");
-				 
 				$qry->execute();
 				$return_qry = $qry->fetchAll();
 
@@ -90,8 +88,7 @@
 		 */		
 		public function display_rental($rent_id) {
 			try {
-				$qry = $this->db->prepare("SELECT rental.*,CONCAT(cust_firstName,' ',cust_lastName) as cust_name, 
-											DATEDIFF(rental.rent_end, rental.rent_begin ) as rent_duration
+				$qry = $this->db->prepare("SELECT rental.*,CONCAT(cust_firstName,' ',cust_lastName) as cust_name 
 											FROM rental
 											INNER JOIN customer ON  customer.cust_id = rental.rent_cust_id 
 												 WHERE rent_id = ?");	
@@ -115,9 +112,7 @@
 		public function get_rentalId($rent_id) {
 			try {
 	
-				$qry = $this->db->prepare('SELECT * FROM rental
-												DATEDIFF(rental.rent_end, rental.rent_begin ) as rent_duration 
-											WHERE rent_id = ?');	
+				$qry = $this->db->prepare('SELECT * FROM rental WHERE rent_id = ?');	
 														
 				$qry->bindValue(1, $rent_id, \PDO::PARAM_STR);		
 
@@ -142,9 +137,7 @@
 		public function get_rentalByClientId($rent_cust_id) {
 			try {
 	
-				$qry = $this->db->prepare('SELECT * FROM rental,
-											DATEDIFF(rental.rent_end, rental.rent_begin ) as rent_duration
-										   WHERE rent_cust_id = ?');	
+				$qry = $this->db->prepare('SELECT * FROM rental WHERE rent_cust_id = ?');	
 														
 				$qry->bindValue(1, $rent_id, \PDO::PARAM_STR);		
 
