@@ -32,8 +32,7 @@
 				<td>{{location.type_location_name}}</td>
 			</tr>
 		{% endfor %}
-		<table class="table">
+		</table>
 	{% endfor %}
-	</table>
 </body>
 </html>
