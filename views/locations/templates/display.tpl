@@ -25,6 +25,8 @@
 			<th> Secteur </th>
 			<th> Type d'emplacement </th>
 			<th> Prix </th>
+			<th></th>
+			<th></th>
 		</tr>
 	{% for location in locations %}
 		<tr>
@@ -35,6 +37,11 @@
 			<td>
 			<form method="post" ACTION="/Cas-M-Ping/locations/delete/{{location.loc_id}}">
 			<button type="submit" > Supprimer </button>
+			</form>	
+			</td>
+			<td>
+			<form method="post" ACTION="/Cas-M-Ping/locations/modify/{{location.loc_id}}">
+			<button type="submit" > Modifier </button>
 			</form>	
 			</td>
 		</tr>
