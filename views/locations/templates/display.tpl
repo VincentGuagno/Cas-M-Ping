@@ -11,6 +11,14 @@
 
 {% block content %}
 	
+	<form method="post" ACTION="/Cas-M-Ping/locations/add">
+	<button type="submit" > Ajout d'un emplacement </button>
+	</form>
+
+	<form method="post" ACTION="/Cas-M-Ping/locations/delete/all">
+	<button type="submit" > Suppression des emplacements </button>
+	</form>	
+	
 	<table class="table">
 		<tr>
 			<th> Numéro d'emplacement </th>

@@ -11,6 +11,14 @@
 
 {% block content %}
 	
+	<form method="post" ACTION="/Cas-M-Ping/customers/add">
+	<button type="submit" > Ajout d'un client </button>
+	</form>
+
+	<form method="post" ACTION="/Cas-M-Ping/customers/delete/all">
+	<button type="submit" > Suppression des clients </button>
+	</form>	
+	
 	<table class="table">
 		<tr>
 			<th> Numéro de dossier </th>

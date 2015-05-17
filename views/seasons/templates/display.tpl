@@ -12,11 +12,11 @@ Saison
 
 {% block content %}
 
-	<form method="post" ACTION="/Cas-M-Ping/season/add">
+	<form method="post" ACTION="/Cas-M-Ping/seasons/add">
 	<button type="submit" > Ajout d'une saison </button>
 	</form>
 
-	<form method="post" ACTION="/Cas-M-Ping/season/delete/all">
+	<form method="post" ACTION="/Cas-M-Ping/seasons/delete/all">
 	<button type="submit" > Suppression des saisons </button>
 	</form>	
 	<table class="table">
@@ -26,6 +26,8 @@ Saison
 			<th> Date de début </th>
 			<th> Date de fin </th>
 			<th> Coefficient </th>
+			<th> </th>
+			<th> </th>
 		</tr>
 	{% for season in seasons %}
 		<tr>
