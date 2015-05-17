@@ -50,7 +50,7 @@
 	$('#beginDate').datepicker({
 		changeMonth: true,
 		changeYear: true,
-		dateFormat: 'dd/mm/yy',
+		dateFormat: 'yy-mm-dd',
 		minDate: 0,
 		maxDate: $('#endDate').datepicker('getDate'),
 		 onSelect: function(date) {
@@ -60,7 +60,7 @@
 	$('#endDate').datepicker({
 		changeMonth: true,
 		changeYear: true,
-		dateFormat: 'dd/mm/yy',
+		dateFormat: 'yy-mm-dd',
 		minDate: $('#beginDate').datepicker('getDate'),
 		onSelect: function(date) {
 			$('#endDate').datepicker('option','minDate', date);
