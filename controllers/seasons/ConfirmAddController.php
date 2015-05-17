@@ -58,6 +58,9 @@
 							Tools::getInstance()->createPost($_POST);
 							
 							if(!empty($_POST['name']) && !empty($_POST['beginDate']) && !empty($_POST['endDate']) && !empty($_POST['coefficient']) && $interval->days > 0) {
+								$_POST['coefficient'] = ($_POST['coefficient'] > 1) ? 1 : $_POST['coefficient'];
+								$_POST['coefficient'] = ($_POST['coefficient'] <= 0) ? 0.1 : $_POST['coefficient'];
+								
 								\Season\addModel::getInstance()->add_season($_POST['name'], $_POST['beginDate'], $_POST['endDate'], $_POST['coefficient']);
 								header('Location: /Cas-M-Ping/seasons/show/all');
 								
