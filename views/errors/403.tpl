@@ -11,6 +11,6 @@ Erreur 404
 
 
 {% block content %}
-404 - La page demandée n'existe pas
+404 - La page demandÃ©e n'existe pas
 <img src="/Cas-M-Ping/dependencies/images/erreur403.jpg" >
 {% endblock %}
