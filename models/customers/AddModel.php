@@ -92,6 +92,7 @@
 				$qry->bindValue(4, $cust_city, \PDO::PARAM_STR);
 				$qry->bindValue(5, $cust_phoneNumber, \PDO::PARAM_STR);			
 				$qry->bindValue(6, $cust_firstName, \PDO::PARAM_STR);
+				
 				$qry->execute();
 				$qry->closeCursor();
 				return 0;

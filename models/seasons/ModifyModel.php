@@ -77,6 +77,7 @@
 				$qry->bindValue(3, $seas_EndDate, \PDO::PARAM_STR);
 				$qry->bindValue(4, $seas_coeff, \PDO::PARAM_STR);					
 				$qry->bindValue(5, $seas_id, \PDO::PARAM_INT);
+				
 				$qry->execute();
 				$qry->closeCursor();
 				return 0;

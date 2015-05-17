@@ -68,6 +68,7 @@
 		public function display_caravans() {
 			try {
 				$qry = $this->db->prepare('SELECT * FROM caravan ORDER BY caravan.car_id');	
+				
 				$qry->execute();
 
 				//get customer's ID      put  the result into an object

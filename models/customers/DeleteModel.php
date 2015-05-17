@@ -71,8 +71,7 @@
 				
 				$qry = $this->db->prepare('DELETE FROM customer WHERE customer.cust_id  = ?');
 				$qry->bindValue(1, $cust_id, \PDO::PARAM_INT);
-				$qry->execute();
-
+		
 				$qry->execute();
 				$qry->closeCursor();
 				return 0;
@@ -90,8 +89,7 @@
 			try {								
 
 				$qry = $this->db->prepare('DELETE FROM customer ');
-	
-				$qry->execute();
+			
 
 				$qry->execute();
 				$qry->closeCursor();

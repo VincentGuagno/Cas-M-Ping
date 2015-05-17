@@ -84,6 +84,7 @@
 				$qry->bindValue(6, $cust_addNumber, \PDO::PARAM_STR);
 				$qry->bindValue(7, $cust_firstName, \PDO::PARAM_STR);
 				$qry->bindValue(8, $cust_id, \PDO::PARAM_INT);
+				
 				$qry->execute();
 				$qry->closeCursor();
 				return 0;

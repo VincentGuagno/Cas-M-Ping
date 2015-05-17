@@ -31,7 +31,8 @@
 		public function has_rental($rent_id) {
 			try {	
 				$qry = $this->db->prepare('SELECT rent_id FROM rental WHERE rent_id = ?');	
-				$qry->bindValue(1, $rent_id, \PDO::PARAM_INT);				
+				$qry->bindValue(1, $rent_id, \PDO::PARAM_INT);	
+							
 				$qry->execute();
 				
 				//put  the result into an object

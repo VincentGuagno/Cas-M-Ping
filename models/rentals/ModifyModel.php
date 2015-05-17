@@ -101,6 +101,7 @@
 				$qry->bindValue(7, $rent_daysNumber, \PDO::PARAM_STR);
 				$qry->bindValue(8, $rent_price, \PDO::PARAM_STR);
 				$qry->bindValue(9, $rent_cust_id, \PDO::PARAM_STR);
+				
 				$qry->execute();
 				$qry->closeCursor();
 				return 0;

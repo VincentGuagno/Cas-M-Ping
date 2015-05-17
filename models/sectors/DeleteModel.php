@@ -77,8 +77,7 @@
 
 				$qry = $this->db->prepare('DELETE FROM link_season_location WHERE link_season_location.link_seas_id = ?');
 				$qry->bindValue(1, $seas_id, \PDO::PARAM_INT);
-				$qry->execute();
-				
+								
 				$qry->execute();
 				$qry->closeCursor();
 				return 0;

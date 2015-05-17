@@ -32,7 +32,8 @@
 			try {
 	
 				$qry = $this->db->prepare('SELECT sector.sec_id FROM sector WHERE sector.sec_id = ?');	
-				$qry->bindValue(1, $sec_id, \PDO::PARAM_STR);				
+				$qry->bindValue(1, $sec_id, \PDO::PARAM_STR);	
+							
 				$qry->execute();
 				$return_qry = $qry->fetch(\PDO::FETCH_OBJ);
 				$qry->closeCursor();

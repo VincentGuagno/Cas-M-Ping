@@ -98,6 +98,7 @@
 				// select secteur left join emplacement(location) )				
 				$qry = $this->db->prepare('SELECT sec_name FROM sector WHERE sec_id = ?');	
 				$qry->bindValue(1, $sec_id, \PDO::PARAM_INT);
+				
 				$qry->execute();
 
 				//put  the result into an object

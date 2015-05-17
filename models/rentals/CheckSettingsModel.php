@@ -62,7 +62,7 @@
 
 		/**
 		 * Modify all rental's informations from one rental 
-		 *
+		 * NOT TODO
 		 * @param iii, rental's id
 		 * @param iii, rental's name
 		 * @return 0 without errors, exception message any others cases

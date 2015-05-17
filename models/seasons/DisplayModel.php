@@ -71,6 +71,7 @@
 				$qry = $this->db->prepare('SELECT seas_id, seas_name, seas_start_date, seas_end_date, seas_coeff
 										   FROM season
 										   ORDER BY season.seas_id');	
+
 				$qry->execute();
 				//get customer's ID      put  the result into an object
 				$return_qry = $qry->fetchAll();
@@ -91,6 +92,7 @@
 			try {
 				$qry = $this->db->prepare('SELECT * FROM season WHERE seas_id = ?');	
 				$qry->bindValue(1, $seas_id, \PDO::PARAM_INT);
+				
 				$qry->execute();
 					//put  the result into an object
 				$return_qry = $qry->fetchAll();

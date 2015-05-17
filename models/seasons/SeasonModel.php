@@ -32,7 +32,8 @@
 			try {
 	
 				$qry = $this->db->prepare('SELECT season.seas_id FROM season WHERE season.seas_id = ?');	
-				$qry->bindValue(1, $seas_id, \PDO::PARAM_STR);				
+				$qry->bindValue(1, $seas_id, \PDO::PARAM_STR);	
+							
 				$qry->execute();
 				//put  the result into an object
 				$return_qry = $qry->fetch(\PDO::FETCH_OBJ);

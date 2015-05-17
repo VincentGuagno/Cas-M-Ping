@@ -93,6 +93,7 @@
 											INNER JOIN customer ON  customer.cust_id = rental.rent_cust_id 
 												 WHERE rent_id = ?");	
 				$qry->bindValue(1, $rent_id, \PDO::PARAM_INT);
+				
 				$qry->execute();
 				//put  the result into an object
 				$return_qry = $qry->fetchAll();

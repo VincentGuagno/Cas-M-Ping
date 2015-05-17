@@ -72,6 +72,7 @@
 				$qry = $this->db->prepare('UPDATE sector SET sec_name="?" WHERE sec_id = ?');
 				$qry->bindValue(1, $sec_id, \PDO::PARAM_INT);
 				$qry->bindValue(2, $sec_name, \PDO::PARAM_STR);
+				
 				$qry->execute();
 				$qry->closeCursor();
 				return 0;
