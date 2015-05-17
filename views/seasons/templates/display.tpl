@@ -16,7 +16,7 @@ Saison
 	<button type="submit" > Ajout d'une saison </button>
 	</form>
 
-	<form method="post" ACTION="/Cas-M-Ping/season/delete-all">
+	<form method="post" ACTION="/Cas-M-Ping/season/delete/all">
 	<button type="submit" > Suppression des saisons </button>
 	</form>	
 	<table class="table">

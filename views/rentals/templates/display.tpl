@@ -15,7 +15,7 @@
 	<button type="submit" > Ajout d'une location </button>
 	</form>
 	
-	<form method="post" ACTION="/Cas-M-Ping/rentals/delete-all">
+	<form method="post" ACTION="/Cas-M-Ping/rentals/delete/all">
 	<button type="submit" > Suppression des locations </button>
 	</form>
 	
