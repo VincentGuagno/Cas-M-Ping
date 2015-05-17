@@ -4,12 +4,12 @@
 <head>
 	<title>Cas-M-Ping - {% block title %}{% endblock %} </title>
 	<meta charset="iso-8859-1">
-	<link rel="stylesheet" href="styles/layout.css" type="text/css">
 	{% block stylesheets %}
 		<link rel="stylesheet" href="{{bootstrapPath}}">
 		<link rel="stylesheet" href="/Cas-M-Ping/dependencies/styles/layout.css">
-		<link rel="stylesheet" href="/Cas-M-Ping/dependencies/bootstrap/css/bootstrap-datetimepicker.min.css">
-		<link rel="stylesheet" href="/Cas-M-Ping/dependencies/bootstrap/js/bootstrap-datetimepicker.min.js">
+		<link rel="stylesheet" href="/Cas-M-Ping/dependencies/styles/jqueryUI.css">
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
 	{% endblock %}
 </head>
 <body>
@@ -46,4 +46,26 @@
 		{% block content %}{% endblock %}
 	</div>
 </body>
+<script type="text/javascript">
+	$('#beginDate').datepicker({
+		changeMonth: true,
+		changeYear: true,
+		dateFormat: 'dd/mm/yy',
+		minDate: 0,
+		maxDate: $('#endDate').datepicker('getDate'),
+		 onSelect: function(date) {
+			$('#beginDate').datepicker('option','minDate', date);
+		}
+	});
+	$('#endDate').datepicker({
+		changeMonth: true,
+		changeYear: true,
+		dateFormat: 'dd/mm/yy',
+		minDate: $('#beginDate').datepicker('getDate'),
+		onSelect: function(date) {
+			$('#endDate').datepicker('option','minDate', date);
+		}
+	});
+	$.datepicker.setDefaults($.datepicker.regional['fr']);
+</script>
 </html>

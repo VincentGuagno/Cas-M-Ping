@@ -15,17 +15,15 @@ Création d'une saison
 		<label for="seas_name">Nom de saison : </label>
 		<input class="form-control" id="seas_name" name="name" >
 		
-		<div class="input-append date">
-			<label for="seas_date">Date de debut : </label>
-			<input type="text" value="2012-07-22" class="form-control" id="seas_date" name="beginDate" >
-			<span class="add-on"><i class="icon-th"></i></span>
+		</br>
+		<strong>Date de début:</strong></br>     
+		<input class="form-control" type="date" id="beginDate" name="beginDate" placeholder="{{rental.rent_begin}}" value=""/></br>
+		<div class = "form-group">
+		
+		<strong>Date de fin:</strong></br>     
+		<input class="form-control" type="date" id="endDate" name="endDate" placeholder="{{rental.rent_end}}" value=""/></br>
 		</div>
 		
-		<div class="input-append date">
-			<label for="endDate">Date de fin : </label>
-			<input type="text" value="2012-09-10" class="form-control" id="endDate" name="endDate" >
-			<span class="add-on"><i class="icon-th"></i></span>
-		</div>
 		
 		<label for="coefficient">Coefficient : </label>
 		<input class="form-control" id="coefficient" name="coefficient" >
