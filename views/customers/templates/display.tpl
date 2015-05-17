@@ -13,7 +13,6 @@
 	
 	<table class="table">
 		<tr>
-			<th> Identifiant </th>
 			<th> Numéro de dossier </th>
 			<th> Nom </th>
 			<th> Prénom </th>
@@ -23,7 +22,6 @@
 		</tr>
 	{% for customer in customers %}
 		<tr>
-			<td>{{customer.cust_id}}</td>
 			<td>{{customer.cust_record_number}}</td>
 			<td>{{customer.cust_lastName}}</td>
 			<td>{{customer.cust_firstName}}</td>

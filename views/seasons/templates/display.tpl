@@ -3,6 +3,7 @@
 
 {% block header %}
 Saison
+
 {% endblock %}
 
 {% block title %}
@@ -10,6 +11,14 @@ Saison
 {% endblock %}
 
 {% block content %}
+
+	<form method="post" ACTION="/Cas-M-Ping/season/add">
+	<button type="submit" > Ajout d'une location </button>
+	</form>
+
+	<form method="post" ACTION="/Cas-M-Ping/season/delete-all">
+	<button type="submit" > Suppression des locations </button>
+	</form>	
 	<table class="table">
 		<tr>
 			<th> Identifiant </th>

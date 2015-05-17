@@ -17,12 +17,37 @@ Modification d'une location
 		<label for="name">Nom de la location : </label>
 		<input class="form-control" id="name" name="name" value="{{rental.rent_name}}" placeholder="{{rental.rent_name}}"><br /><br />
 		
+		<div class='col-sm-6'>
+            <div class="form-group">
+                <div class='input-group date' id='beginDate'>
+                    <input type='text' class="form-control" />
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+            $(function () {
+                $('#datetimepicker1').datetimepicker();
+            });
+        </script>
 		
-		<label for="beginDate">Date de début : </label>
-		<input class="form-control" id="beginDate" name="beginDate" value="{{rental.rent_begin}}" placeholder="{{rental.rent_begin}}"><br /><br />
-		
-		<label for="endDate">Date de fin : </label>
-		<input class="form-control" id="endDate" name="endDate" value="{{rental.rent_end}}" placeholder="{{rental.rent_end}}"><br /><br />
+		<div class='col-sm-6'>
+            <div class="form-group">
+                <div class='input-group date' id='endDate'>
+                    <input type='text' class="form-control" />
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+            $(function () {
+                $('#datetimepicker1').datetimepicker();
+            });
+        </script>
 		
 		<label for="peopleNumber">Nombre de personnes : </label>
 		<input class="form-control" id="peopleNumber" name="peopleNumber" value="{{rental.rent_nb_person}}" placeholder="{{rental.rent_nb_person}}"><br /><br />

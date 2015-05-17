@@ -10,6 +10,15 @@
 {% endblock %}
 
 {% block content %}
+
+	<form method="post" ACTION="/Cas-M-Ping/rentals/add">
+	<button type="submit" > Ajout d'une location </button>
+	</form>
+	
+	<form method="post" ACTION="/Cas-M-Ping/rentals/delete-all">
+	<button type="submit" > Suppression des locations </button>
+	</form>
+	
 	<table class="table">
 		<tr>
 			<th> Nom </th>
@@ -41,7 +50,7 @@
 			</td>
 			<td> 
 				<form method="post" ACTION="/Cas-M-Ping/rentals/delete/{{rental.rent_id}}">
-				<button type="submit" > Suppression </button>
+				<button type="submit" > Supprimer </button>
 				</form>
 			</td>
 			<td> 
@@ -52,7 +61,4 @@
 		</tr>
 	{% endfor %}
 	</table>
-	<form method="post" ACTION="/Cas-M-Ping/rentals/create/">
-	<button type="submit" > Nouvelle location </button>
-	</form>
 {% endblock %}
