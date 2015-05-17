@@ -26,7 +26,7 @@
 			<li><a href="/Cas-M-Ping/locations/show/all">Emplacements</a></li>
 			<li><a href="/Cas-M-Ping/sectors/show/all">Secteurs</a></li>
 			<li><a href="/Cas-M-Ping/seasons/show/all">Saisons</a></li>
-			<li><a href="/Cas-M-Ping/caravans/show/all">Caravannes</a></li>
+			<li><a href="/Cas-M-Ping/caravans/show/all">Caravanes</a></li>
 		  </ul>
 		</nav>
 	  </header>
