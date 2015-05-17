@@ -61,7 +61,24 @@
 		}
 
 		/**
-		 * Delete a specified sector
+		 * Delete all locations
+		 *
+		 * @return 0 without errors, exception message any others cases
+		 */
+
+		public function delete_locations() {
+			try {
+				$qry = $this->db->prepare('DELETE FROM location');
+				$qry->execute();				
+				$qry->closeCursor();
+				return 0;
+			} catch(Exception $e) {
+				return $e->getMessage();
+			}
+		}
+		
+		/**
+		 * Delete a specified location
 		 * @param loc_id, location's id
 		 *
 		 * @return 0 without errors, exception message any others cases
@@ -69,7 +86,7 @@
 
 		public function delete_location($loc_id) {
 			try {
-				$qry = $this->db->prepare('DELETE FROM location WHERE `loc_id = ?');
+				$qry = $this->db->prepare('DELETE FROM location WHERE loc_id = ?');
 				$qry->bindValue(1, $loc_id, \PDO::PARAM_INT);
 				$qry->execute();				
 				$qry->closeCursor();

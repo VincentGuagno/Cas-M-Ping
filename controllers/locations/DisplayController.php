@@ -4,7 +4,7 @@
 	 * Controller for location displays
 	 * This class handles the location displays
 	 *
-	 * @author Jérémie LIECHTI
+	 * @author JÃ©rÃ©mie LIECHTI
 	 * @version 0.0.1
 	 * @copyright 2015 3iL
 	 */
@@ -67,22 +67,22 @@
 										}
 										break;
 								}
-								echo $this->twig->render($this->view_name .'.tpl', array('seasons' => $data, 'bootstrapPath' => _BOOTSTRAP_FILE_));
+								echo $this->twig->render($this->view_name .'.tpl', array('locations' => $data, 'bootstrapPath' => _BOOTSTRAP_FILE_));
 								
 							} catch (Exception $e) {
-								throw new Exception('Une erreur est survenue durant la récupération des données: '.$e->getMessage());
+								throw new Exception('Une erreur est survenue durant la rÃ©cupÃ©ration des donnÃ©es: '.$e->getMessage());
 							}
 						} else {
 							throw new Exception('Le template "'.$this->view_name .'" n\'existe pas dans "'._LOCATIONS_VIEWS_ .'"!');
 						}
 					} else {
-						throw new Exception('Le modèle "'. $this->model_name .'" n\'existe pas dans "'._LOCATIONS_MODELS_ .'"!');
+						throw new Exception('Le modÃ¨le "'. $this->model_name .'" n\'existe pas dans "'._LOCATIONS_MODELS_ .'"!');
 					}
 				} else {
 					throw new Exception('Une erreur est survenue durant la phase de routage!');
 				}
 			} else {
-				throw new Exception('L\'URL n\'est pas évaluable!');
+				throw new Exception('L\'URL n\'est pas Ã©valuable!');
 			}
 		}
 		

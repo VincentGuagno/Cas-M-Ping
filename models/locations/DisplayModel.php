@@ -69,7 +69,7 @@
 		public function display_locations() {
 			try {
 
-				$qry = $this->db->prepare('SELECT  sector.sec_name,
+				$qry = $this->db->prepare('SELECT  location.loc_id,sector.sec_name,
 												   type_location.type_location_name,
 												   type_location.type_location_price FROM location 
 												   INNER JOIN sector ON  sector.sec_id = location.loc_sec_id

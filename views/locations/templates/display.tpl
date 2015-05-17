@@ -33,7 +33,7 @@
 			<td>{{location.type_location_name}}</td>
 			<td>{{location.type_location_price}}</td>
 			<td>
-			<form method="post" ACTION="/Cas-M-Ping/locations/delete/{{loc_id}}">
+			<form method="post" ACTION="/Cas-M-Ping/locations/delete/{{location.loc_id}}">
 			<button type="submit" > Supprimer </button>
 			</form>	
 			</td>
