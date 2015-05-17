@@ -1,14 +1,16 @@
-<!DOCTYPE html>
-<html>
-<head>
-	{% block head %}
-		<link rel="stylesheet" href="dependencies/bootstrap/css/bootstrap.min.css" />
-		<title>{% block title %}{% endblock %} - Ajout client</title>
-	{% endblock %}
-</head>
-<body>
+{# views/sectors/templates/display.tpl #}
+	{%extends "layout.tpl" %}
+
+{% block title %}
+	Modification d'un emplacement
+{% endblock %}
+	
+{% block header %}
+	Modification d'un emplacement
+{% endblock %}
+
+{% block content %}
 	<div id="content">{% block content %}{% endblock %}</div>
-	<h1>Ajout d'un clients </h1>
 	
 	<form role="form">
 		
@@ -20,5 +22,4 @@
 		
 		<button type="submit" class="btn btn-default">Modifier</button>
 	</form>
-</body>
-</html>
+{% endblock %}

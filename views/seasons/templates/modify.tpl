@@ -1,17 +1,15 @@
-<!DOCTYPE html>
-<html>
-<head>
-	{% block head %}
-		{% block stylesheets %}
-			<link rel="stylesheet" href="{{bootstrapPath}}">
-		{% endblock %}
-		<meta charset="utf-8">
-		<title>{% block title %}{% endblock %} - Modification saison</title>
-	{% endblock %}
-</head>
-<body>
-	<div id="content">{% block content %}{% endblock %}</div>
-	<h1>Modification d'une saison </h1>
+{# views/rentals/templates/displayId.tpl #}
+	{%extends "layout.tpl" %}
+
+{% block header %}
+Modification d'une saison 
+{% endblock %}
+
+{% block title %}
+Modification d'une saison 
+{% endblock %}
+
+{% block content %}
 	
 	<form method="post" ACTION="/Cas-M-Ping/seasons/modify/confirm/{{season.seas_id}}">
 		
@@ -29,5 +27,4 @@
 		
 		<button type="submit" class="btn btn-default">Modifier</button>
 	</form>
-</body>
-</html>
+{% endblock %}

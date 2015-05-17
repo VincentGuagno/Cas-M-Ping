@@ -1,16 +1,15 @@
-<!DOCTYPE html>
-<html>
-<head>
-	{% block head %}
-		{% block stylesheets %}
-			<link rel="stylesheet" href="{{bootstrapPath}}">
-		{% endblock %}
-		<title>{% block title %}{% endblock %} - Clients</title>
-	{% endblock %}
-</head>
-<body>
-	<div id="content">{% block content %}{% endblock %}</div>
-	<h1> Emplacements </h1>
+{# views/sectors/templates/display.tpl #}
+	{%extends "layout.tpl" %}
+
+{% block title %}
+	Emplacements
+{% endblock %}
+	
+{% block header %}
+	Emplacements
+{% endblock %}
+
+{% block content %}
 	
 	<table class="table">
 		<tr>
@@ -23,6 +22,5 @@
 			<td>{{location.sec_name}}</td>
 		</tr>
 	{% endfor %}
-	</table>
-</body>
-</html>
+	
+{% endblock %}

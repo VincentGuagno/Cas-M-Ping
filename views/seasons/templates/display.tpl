@@ -1,18 +1,15 @@
-<!DOCTYPE html>
-<html>
-<head>
-	{% block head %}
-		{% block stylesheets %}
-			<link rel="stylesheet" href="{{bootstrapPath}}">
-		{% endblock %}
-		<meta charset="utf-8">
-		<title>{% block title %}{% endblock %} - Saison</title>
-	{% endblock %}
-</head>
-<body>
-	<div id="content">{% block content %}{% endblock %}</div>
-	<h1> Saisons</h1>
-	
+{# views/rentals/templates/displayId.tpl #}
+	{%extends "layout.tpl" %}
+
+{% block header %}
+Saison
+{% endblock %}
+
+{% block title %}
+Saison
+{% endblock %}
+
+{% block content %}
 	<table class="table">
 		<tr>
 			<th> Identifiant </th>
@@ -41,5 +38,4 @@
 		</tr>
 	{% endfor %}
 	</table>
-</body>
-</html>
+{% endblock %}

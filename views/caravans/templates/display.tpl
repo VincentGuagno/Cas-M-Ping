@@ -1,17 +1,15 @@
-<!DOCTYPE html>
-<html>
-<head>
-	{% block head %}
-		{% block stylesheets %}
-			<link rel="stylesheet" href="{{bootstrapPath}}">
-		{% endblock %}
-		<meta charset="utf-8">
-		<title>{% block title %}{% endblock %} - Clients</title>
-	{% endblock %}
-</head>
-<body>
-	<div id="content">{% block content %}{% endblock %}</div>
-	<h1> Caravanes </h1>
+{# views/sectors/templates/display.tpl #}
+	{%extends "layout.tpl" %}
+
+{% block title %}
+	Caravanes
+{% endblock %}
+	
+{% block header %}
+	Caravanes
+{% endblock %}
+
+{% block content %}
 	
 	<table class="table">
 		<tr>
@@ -31,5 +29,4 @@
 		</tr>
 	{% endfor %}
 	</table>
-</body>
-</html>
+{% endblock %}

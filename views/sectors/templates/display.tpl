@@ -1,5 +1,5 @@
 {# views/sectors/templates/display.tpl #}
-	{%extends "layout.twig" %}
+	{%extends "layout.tpl" %}
 
 {% block title %}
 	Secteurs

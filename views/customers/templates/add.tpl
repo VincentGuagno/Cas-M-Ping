@@ -1,14 +1,15 @@
-<!DOCTYPE html>
-<html>
-<head>
-	{% block head %}
-		<link rel="stylesheet" href="dependencies/bootstrap/css/bootstrap.min.css" />
-		<title>{% block title %}{% endblock %} - Ajout client</title>
-	{% endblock %}
-</head>
-<body>
-	<div id="content">{% block content %}{% endblock %}</div>
-	<h1>Ajout d'un clients </h1>
+{# views/rentals/templates/displayId.tpl #}
+	{%extends "layout.tpl" %}
+
+{% block header %}
+Ajout d'un clients 
+{% endblock %}
+
+{% block title %}
+Ajout d'un clients 
+{% endblock %}
+
+{% block content %}
 	
 	<form role="form">
 		
@@ -29,5 +30,4 @@
 		
 		<button type="submit" class="btn btn-default">Envoyer</button>
 	</form>
-</body>
-</html>
+{% endblock %}

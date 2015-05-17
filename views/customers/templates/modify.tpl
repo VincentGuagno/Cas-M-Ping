@@ -1,17 +1,15 @@
-<!DOCTYPE html>
-<html>
-<head>
-	{% block head %}
-		{% block stylesheets %}
-			<link rel="stylesheet" href="{{bootstrapPath}}">
-		{% endblock %}
-		<meta charset="utf-8">
-		<title>{% block title %}{% endblock %} - Modification client</title>
-	{% endblock %}
-</head>
-<body>
-	<div id="content">{% block content %}{% endblock %}</div>
-	<h1>Modification d'un client </h1>
+{# views/rentals/templates/displayId.tpl #}
+	{%extends "layout.tpl" %}
+
+{% block header %}
+Modification d'un client
+{% endblock %}
+
+{% block title %}
+Modification d'un client
+{% endblock %}
+
+{% block content %}
 	
 	<form method="post" ACTION="/Cas-M-Ping/customers/modify/confirm/{{customer.cust_id}}">
 		
@@ -38,5 +36,4 @@
 		
 		<button type="submit" class="btn btn-default">Modifier</button>
 	</form>
-</body>
-</html>
+{% endblock %}
