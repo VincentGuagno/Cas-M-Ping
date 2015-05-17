@@ -13,11 +13,11 @@ Saison
 {% block content %}
 
 	<form method="post" ACTION="/Cas-M-Ping/season/add">
-	<button type="submit" > Ajout d'une location </button>
+	<button type="submit" > Ajout d'une saison </button>
 	</form>
 
 	<form method="post" ACTION="/Cas-M-Ping/season/delete-all">
-	<button type="submit" > Suppression des locations </button>
+	<button type="submit" > Suppression des saison </button>
 	</form>	
 	<table class="table">
 		<tr>
