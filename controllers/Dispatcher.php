@@ -129,6 +129,11 @@
 				'directory' => 'locations/',
 				'url-formatter' => 'locations/modify/{id}'
 			),
+			'confirm-modify-locations' => array(
+				'controller' => 'ConfirmModifyController',
+				'directory' => 'locations/',
+				'url-formatter' => 'locations/modify/confirm/{id}'
+			),
 			
 			// Rental routes
 			'cancel-rentals' => array(

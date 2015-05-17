@@ -10,25 +10,30 @@
 {% endblock %}
 
 {% block content %}
-	<div id="content">{% block content %}{% endblock %}</div>
-	
-	<form role="form" ACTION="/Cas-M-Ping/locations/modify/confirm/{{location.sec_id}}">
+	<form method="post" ACTION="/Cas-M-Ping/locations/modify/confirm/{{id.loc_id}}">
 	
 		<label for="loc_sec_id">Secteur : </label>
-		<select selectedIndex="{{sector.loc_sec_id}}" id="loc_sec_id" name="sector">
+		<select id="loc_sec_id" name="sector">
 		{% for sector in sectors %}
-		<option value="{{sector.sec_id}}">{{sector.sec_name}}</option>
+			{% if sector.sec_id == id.loc_sec_id %}
+				<option value="{{sector.sec_id}}" selected="selected">{{sector.sec_name}}</option>
+			{% else %}
+				<option value="{{sector.sec_id}}">{{sector.sec_name}}</option>
+			{% endif %}
 		{% endfor %}
 		</select> 
 		
 		
 		<label for="loc_type_id">Type d'emplacement : </label>
-		<select selectedIndex="{{sector.loc_type_id}}" id="loc_type_id" name="location">
+		<select id="loc_type_id" name="location">
 		{% for typeLocation in typeLocations %}
-		<option value="{{typeLocation.type_location_id}}">{{typeLocation.type_location_name}}</option>
+			{% if typeLocation.type_location_id == id.loc_type_id %}
+				<option value="{{typeLocation.type_location_id}}" selected="selected">{{typeLocation.type_location_name}}</option>
+			{% else %}
+				<option value="{{typeLocation.type_location_id}}">{{typeLocation.type_location_name}}</option>
+			{% endif %}
 		{% endfor %}
-		</select>
-		
+		</select>	
 		<button type="submit" class="btn btn-default">Modifier</button>
 	</form>
 {% endblock %}
