@@ -84,6 +84,70 @@
 				return $e->getMessage();
 			}
 		}
+
+		/**
+		 * Delete the renting with the "rent_cust_id"
+		 *		
+		 * @return 0 without errors, exception message any others cases
+		 */
+		public function return_caravans() {
+			try {
+				// Suppréssion de la donnée custId et de son lien dans la table de liason caravan/location
+				$qry = $this->db->prepare('DELETE FROM caravan 
+												INNER JOIN link_car_location 
+													ON  rental.rent_cust_id = link_car_location.lcl_car_id');	
+				
+				$qry->bindValue(1, $rent_custId, \PDO::PARAM_INT);
+				$qry->execute();
+				$qry->closeCursor();
+				return 0;
+			} catch(Exception $e) {
+				return $e->getMessage();
+			}
+		}
+
+		/**
+		 * Delete a specified caravan
+		 *
+		 * @param car_id, caravan's name
+		 * @return 0 without errors, exception message any others cases
+		 */
+		public function delete_caravan($car_id) {
+			try {
+				$qry = $this->db->prepare('DELETE FROM link_caravan_location WHERE link_caravan_location.lcl_car_id = ?');
+				$qry->bindValue(1, $car_id, \PDO::PARAM_INT);
+				$qry->execute();
+
+				$qry = $this->db->prepare('DELETE FROM caravan WHERE caravan.car_id = ?');
+				$qry->bindValue(1, $car_id, \PDO::PARAM_INT);
+				$qry->execute();
+
+				$qry->closeCursor();
+				return 0;
+			} catch(Exception $e) {
+				return $e->getMessage();
+			}
+		}
+
+		/**
+		 * Delete a specified caravan
+		 *		
+		 * @return 0 without errors, exception message any others cases
+		 */
+		public function delete_caravans() {
+			try {
+				$qry = $this->db->prepare('DELETE FROM link_caravan_location');
+				$qry->execute();
+				
+				$qry = $this->db->prepare('DELETE FROM caravan');
+				$qry->execute();
+				
+				$qry->closeCursor();
+				return 0;
+			} catch(Exception $e) {
+				return $e->getMessage();
+			}
+		}
 	}
 
 ?>
