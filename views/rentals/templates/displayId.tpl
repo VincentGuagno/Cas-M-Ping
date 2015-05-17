@@ -1,19 +1,16 @@
-<!DOCTYPE html>
-<html>
-<head>
-	{% block head %}
-		{% block stylesheets %}
-			<link rel="stylesheet" href="{{bootstrapPath}}">
-		{% endblock %}
-		<meta charset="utf-8">
-		<title>{% block title %}{% endblock %} - Clients</title>
-	{% endblock %}
-</head>
-<body>
+{# views/rentals/templates/displayId.tpl #}
+	{%extends "layout.tpl" %}
+
+{% block title %}
+	Locations {{rental.rent_name}}
+{% endblock %}
+
+{% block header %}
+	Locations {{rental.rent_name}}
+{% endblock %}
+
+{% block content %}
 	{%set rental = rental[0]%}
-	
-	<div id="content">{% block content %}{% endblock %}</div>
-	<h1> Locations {{rental.rent_name}}</h1> </br>
 	Locataire : {{rental.cust_name}} </br>
 	Nombre de personnes : {{rental.rent_nb_person}} personnes </br>
 	Nombre de jours : </br>
@@ -75,5 +72,4 @@
 			<button type="submit" > Supprimer </button>
 		</form>
 	</div>
-</body>
-</html>
+{% endblock %}

@@ -1,18 +1,15 @@
-<!DOCTYPE html>
-<html>
-<head>
-	{% block head %}
-		{% block stylesheets %}
-			<link rel="stylesheet" href="{{bootstrapPath}}">
-		{% endblock %}
-		<meta charset="utf-8">
-		<title>{% block title %}{% endblock %} - Secteur</title>
-	{% endblock %}
-</head>
-<body>
-	<div id="content">{% block content %}{% endblock %}</div>
-	<h1> Secteurs </h1>
+{# views/sectors/templates/display.tpl #}
+	{%extends "layout.twig" %}
+
+{% block title %}
+	Secteurs
+{% endblock %}
 	
+{% block header %}
+	Secteurs
+{% endblock %}
+
+{% block content %}
 	{% for sector in sectors %}
 		<div>
 		{{sector.sec_name}}
@@ -34,5 +31,4 @@
 		{% endfor %}
 		</table>
 	{% endfor %}
-</body>
-</html>
+{% endblock %}

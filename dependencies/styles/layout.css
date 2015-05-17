@@ -36,7 +36,7 @@ address, article, aside, figcaption, figure, footer, header, nav, section{displa
 
 div.wrapper{
 display:block; 
-width:700px; 
+width:60%; 
 margin:0 auto;
 padding:0; 
 text-align:left;
@@ -47,11 +47,11 @@ padding-right : 30px;
 .row1, .row1 a{color:#979797; background-color:#FFFFFF;}
 .row2{color:#979797; background-color:#FFFFFF;}
 .row2 a{color:#FF9900; background-color:#FFFFFF;}
-.row3 {width: 90%; background-color:#FFFFFF; margin : auto; margin-top:0px;}
+.row3 {width: 90%; background-color:#FFFFFF; margin : auto;}
 
 /*----------------------------------------------Generalise-------------------------------------*/
 
-#header, #container, #footer{display:block; width:700px;}
+#header, #container, #footer{display:block; width:100%;}
 
 nav ul{margin:0; padding:0; list-style:none;}
 

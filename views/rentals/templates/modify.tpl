@@ -1,22 +1,22 @@
-<!DOCTYPE html>
-<html>
-<head>
-	{% block head %}
-		{% block stylesheets %}
-			<link rel="stylesheet" href="{{bootstrapPath}}">
-		{% endblock %}
-		<meta charset="utf-8">
-		<title>{% block title %}{% endblock %} - Ajout client</title>
-	{% endblock %}
-</head>
-<body>
-	<div id="content">{% block content %}{% endblock %}</div>
-	<h1>Modification d'une location </h1>
+{# views/rentals/templates/displayId.tpl #}
+	{%extends "layout.tpl" %}
+
+{% block header %}
+Modification d'une location
+{% endblock %}
+
+{% block title %}
+Modification d'une location
+{% endblock %}
+
+{% block content %}
+	
 	
 	<form method="post" ACTION="/Cas-M-Ping/rentals/modify/confirm/{{rental.rent_id}}"/>
 		
 		<label for="name">Nom de la location : </label>
 		<input class="form-control" id="name" name="name" value="{{rental.rent_name}}" placeholder="{{rental.rent_name}}"><br /><br />
+		
 		
 		<label for="beginDate">Date de début : </label>
 		<input class="form-control" id="beginDate" name="beginDate" value="{{rental.rent_begin}}" placeholder="{{rental.rent_begin}}"><br /><br />
@@ -34,6 +34,4 @@
 		<input class="form-control" id="deposit" name="deposit" value="{{rental.rent_price}}" placeholder="{{rental.rent_price}}"><br /><br />
 		
 		<button type="submit" name="confirmModifyRental" class="btn btn-default">Valider</button>
-	</form>
-</body>
-</html>
+{% endblock %}

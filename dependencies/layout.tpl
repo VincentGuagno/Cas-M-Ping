@@ -41,9 +41,6 @@
 		<section>
 			<h2>{% block header %}{% endblock %}</h2>
 		</section>
-		
-	</div>
-	<div class="row3">
 		{% block content %}{% endblock %}
 	</div>
 </body>

@@ -1,30 +1,35 @@
-<!DOCTYPE html>
-<html>
-<head>
-	{% block head %}
-		<link rel="stylesheet" href="dependencies/bootstrap/css/bootstrap.min.css" />
-		<title>{% block title %}{% endblock %} - Ajout client</title>
-	{% endblock %}
-</head>
-<body>
-	<div id="content">{% block content %}{% endblock %}</div>
-	<h1>Ajout d'un clients </h1>
-	
-	<form role="form">
+{# views/rentals/templates/displayId.tpl #}
+	{%extends "layout.tpl" %}
+
+{% block header %}
+Création d'une saison
+{% endblock %}
+
+{% block title %}
+Création d'une saison
+{% endblock %}
+
+{% block content %}
+	<form method="post" ACTION="/Cas-M-Ping/seasons/add/confirm">
 		
-		<label for="name">Nom de saison : </label>
-		<input class="form-control" id="name">
+		<label for="seas_name">Nom de saison : </label>
+		<input class="form-control" id="seas_name">
 		
-		<label for="beginDate">Date de debut : </label>
-		<input class="form-control" id="beginDate">
+		<div class="input-append date">
+			<label for="seas_date">Date de debut : </label>
+			<input type="text" value="12-02-2012" class="form-control" id="seas_date">
+			<span class="add-on"><i class="icon-th"></i></span>
+		</div>
 		
-		<label for="endDate">Date de fin : </label>
-		<input class="form-control" id="endDate">
+		<div class="input-append date">
+			<label for="endDate">Date de debut : </label>
+			<input type="text" value="12-02-2012" class="form-control" id="endDate">
+			<span class="add-on"><i class="icon-th"></i></span>
+		</div>
 		
 		<label for="coefficient">Coefficient : </label>
 		<input class="form-control" id="coefficient">
 		
 		<button type="submit" class="btn btn-default">Envoyer</button>
 	</form>
-</body>
-</html>
+{% endblock %}

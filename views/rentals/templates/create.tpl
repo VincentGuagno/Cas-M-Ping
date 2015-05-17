@@ -1,16 +1,15 @@
-<!DOCTYPE html>
-<html>
-<head>
-	{% block head %}
-		<link rel="stylesheet" href="dependencies/bootstrap/css/bootstrap.min.css" />
-		<title>{% block title %}{% endblock %} - Ajout client</title>
-	{% endblock %}
-</head>
-<body>
-	<div id="content">{% block content %}{% endblock %}</div>
-	<h1>Création d'une location</h1>
+
+{% block header %}
+Création d'une location
+{% endblock %}
+
+{% block title %}
+Création d'une location
+{% endblock %}
+
+{% block content %}
 	
-	<form role="form" method="post" action="/Cas-M-Ping/rentals/modify/>
+	<form role="form" method="post" action="/Cas-M-Ping/rentals/modify/">
 		
 		<label for="rent_name">Nom de la location : </label>
 		<input class="form-control" id="rent_name">
@@ -35,5 +34,4 @@
 		
 		<button type="submit" class="btn btn-default">Paiement effectué</button>
 	</form>
-</body>
-</html>
+{% endblock %}
