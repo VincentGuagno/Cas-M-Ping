@@ -190,8 +190,7 @@
 		public function display_locationAll() {
 			try {
 
-				$qry = $this->db->prepare('SELECT * FROM location');
-				
+				$qry = $this->db->prepare('SELECT location.*, type_location.type_location_name FROM location INNER JOIN type_location ON type_location.type_location_id = location.loc_type_id');				
 				$qry->execute();
 				//put  the result into an object
 				$return_qry = $qry->fetchAll();

@@ -49,26 +49,31 @@
 				$controller = Tools::getInstance()->getUrl_controller($url);
 				
 				if ($controller == 'DisplayController') {
-					if (file_exists (_SECTORS_MODELS_ .'/'. $this->model_name .'Model.php')) {			
+					if (file_exists (_SECTORS_MODELS_ .'/'. $this->model_name .'Model.php') && file_exists (_LOCATIONS_MODELS_ .'/'. $this->model_name .'Model.php')) {			
 						if (file_exists (_SECTORS_VIEWS_ .'/'. $this->view_name .'.tpl')) {	
 							try {	
 								require_once (_SECTORS_MODELS_ .'/'. $this->model_name .'Model.php');
+								require_once (_LOCATIONS_MODELS_ .'/'. $this->model_name .'Model.php');
 								$id = Tools::getInstance()->getUrl_id($url);
 								
 								switch ($id) {
 									case 'all':
-										$data = \Sector\DisplayModel::getInstance()->display_sectors();
+										$sectors = \Sector\DisplayModel::getInstance()->display_sectors();
+										$locations = \Location\DisplayModel::getInstance()->display_locationAll();
 										break;
 									default:
 										if(\Sector\DisplayModel::getInstance()->has_sector($id) == 1) {
 											$data = \Sector\DisplayModel::getInstance()->display_sector($id);
+											
+											$sectors = \Sector\DisplayModel::getInstance()->display_sector($id);
+										$locations = \Location\DisplayModel::getInstance()->display_locationAll();
 										} else {
 											header('Location: /Cas-M-Ping/errors/404');
 										}
 										break;
 								}
 								
-								echo $this->twig->render($this->view_name .'.tpl', array('sectors' => $data, 'bootstrapPath' => _BOOTSTRAP_FILE_));
+								echo $this->twig->render($this->view_name .'.tpl', array('sectors' => $sectors, 'locations' => $locations, 'bootstrapPath' => _BOOTSTRAP_FILE_));
 								
 							} catch (Exception $e) {
 								throw new Exception('Une erreur est survenue durant la récupération des données: '.$e->getMessage());

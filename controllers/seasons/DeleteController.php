@@ -64,7 +64,7 @@
 							header('Location: /Cas-M-Ping/seasons/show/all');
 							
 						} catch (Exception $e) {
-							throw new Exception('Une erreur est survenue durant la modification des données: '.$e->getMessage());
+							throw new Exception('Une erreur est survenue durant la suppression des données: '.$e->getMessage());
 						}
 					} else {
 						throw new Exception('Le modèle "'. $this->model_name .'" n\'existe pas dans "'._SEASONS_MODELS_ .'"!');

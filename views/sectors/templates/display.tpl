@@ -22,7 +22,7 @@
 			<form method="post" ACTION="/Cas-M-Ping/sectors/modify/{{sector.sec_id}}" id = "inline-form">
 			<button type="submit" id = "inline-form"> Modifier </button>
 			</form>
-			<form method="post" ACTION="/Cas-M-Ping/sectors/supprimer/{{sector.sec_id}}" id = "inline-form">
+			<form method="post" ACTION="/Cas-M-Ping/sectors/delete/{{sector.sec_id}}" id = "inline-form">
 			<button type="submit" id = "inline-form"> Supprimer </button>
 			</form>
 		<table class="table">
