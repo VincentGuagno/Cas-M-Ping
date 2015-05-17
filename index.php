@@ -4,13 +4,7 @@
 		require('conf_loader.php');
 		
 		try {
-			$timeStart = microtime(true);
-
 			Dispatcher::getInstance()->dispatch($_POST);
-			
-			$timeEnd = microtime(true);
-			$globalTime = $timeEnd - $timeStart;
-			echo 'Script executé en '.number_format($globalTime, 3) .'s';
 		} catch (Exception $e) {
 			echo $e->getMessage();
 		}

@@ -260,17 +260,17 @@
 			
 			// Errors routes
 			'403-errors' => array(
-				'controller' => '403Controller',
+				'controller' => 'Display403Controller',
 				'directory' => 'errors/',
 				'url-formatter' => 'errors/403'
 			),
 			'404-errors' => array(
-				'controller' => '404Controller',
+				'controller' => 'Display404Controller',
 				'directory' => 'errors/',
 				'url-formatter' => 'errors/404'
 			),
 			'500-errors' => array(
-				'controller' => '500Controller',
+				'controller' => 'Display500Controller',
 				'directory' => 'errors/',
 				'url-formatter' => 'errors/500'
 			)

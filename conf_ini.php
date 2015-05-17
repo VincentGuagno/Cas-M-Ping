@@ -38,7 +38,7 @@
 	 */
 	define('_CARAVANS_VIEWS_', _VIEWS_DIR_ .'/caravans/templates'); 
 	define('_CUSTOMERS_VIEWS_', _VIEWS_DIR_ .'/customers/templates'); 
-	define('_ERRORS_VIEWS_', _VIEWS_DIR_ .'/errors/templates'); 
+	define('_ERRORS_VIEWS_', _VIEWS_DIR_ .'/errors'); 
 	define('_HOME_VIEWS_', _VIEWS_DIR_ .'/home/templates'); 
 	define('_LOCATIONS_VIEWS_', _VIEWS_DIR_ .'/locations/templates'); 
 	define('_RENTALS_VIEWS_', _VIEWS_DIR_ .'/rentals/templates'); 
