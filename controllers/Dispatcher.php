@@ -225,6 +225,11 @@
 				'directory' => 'sectors/',
 				'url-formatter' => 'sectors/modify/{id}'
 			),
+			'confirm-modify-sectors' => array(
+				'controller' => 'ConfirmModifyController',
+				'directory' => 'sectors/',
+				'url-formatter' => 'sectors/modify/confirm/{id}'
+			),
 			
 			// Visitor routes
 			'add-visitors' => array(
