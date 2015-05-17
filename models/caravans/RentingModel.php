@@ -1,5 +1,3 @@
-
-
 <?php
 
 	/*
@@ -74,12 +72,11 @@
 										$car_nb_person, $car_id_location) {
 			try {
 
-				$qry = $this->db->prepare('INSERT INTO caravan (car_id, 
-																car_society_name, 
+				$qry = $this->db->prepare('INSERT INTO caravan (car_society_name, 
 																car_price, 
 																car_nb_person, 
 																car_id_location)
-												  VALUES (NULL, ?, ?, ?, ?');
+												  VALUES (?, ?, ?, ?)');
 				
 				$qry->bindValue(1, $car_society_name, \PDO::PARAM_STR);
 				$qry->bindValue(2, $car_price, \PDO::PARAM_INT);

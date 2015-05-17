@@ -51,12 +51,17 @@
 			'renting-caravans' => array(
 				'controller' => 'RentingController',
 				'directory' => 'caravans/',
-				'url-formatter' => 'caravans/new-rental'
+				'url-formatter' => 'caravans/renting'
+			),
+			'confirm-renting-caravans' => array(
+				'controller' => 'ConfirmAddController',
+				'directory' => 'caravans/',
+				'url-formatter' => 'caravans/renting/confirm'
 			),
 			'return-caravans' => array(
 				'controller' => 'ReturnController',
 				'directory' => 'caravans/',
-				'url-formatter' => 'caravans/return/{id}'
+				'url-formatter' => 'caravans/return/{id|all}'
 			),
 			
 			// Customer routes

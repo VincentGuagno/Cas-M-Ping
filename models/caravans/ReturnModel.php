@@ -1,4 +1,3 @@
-
 <?php
 
 	/*
@@ -71,7 +70,7 @@
 		 */
 		public function delete_caravan($car_id) {
 			try {
-				$qry = $this->db->prepare('DELETE FROM link_caravan_location WHERE link_caravan_location.lcl_car_id = ?');
+				$qry = $this->db->prepare('DELETE FROM link_car_location WHERE link_car_location.lcl_car_id = ?');
 				$qry->bindValue(1, $car_id, \PDO::PARAM_INT);
 				$qry->execute();
 
@@ -93,7 +92,7 @@
 		 */
 		public function delete_caravans() {
 			try {
-				$qry = $this->db->prepare('DELETE FROM link_caravan_location');
+				$qry = $this->db->prepare('DELETE FROM link_car_location');
 				$qry->execute();
 				
 				$qry = $this->db->prepare('DELETE FROM caravan');
