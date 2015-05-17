@@ -19,11 +19,6 @@
 		private $model_name = 'Modify';
 		
 		/**
-		 * Name of called view
-		 */
-		private $view_name = 'modify';
-		
-		/**
 		 * The constructor of ConfirmModifyController
 		 */
 		public function __construct() {

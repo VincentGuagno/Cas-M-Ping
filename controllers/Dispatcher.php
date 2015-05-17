@@ -153,6 +153,11 @@
 				'directory' => 'seasons/',
 				'url-formatter' => 'seasons/add'
 			),
+			'confirm-add-seasons' => array(
+				'controller' => 'ConfirmAddController',
+				'directory' => 'seasons/',
+				'url-formatter' => 'seasons/add/confirm'
+			),
 			'delete-seasons' => array(
 				'controller' => 'DeleteController',
 				'directory' => 'seasons/',

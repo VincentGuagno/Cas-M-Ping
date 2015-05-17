@@ -53,7 +53,7 @@
 			}
 			try {	
 				$pdo_options[\PDO::ATTR_ERRMODE] = \PDO::ERRMODE_EXCEPTION;
-				$this->db = new PDO('mysql:host='._HOST_ .';dbname='._DATABASE_, _LOGIN_, _PASSWORD_, $pdo_options);
+				$this->db = new \PDO('mysql:host='._HOST_ .';dbname='._DATABASE_, _LOGIN_, _PASSWORD_, $pdo_options);
 				$this->db->exec('SET NAMES utf8');
 			} catch(Exception $e) {
 				throw new Exception('Connexion à la base de données impossible: '.$e->getMessage());
@@ -95,15 +95,12 @@
 		public function delete_season() {
 			try {
 
-				$qry = $this->db->prepare('DELETE FROM season WHERE 1');
-				$qry->bindValue(1, $seas_id, \PDO::PARAM_INT);
+				$qry = $this->db->prepare('DELETE FROM season');
 				$qry->execute();
 
-				$qry = $this->db->prepare('DELETE FROM link_season_location WHERE 1');
-				$qry->bindValue(1, $seas_id, \PDO::PARAM_INT);
+				$qry = $this->db->prepare('DELETE FROM link_season_location');
 				$qry->execute();
 				
-				$qry->execute();
 				$qry->closeCursor();
 				return 0;
 			} catch(Exception $e) {
