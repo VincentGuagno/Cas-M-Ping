@@ -55,6 +55,7 @@
 		maxDate: $('#endDate').datepicker('getDate'),
 		 onSelect: function(date) {
 			$('#beginDate').datepicker('option','minDate', date);
+			$('#endDate').datepicker('option','minDate');
 		}
 	});
 	$('#endDate').datepicker({
@@ -64,6 +65,7 @@
 		minDate: $('#beginDate').datepicker('getDate'),
 		onSelect: function(date) {
 			$('#endDate').datepicker('option','minDate', date);
+			$('#beginDate').datepicker('option','minDate');
 		}
 	});
 	$.datepicker.setDefaults($.datepicker.regional['fr']);

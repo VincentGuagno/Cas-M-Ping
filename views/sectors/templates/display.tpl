@@ -10,20 +10,21 @@
 {% endblock %}
 
 {% block content %}
+	<form method="post" ACTION="/Cas-M-Ping/sectors/add">
+	<button type="submit" > Ajouter un secteur</button>
+	</form>
+	<form method="post" ACTION="/Cas-M-Ping/sectors/delete/all">
+	<button type="submit" > Supprimer tous les secteurs </button>
+	</form>
+	</br>
 	{% for sector in sectors %}
-		<div>
 		{{sector.sec_name}}
-		<td> 
-			<form method="post" ACTION="/Cas-M-Ping/sectors/modify/{{sector.sec_id}}">
-			<button type="submit" > Modifier </button>
+			<form method="post" ACTION="/Cas-M-Ping/sectors/modify/{{sector.sec_id}}" id = "inline-form">
+			<button type="submit" id = "inline-form"> Modifier </button>
 			</form>
-		</td>
-		<td> 
-			<form method="post" ACTION="/Cas-M-Ping/sectors/supprimer/{{sector.sec_id}}">
-			<button type="submit" > Supprimer </button>
+			<form method="post" ACTION="/Cas-M-Ping/sectors/supprimer/{{sector.sec_id}}" id = "inline-form">
+			<button type="submit" id = "inline-form"> Supprimer </button>
 			</form>
-		</td>
-		</div>
 		<table class="table">
 			<tr>
 				<th> Numero d'emplacement </th>

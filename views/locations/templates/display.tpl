@@ -28,6 +28,11 @@
 		<tr>
 			<td>{{location.loc_id}}</td>
 			<td>{{location.sec_name}}</td>
+			<td>
+			<form method="post" ACTION="/Cas-M-Ping/locations/delete/{{loc_id}}">
+			<button type="submit" > Supprimer </button>
+			</form>	
+			</td>
 		</tr>
 	{% endfor %}
 	
