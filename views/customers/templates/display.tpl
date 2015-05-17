@@ -27,11 +27,21 @@
 		<tr>
 			<td>{{customer.cust_id}}</td>
 			<td>{{customer.cust_record_number}}</td>
-			<td>{{customer.cust_name}}</td>
-			<td>{{customer.cust_name}}</td>
+			<td>{{customer.cust_lastName}}</td>
+			<td>{{customer.cust_firstName}}</td>
 			<td>{{customer.cust_postal_code}}</td>
 			<td>{{customer.cust_city}}</td>
 			<td>{{customer.cust_phone_number}}</td>
+			<td> 
+				<form method="post" ACTION="/Cas-M-Ping/customers/modify/{{customer.cust_id}}">
+				<button type="submit" > Modifier </button>
+				</form>
+			</td>
+			<td> 
+				<form method="post" ACTION="/Cas-M-Ping/customers/delete/{{customer.cust_id}}">
+				<button type="submit" > Suppression </button>
+				</form>
+			</td>
 		</tr>
 	{% endfor %}
 	</table>

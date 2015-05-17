@@ -20,6 +20,11 @@
 		 * Current request url
 		 */
 		public $request_url;
+		
+		/**
+		 * Current request post
+		 */
+		public $request_post;
 
 		/**
 		 * The constructor of Dispatcher
@@ -38,6 +43,15 @@
 				self::$instance = new Tools();
 			}
 			return self::$instance;
+		}
+		
+		/**
+		 * Create a backend post variables
+		 *
+		 * @param postVar, is an array of post variables
+		 */
+		public function createPost($postVar) {
+			$this->request_post = $postVar;
 		}
 		
 		/**

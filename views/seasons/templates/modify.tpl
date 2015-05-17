@@ -2,27 +2,30 @@
 <html>
 <head>
 	{% block head %}
-		<link rel="stylesheet" href="dependencies/bootstrap/css/bootstrap.min.css" />
-		<title>{% block title %}{% endblock %} - Ajout client</title>
+		{% block stylesheets %}
+			<link rel="stylesheet" href="{{bootstrapPath}}">
+		{% endblock %}
+		<meta charset="utf-8">
+		<title>{% block title %}{% endblock %} - Modification saison</title>
 	{% endblock %}
 </head>
 <body>
 	<div id="content">{% block content %}{% endblock %}</div>
-	<h1>Ajout d'un clients </h1>
+	<h1>Modification d'une saison </h1>
 	
-	<form role="form">
+	<form method="post" ACTION="/Cas-M-Ping/seasons/modify/confirm/{{season.seas_id}}">
 		
 		<label for="name">Nom de saison : </label>
-		<input class="form-control" id="name" placeholder="{{season.name}}">
+		<input class="form-control" id="name" name="name" value="{{season.seas_name}}" placeholder="{{season.seas_name}}">
 		
 		<label for="beginDate">Date de debut : </label>
-		<input class="form-control" id="beginDate" placeholder="{{season.beginDate}}">
+		<input class="form-control" id="beginDate" name="beginDate" value="{{season.seas_start_date}}" placeholder="{{season.seas_start_date}}">
 		
 		<label for="endDate">Date de fin : </label>
-		<input class="form-control" id="endDate" placeholder="{{season.endDate}}">
+		<input class="form-control" id="endDate" name="endDate" value="{{season.seas_end_date}}" placeholder="{{season.seas_end_date}}">
 		
 		<label for="coefficient">Coefficient : </label>
-		<input class="form-control" id="coefficient" placeholder="{{season.coefficient}}">
+		<input class="form-control" id="coefficient" name="coefficient" value="{{season.seas_coeff}}" placeholder="{{season.seas_coeff}}">
 		
 		<button type="submit" class="btn btn-default">Modifier</button>
 	</form>

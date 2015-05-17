@@ -72,7 +72,7 @@
 		 * @param cust_recordNumber, customer's record number
 		 * @return 0 without errors, exception message any others cases
 		 */
-		public function modify_customer($cust_id, $cust_lastName, $cust_address, $cust_zipCode, $cust_city, $cust_phoneNumber, $cust_addNumber) {
+		public function modify_customer($cust_id, $cust_lastName, $cust_firstName, $cust_address, $cust_zipCode, $cust_city, $cust_phoneNumber, $cust_addNumber) {
 			try {
 				$qry = $this->db->prepare('UPDATE camping.customer SET cust_lastName =?, cust_address =?, cust_postal_code =?, cust_city =?, cust_phone_number =?, cust_record_number =?, cust_firstName =? WHERE cust_id =?');
 				
@@ -82,8 +82,8 @@
 				$qry->bindValue(4, $cust_city, \PDO::PARAM_STR);
 				$qry->bindValue(5, $cust_phoneNumber, \PDO::PARAM_STR);
 				$qry->bindValue(6, $cust_addNumber, \PDO::PARAM_STR);
-				$qry->bindValue(7, $cust_id, \PDO::PARAM_INT);
-				$qry->bindValue(1, $cust_firstName, \PDO::PARAM_STR);
+				$qry->bindValue(7, $cust_firstName, \PDO::PARAM_STR);
+				$qry->bindValue(8, $cust_id, \PDO::PARAM_INT);
 				$qry->execute();
 				$qry->closeCursor();
 				return 0;

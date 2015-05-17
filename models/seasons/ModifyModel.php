@@ -71,7 +71,7 @@
 		 */
 		public function modify_season($seas_id, $seas_name, $seas_StartDate, $seas_EndDate, $seas_coeff) {
 			try {
-				$qry = $this->db->prepare('UPDATE season SET seas_name = "?",seas_start_date = "?", seas_end_date = "?",seas_coeff = "?" WHERE seas_id = ?');
+				$qry = $this->db->prepare('UPDATE season SET seas_name =?,seas_start_date =?, seas_end_date =?,seas_coeff =? WHERE seas_id = ?');
 				$qry->bindValue(1, $seas_name, \PDO::PARAM_STR);
 				$qry->bindValue(2, $seas_StartDate, \PDO::PARAM_STR);
 				$qry->bindValue(3, $seas_EndDate, \PDO::PARAM_STR);

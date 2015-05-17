@@ -50,19 +50,32 @@
 				
 				if ($controller == 'ConfirmModifyController') {
 					if (file_exists (_RENTALS_MODELS_ .'/'. $this->model_name .'Model.php')) {			
-						if (file_exists (_RENTALS_VIEWS_ .'/'. $this->view_name .'.tpl')) {	
-							try {	
-								require_once (_RENTALS_MODELS_ .'/'. $this->model_name .'Model.php');
-								$id = Tools::getInstance()->getUrl_id($url);
-								
-								$data = \Rental\ModifyModel::getInstance()->modify_model();
+						try {	
+							require_once (_RENTALS_MODELS_ .'/'. $this->model_name .'Model.php');
+							$id = Tools::getInstance()->getUrl_id($url);
+							
+							$datetime1 = new DateTime($_POST['beginDate']);
+							$datetime2 = new DateTime($_POST['endDate']);
+							$interval = $datetime1->diff($datetime2);
+							
+							Tools::getInstance()->createPost($_POST);
+							
+							if(!empty($_POST['name']) && !empty($_POST['beginDate']) && !empty($_POST['endDate']) &&
+								!empty($_POST['peopleNumber']) && $interval->days > 0 && !empty($_POST['paymentState'])
+							) {
+								\Rental\ModifyModel::getInstance()->modify_model(
+									$_POST['name'], $_POST['beginDate'], $_POST['endDate'],
+									$_POST['peopleNumber'], '', $_POST['paymentState'],
+									$interval->days, $_POST['deposit'], $id
+								);
 								header('Location: /Cas-M-Ping/rentals/show/'.$id);
-	
-							} catch (Exception $e) {
-								throw new Exception('Une erreur est survenue durant la récupération des données: '.$e->getMessage());
+								
+							} else {
+								header('Location: /Cas-M-Ping/rentals/modify/'.$id);
 							}
-						} else {
-							throw new Exception('Le template "'.$this->view_name .'" n\'existe pas dans "'._RENTALS_VIEWS_ .'"!');
+
+						} catch (Exception $e) {
+							throw new Exception('Une erreur est survenue durant la modification des données: '.$e->getMessage());
 						}
 					} else {
 						throw new Exception('Le modèle "'. $this->model_name .'" n\'existe pas dans "'._RENTALS_MODELS_ .'"!');

@@ -28,6 +28,16 @@
 			<td>{{season.seas_start_date}}</td>
 			<td>{{season.seas_end_date}}</td>
 			<td>{{season.seas_coeff}}</td>
+			<td> 
+				<form method="post" ACTION="/Cas-M-Ping/seasons/modify/{{season.seas_id}}">
+				<button type="submit" > Modifier </button>
+				</form>
+			</td>
+			<td> 
+				<form method="post" ACTION="/Cas-M-Ping/seasons/delete/{{season.seas_id}}">
+				<button type="submit" > Suppression </button>
+				</form>
+			</td>
 		</tr>
 	{% endfor %}
 	</table>

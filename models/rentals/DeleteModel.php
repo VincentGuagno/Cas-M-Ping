@@ -74,7 +74,6 @@
 				$qry->bindValue(1, $rent_id, \PDO::PARAM_INT);
 				$qry->execute();
 
-
 				// suppression dans lien loc emp
 				$qry = $this->db->prepare('DELETE FROM link_rent_rental WHERE link_rent_rental.lle_loc_id = ?');
 				$qry->bindValue(1, $rent_id, \PDO::PARAM_INT);

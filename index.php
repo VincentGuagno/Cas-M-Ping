@@ -5,8 +5,8 @@
 		
 		try {
 			$timeStart = microtime(true);
-			
-			Dispatcher::getInstance()->dispatch();
+
+			Dispatcher::getInstance()->dispatch($_POST);
 			
 			$timeEnd = microtime(true);
 			$globalTime = $timeEnd - $timeStart;

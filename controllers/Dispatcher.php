@@ -69,6 +69,11 @@
 				'directory' => 'customers/',
 				'url-formatter' => 'customers/modify/{id}'
 			),
+			'confirm-modify-customers' => array(
+				'controller' => 'ConfirmModifyController',
+				'directory' => 'customers/',
+				'url-formatter' => 'customers/modify/confirm/{id}'
+			),
 			
 			// Home routes
 			'home' => array(
@@ -156,6 +161,11 @@
 				'controller' => 'ModifyController',
 				'directory' => 'seasons/',
 				'url-formatter' => 'seasons/modify/{id}'
+			),
+			'confirm-modify-seasons' => array(
+				'controller' => 'ConfirmModifyController',
+				'directory' => 'seasons/',
+				'url-formatter' => 'seasons/modify/confirm/{id}'
 			),
 			
 			// Sector routes
@@ -274,6 +284,7 @@
 					throw new Exception('Fichier "'._CONTROLLERS_DIR_ .'/'.$this->controller['directory'].$this->controller['controller'].'.php" introuvable!');
 				}
 				
+				Tools::getInstance()->createPost($_POST); 
 				Tools::getInstance()->createUrl($this->controller['controller'], $this->request_uri);
 				$controllerInstance = new $this->controller['controller']();
 				

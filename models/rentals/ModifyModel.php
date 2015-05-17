@@ -80,7 +80,7 @@
 									 	$rent_locationState, $rent_cautionState,
 									 	$rent_daysNumber,$rent_price , $rent_cust_id) {
 			try {
-				$qry = $this->db->prepare('UPDATE camping.rental
+				$qry = $this->db->prepare('UPDATE rental
 											SET  rent_name=?,
 												 rent_begin=?,
 												 rent_end=?,
@@ -89,7 +89,7 @@
 												 rent_caution_state=?,
 												 rent_days_number=?,
 												 rent_price=?												 
-												 WHERE rental.rent_cust_id = ?');
+												 WHERE rent_id = ?');
 				
 
 				$qry->bindValue(1, $rent_name, \PDO::PARAM_STR);
@@ -101,8 +101,6 @@
 				$qry->bindValue(7, $rent_daysNumber, \PDO::PARAM_STR);
 				$qry->bindValue(8, $rent_price, \PDO::PARAM_STR);
 				$qry->bindValue(9, $rent_cust_id, \PDO::PARAM_STR);
-				$qry->execute();
-
 				$qry->execute();
 				$qry->closeCursor();
 				return 0;
