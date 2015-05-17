@@ -85,6 +85,24 @@
 				return $e->getMessage();
 			}
 		}
+
+
+		/**
+		 * Delete a specified sector
+		 *
+		 * @return 0 without errors, exception message any others cases
+		 */
+		public function delete_sectors() {
+			try {
+							
+				$qry = $this->db->prepare('DELETE FROM sector');			
+				$qry->execute();
+				$qry->closeCursor();
+				return 0;
+			} catch(Exception $e) {
+				return $e->getMessage();
+			}
+		}
 	}
 
 ?>
