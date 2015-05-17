@@ -16,13 +16,13 @@ Création d'une saison
 		<input class="form-control" id="seas_name">
 		
 		<div class="input-append date">
-			<label for="seas_date">Date de debut : </label>
-			<input type="text" value="12-02-2012" class="form-control" id="seas_date">
+			<label for="beginDate">Date de debut : </label>
+			<input type="text" value="12-02-2012" class="form-control" id="beginDate">
 			<span class="add-on"><i class="icon-th"></i></span>
 		</div>
 		
 		<div class="input-append date">
-			<label for="endDate">Date de debut : </label>
+			<label for="endDate">Date de fin : </label>
 			<input type="text" value="12-02-2012" class="form-control" id="endDate">
 			<span class="add-on"><i class="icon-th"></i></span>
 		</div>

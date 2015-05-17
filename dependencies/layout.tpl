@@ -8,6 +8,8 @@
 	{% block stylesheets %}
 		<link rel="stylesheet" href="{{bootstrapPath}}">
 		<link rel="stylesheet" href="/Cas-M-Ping/dependencies/styles/layout.css">
+		<link rel="stylesheet" href="/Cas-M-Ping/dependencies/bootstrap/css/bootstrap-datetimepicker.min.css">
+		<link rel="stylesheet" href="/Cas-M-Ping/dependencies/bootstrap/js/bootstrap-datetimepicker.min.js">
 	{% endblock %}
 </head>
 <body>
