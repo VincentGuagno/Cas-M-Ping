@@ -36,6 +36,12 @@
 		 */
 		private $routes = array(
 			
+			'display-home' => array(
+				'controller' => 'DisplayController',
+				'directory' => 'rentals/',
+				'url-formatter' => '/'
+			),
+			
 			// Caravan routes
 			'display-caravans' => array(
 				'controller' => 'DisplayController',
@@ -264,6 +270,10 @@
 						$this->controller['formatter'] = $this->routes[$key]['url-formatter'];
 						break;
 					}
+				}
+				
+				if($this->request_uri == null) {
+					header('Location: /'._PROJECT_NAME_ .'/rentals/show/all');
 				}
 				
 				if($this->controller == null) {
