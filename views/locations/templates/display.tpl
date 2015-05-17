@@ -23,14 +23,15 @@
 		<tr>
 			<th> Numéro d'emplacement </th>
 			<th> Secteur </th>
+			<th> Type d'emplacement </th>
 			<th> Prix </th>
 		</tr>
 	{% for location in locations %}
 		<tr>
 			<td>{{location.loc_id}}</td>
 			<td>{{location.sec_name}}</td>
-			<td>{{location.type_location_price}}</td>
 			<td>{{location.type_location_name}}</td>
+			<td>{{location.type_location_price}}</td>
 			<td>
 			<form method="post" ACTION="/Cas-M-Ping/locations/delete/{{loc_id}}">
 			<button type="submit" > Supprimer </button>
