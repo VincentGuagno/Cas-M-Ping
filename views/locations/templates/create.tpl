@@ -11,11 +11,8 @@
 
 {% block content %}
 	<form method="post" ACTION="/Cas-M-Ping/rentals/add/confirm">
-	
-		<label for="loc_sec_id">Secteur : </label>
-		<input class="form-control" id="loc_sec_id">
 		
-		<label for="loc_sec_id">Type de location : </label>
+		<label for="loc_sec_id">Secteur : </label>
 		<select id="loc_sec_id">
 		{% for sector in sectors %}
 		<option value="{{sec_id}}">{{sec_name}}</option>
@@ -23,7 +20,7 @@
 		</select> 
 		
 		
-		<label for="loc_type_id">Type de location : </label>
+		<label for="loc_type_id">Type d'emplacement : </label>
 		<select id="loc_type_id">
 		{% for typeLocation in typeLocations %}
 		<option value="{{type_location_id}}">{{type_location_name}}</option>
