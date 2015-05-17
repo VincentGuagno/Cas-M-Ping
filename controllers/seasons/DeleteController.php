@@ -78,7 +78,7 @@
 		}
 		
 		/**
-	     * @see DeleteController::checkAccess()
+	     * @see SeasonController::checkAccess()
 	     * @return true if the controller is available for the current user/visitor, false any other cases
 	     */
 	    public function checkAccess() {
@@ -86,7 +86,7 @@
 	    }
 
 		/**
-		 * @see DeleteController::viewAccess()
+		 * @see SeasonController::viewAccess()
 		 * @return true if the current user/visitor has valid view permissions, false any other cases
 		 */
 		public function viewAccess() {

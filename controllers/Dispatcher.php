@@ -70,6 +70,16 @@
 				'directory' => 'customers/',
 				'url-formatter' => 'customers/add'
 			),
+			'confirm-add-customers' => array(
+				'controller' => 'ConfirmAddController',
+				'directory' => 'customers/',
+				'url-formatter' => 'customers/add/confirm'
+			),
+			'delete-customers' => array(
+				'controller' => 'DeleteController',
+				'directory' => 'customers/',
+				'url-formatter' => 'customers/delete/{id|all}'
+			),
 			'display-customers' => array(
 				'controller' => 'DisplayController',
 				'directory' => 'customers/',

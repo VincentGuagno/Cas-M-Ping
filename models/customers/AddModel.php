@@ -85,7 +85,7 @@
 																		 cust_city, 
 																		 cust_phone_number, 
 																		 cust_record_number, 
-																		 cust_firstName) VALUES (NULL, ?, ?, ?, ?, ?, UUID(), ?)');
+																		 cust_firstName) VALUES (?, ?, ?, ?, ?, UUID(), ?)');
 				$qry->bindValue(1, $cust_lastName, \PDO::PARAM_STR);
 				$qry->bindValue(2, $cust_address, \PDO::PARAM_STR);
 				$qry->bindValue(3, $cust_zipCode, \PDO::PARAM_STR);

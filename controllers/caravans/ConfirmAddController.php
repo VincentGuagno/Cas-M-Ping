@@ -44,8 +44,6 @@
 				$url .= '&id=ukn';
 				$controller = Tools::getInstance()->getUrl_controller($url);
 				
-				echo $controller;
-				
 				if ($controller == 'ConfirmAddController') {
 					if (file_exists (_CARAVANS_MODELS_ .'/'. $this->model_name .'Model.php')) {			
 						try {	
