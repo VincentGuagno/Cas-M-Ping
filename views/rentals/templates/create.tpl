@@ -20,6 +20,13 @@ Création d'une location
 		{% endfor %}
 		</select> 
 		</br></br>
+		<label for="location">Emplacement : </label>
+		<select name="location">
+		{% for location in locations %}
+		<option value="{{location.loc_id}}">{{location.loc_id}}</option>
+		{% endfor %}
+		</select> 
+		</br></br>
 		
 		<label for="rent_name">Nom de la location : </label>
 		<input class="form-control" id="rent_name">
