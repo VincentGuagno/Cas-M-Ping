@@ -69,17 +69,14 @@
 		 */
 		public function delete_season($seas_id) {
 			try {
-
+				$qry = $this->db->prepare('DELETE FROM link_season_location WHERE link_season_location.link_seas_id = ?');
+				$qry->bindValue(1, $seas_id, \PDO::PARAM_INT);
+				$qry->execute();
 
 				$qry = $this->db->prepare('DELETE FROM season WHERE season.seas_id = ?');
 				$qry->bindValue(1, $seas_id, \PDO::PARAM_INT);
 				$qry->execute();
 
-				$qry = $this->db->prepare('DELETE FROM link_season_location WHERE link_season_location.link_seas_id = ?');
-				$qry->bindValue(1, $seas_id, \PDO::PARAM_INT);
-				$qry->execute();
-				
-				$qry->execute();
 				$qry->closeCursor();
 				return 0;
 			} catch(Exception $e) {
@@ -94,11 +91,10 @@
 		 */
 		public function delete_seasons() {
 			try {
-
-				$qry = $this->db->prepare('DELETE FROM season');
-				$qry->execute();
-
 				$qry = $this->db->prepare('DELETE FROM link_season_location');
+				$qry->execute();
+				
+				$qry = $this->db->prepare('DELETE FROM season');
 				$qry->execute();
 				
 				$qry->closeCursor();
