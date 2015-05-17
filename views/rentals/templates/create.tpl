@@ -2,11 +2,11 @@
 	{%extends "layout.tpl" %}
 
 {% block header %}
-Création d'une location
+CrÃ©ation d'une location
 {% endblock %}
 
 {% block title %}
-Création d'une location
+CrÃ©ation d'une location
 {% endblock %}
 
 {% block content %}
@@ -24,7 +24,7 @@ Création d'une location
 		<label for="rent_name">Nom de la location : </label>
 		<input class="form-control" id="rent_name">
 		
-		<strong>Date de début:</strong></br>     
+		<strong>Date de dÃ©but:</strong></br>     
 		<input class="form-control" type="date" id="beginDate" name="beginDate" value=""/></br>
 		<div class = "form-group">
 		
@@ -33,17 +33,14 @@ Création d'une location
 		</div>
 		
 		<label for="rent_nb_person">Nombre de personnes : </label>
-		<input class="form-control" id="rent_nb_person">
+		<input class="form-control" id="rent_nb_person" name="person">
 		
-		<label for="rent_location_state">Etat des lieux : </label>
-		<input class="form-control" id="rent_location_state">
+		<label for="rent_caution_state">Prix Caution : </label>
+		<input class="form-control" id="rent_caution_state" name="price_c">
 		
-		<label for="rent_caution_state">Caution : </label>
-		<input class="form-control" id="rent_caution_state">
+		<label for="rent_validity">ValiditÃ© : </label>
+		<input class="form-control" id="rent_validity" name="val">
 		
-		<label for="rent_validity">Paiement effectué : </label>
-		<input class="form-control" id="rent_validity">
-		
-		<button type="submit" class="btn btn-default"> Créer la location</button>
+		<button type="submit" class="btn btn-default"> CrÃ©er la location</button>
 	</form>
 {% endblock %}
