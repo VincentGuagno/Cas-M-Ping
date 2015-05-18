@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client: localhost
--- Généré le: Sam 16 Mai 2015 à 22:05
+-- Généré le: Lun 18 Mai 2015 à 00:39
 -- Version du serveur: 5.6.12-log
 -- Version de PHP: 5.4.16
 
@@ -35,19 +35,7 @@ CREATE TABLE IF NOT EXISTS `caravan` (
   `car_nb_person` int(11) NOT NULL COMMENT 'the number of person who can live into the caravan',
   `car_id_location` int(11) NOT NULL COMMENT 'location number where the caravans was rented',
   PRIMARY KEY (`car_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=11 ;
-
---
--- Contenu de la table `caravan`
---
-
-INSERT INTO `caravan` (`car_id`, `car_society_name`, `car_price`, `car_nb_person`, `car_id_location`) VALUES
-(5, 'zob', 545, 12, 1),
-(6, 'pignouf', 444, 12, 22),
-(7, 'glandu', 777, 7, 2),
-(8, 'theSocietyName', 44.44, 11, 0),
-(9, 'SocietyNAme', 44.44, 12, 1),
-(10, 'nameston', 888, 6, 5);
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=16 ;
 
 -- --------------------------------------------------------
 
@@ -65,22 +53,14 @@ CREATE TABLE IF NOT EXISTS `customer` (
   `cust_record_number` varchar(15) NOT NULL COMMENT 'customer''s record number',
   `cust_firstName` varchar(15) NOT NULL,
   PRIMARY KEY (`cust_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=11 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=18 ;
 
 --
 -- Contenu de la table `customer`
 --
 
 INSERT INTO `customer` (`cust_id`, `cust_lastName`, `cust_address`, `cust_postal_code`, `cust_city`, `cust_phone_number`, `cust_record_number`, `cust_firstName`) VALUES
-(1, 'henrui', '9 res face nord', '31841', 'townToons', '+33561070707', 'B55A-C', ''),
-(2, 'Faufifonfec', '15 régiment de Nabo le liech ', '88756', 'chtimis', '069698985', 'AB5-66Z', ''),
-(3, 'Naboléon', '35 rue du grand grand', '78965', 'vieniVicci', '456123542', 'BBBBBBB-1', ''),
-(4, 'Supositwar', 'Dans ton *** ', '1111111', 'Rect***', '7878452654', 'BI*E', ''),
-(5, 'Huntermarché', 'ça pu des pieds', '87985', 'vanerque', '15678921', 'BEDEAU', ''),
-(6, 'Jackcélerre ', 'Avenus susain bold', 'tombouctou', 'pipout', '654456654', '007', ''),
-(7, 'bibemdom', 'korea', '88756', 'seoul', '+9855456215', '', ''),
-(9, 'theName', 'theAddress', 'thePostalC', 'thzCity', 'TheNumber', 'theVarchar', ''),
-(10, 'theLastName', 'the_cust adress', '88888', 'thecity', 'thenumber', 'dfgdfg546', 'theFirstName');
+(17, 'dfg', 'sdfg', 'sdfg', 'sdgsd', 'sdfg', 'sdfg', 'sdfg');
 
 -- --------------------------------------------------------
 
@@ -94,17 +74,6 @@ CREATE TABLE IF NOT EXISTS `link_car_location` (
   PRIMARY KEY (`lcl_car_id`,`lcl_rent_id`),
   KEY `lcl_rend_constraint` (`lcl_rent_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Contenu de la table `link_car_location`
---
-
-INSERT INTO `link_car_location` (`lcl_car_id`, `lcl_rent_id`) VALUES
-(5, 2),
-(6, 2),
-(9, 2),
-(6, 3),
-(7, 3);
 
 -- --------------------------------------------------------
 
@@ -125,9 +94,9 @@ CREATE TABLE IF NOT EXISTS `link_rent_rental` (
 --
 
 INSERT INTO `link_rent_rental` (`lle_rent_id`, `lle_loc_id`) VALUES
-(2, 4),
-(3, 4),
-(3, 5);
+(14, 27),
+(15, 27),
+(16, 27);
 
 -- --------------------------------------------------------
 
@@ -141,14 +110,6 @@ CREATE TABLE IF NOT EXISTS `link_season_location` (
   PRIMARY KEY (`link_seas_id`,`link_location_id`),
   KEY `link_location_constraint` (`link_location_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Contenu de la table `link_season_location`
---
-
-INSERT INTO `link_season_location` (`link_seas_id`, `link_location_id`) VALUES
-(6, 3),
-(5, 8);
 
 -- --------------------------------------------------------
 
@@ -174,19 +135,16 @@ CREATE TABLE IF NOT EXISTS `location` (
   `loc_sec_id` int(11) NOT NULL,
   `loc_type_id` int(11) NOT NULL,
   PRIMARY KEY (`loc_id`),
-  UNIQUE KEY `loc_sec_index` (`loc_sec_id`),
-  KEY `loc_type_index` (`loc_type_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
+  KEY `loc_type_index` (`loc_type_id`),
+  KEY `loc_sec_index` (`loc_sec_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=28 ;
 
 --
 -- Contenu de la table `location`
 --
 
 INSERT INTO `location` (`loc_id`, `loc_sec_id`, `loc_type_id`) VALUES
-(3, 2, 4),
-(4, 4, 5),
-(5, 5, 1),
-(8, 1, 2);
+(27, 12, 4);
 
 -- --------------------------------------------------------
 
@@ -208,15 +166,16 @@ CREATE TABLE IF NOT EXISTS `rental` (
   `rent_validity` tinyint(1) NOT NULL DEFAULT '1' COMMENT 'rent''s state of the validity',
   PRIMARY KEY (`rent_id`),
   KEY `cust_foreign_key` (`rent_cust_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=17 ;
 
 --
 -- Contenu de la table `rental`
 --
 
 INSERT INTO `rental` (`rent_id`, `rent_name`, `rent_begin`, `rent_end`, `rent_nb_person`, `rent_location_state`, `rent_caution_state`, `rent_days_number`, `rent_price`, `rent_cust_id`, `rent_validity`) VALUES
-(2, 'theRentName', '2015-05-06', '2015-05-29', 88, 'thenLocationSate', 7.5, 55, 4545, 1, 1),
-(3, 'theName', '2015-05-03', '2015-05-04', 15, 'the_rent_location_sate', 47, 4, 474, 9, 1);
+(14, 'test', '2015-05-19', '2015-05-30', 3, '', 25, 11, 25, 17, 1),
+(15, 'test6', '2015-05-25', '2015-05-30', 2, '', 25, 5, 25, 17, 1),
+(16, 'test10', '2015-05-28', '2015-06-10', 5, '', 35, 13, 347, 17, 1);
 
 -- --------------------------------------------------------
 
@@ -231,17 +190,15 @@ CREATE TABLE IF NOT EXISTS `season` (
   `seas_end_date` date NOT NULL COMMENT 'season''s  end date',
   `seas_coeff` double NOT NULL COMMENT 'season''s coeff',
   PRIMARY KEY (`seas_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=20 ;
 
 --
 -- Contenu de la table `season`
 --
 
 INSERT INTO `season` (`seas_id`, `seas_name`, `seas_start_date`, `seas_end_date`, `seas_coeff`) VALUES
-(5, 'Haute', '2015-03-20', '2015-06-11', 1),
-(6, '1er Moyenne', '2015-03-15', '2015-06-19', 0.8),
-(7, '2ème Moyenne', '2015-09-12', '2015-11-15', 0.7),
-(8, 'Basse', '2015-11-16', '0000-00-00', 0);
+(17, 'test52', '2012-07-22', '2012-09-10', 1),
+(19, 'test95', '2015-05-23', '2015-06-30', 0.8);
 
 -- --------------------------------------------------------
 
@@ -253,19 +210,15 @@ CREATE TABLE IF NOT EXISTS `sector` (
   `sec_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'sector''s id',
   `sec_name` varchar(30) NOT NULL COMMENT 'sector''s name',
   PRIMARY KEY (`sec_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=13 ;
 
 --
 -- Contenu de la table `sector`
 --
 
 INSERT INTO `sector` (`sec_id`, `sec_name`) VALUES
-(1, 'fdgdfg '),
-(2, 'Forêt'),
-(3, 'Jardin'),
-(4, 'Clairière'),
-(5, 'theSecName'),
-(6, 'valentin');
+(11, 'testdfgsdfgd'),
+(12, 'test');
 
 -- --------------------------------------------------------
 
