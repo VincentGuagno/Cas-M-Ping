@@ -104,6 +104,27 @@
 		}
 
 		/**
+		 * All season's informations from one customer 
+		 *
+		 * @param seas_id, season's name
+		 * @return 0 without errors, exception message any others cases
+		 */
+		public function display_seasonCoeff($date) {
+			try {
+				$qry = $this->db->prepare('SELECT seas_coeff FROM season WHERE seas_start_date <= ? AND seas_end_date >= ?');	
+				$qry->bindValue(1, $date, \PDO::PARAM_STR);
+				$qry->bindValue(2, $date, \PDO::PARAM_STR);
+				$qry->execute();
+					//put  the result into an object
+				$return_qry = $qry->fetchAll();
+				$qry->closeCursor();
+				return $return_qry;
+			} catch(Exception $e) {
+				return $e->getMessage();
+			}
+		}
+		
+		/**
 		 * return season's id
 		 *
 		 * @param seas_id, season's id		

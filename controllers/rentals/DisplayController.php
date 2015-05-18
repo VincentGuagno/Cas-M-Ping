@@ -76,7 +76,7 @@
 											$caravans = array();
 											$locations = array();
 											$buffer = null;
-
+											
 											for($i=0; $i<count($rentals); $i++) {
 												$buffer = \Season\DisplayModel::getInstance()->get_SeasonByRental($rentals[$i]['rent_id']);											
 												if(count($buffer) > 0) $seasons = array_merge($seasons, $buffer);
@@ -90,7 +90,7 @@
 												if(count($buffer) > 0) $locations = array_merge($locations, $buffer);
 												$buffer = null;
 											}
-											
+										
 											echo $this->twig->render($this->view_nameId .'.tpl', array('rental' => $rentals, 'seasons' => $seasons, 'caravans' => $caravans, 'locations' => $locations, 'bootstrapPath' => _BOOTSTRAP_FILE_));
 										} else {
 											header('Location: /Cas-M-Ping/errors/404');

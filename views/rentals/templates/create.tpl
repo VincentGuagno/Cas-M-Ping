@@ -29,7 +29,7 @@ Création d'une location
 		</br></br>
 		
 		<label for="rent_name">Nom de la location : </label>
-		<input class="form-control" id="rent_name">
+		<input class="form-control" id="rent_name" name="rent_name">
 		
 		<strong>Date de début:</strong></br>     
 		<input class="form-control" type="date" id="beginDate" name="beginDate" value=""/></br>

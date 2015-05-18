@@ -78,7 +78,7 @@
 		public function create_rental($rent_name, $rent_begin, 
 										$rent_end, $rent_nbPerson,
 									 	$rent_locationState, $rent_cautionState,
-									 	$rent_daysNumber,$rent_price , $rent_cust_id, $rent_validity) {
+									 	$rent_daysNumber,$rent_price , $rent_cust_id, $rent_validity, $loc_id) {
 			try {
 				$qry = $this->db->prepare('INSERT INTO camping.rental (rent_id,
 																	   rent_name, 
@@ -101,10 +101,22 @@
 				$qry->bindValue(7, $rent_daysNumber, \PDO::PARAM_STR);
 				$qry->bindValue(8, $rent_price, \PDO::PARAM_STR);
 				$qry->bindValue(9, $rent_cust_id, \PDO::PARAM_STR);
-				$qry->bindValue(10, $rent_cust_id, \PDO::PARAM_INT);
-		
+				$qry->bindValue(10, $rent_validity, \PDO::PARAM_INT);
 				$qry->execute();
 				$qry->closeCursor();
+				
+				$qry = $this->db->prepare('SELECT MAX(rent_id) AS nbr FROM rental');
+				$qry->execute();
+				$return_qry = $qry->fetch(\PDO::FETCH_OBJ);
+				$qry->closeCursor();
+				
+				$qry = $this->db->prepare('INSERT INTO camping.link_rent_rental (lle_rent_id, lle_loc_id) VALUES (?, ?)');
+				$qry->bindValue(1, $return_qry->nbr, \PDO::PARAM_INT);
+				$qry->bindValue(2, $loc_id, \PDO::PARAM_INT);
+				$qry->execute();
+				
+				$qry->closeCursor();	
+				
 				return 0;
 			} catch(Exception $e) {
 				return $e->getMessage();

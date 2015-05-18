@@ -103,7 +103,7 @@
 		 *	
 		 * @return 0 without errors, exception message any others cases
 		 */
-		public function delete_rentals($) {
+		public function delete_rentals() {
 			try {
 
 				//suppression dans link_season_location

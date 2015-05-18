@@ -12,8 +12,11 @@
 {% block content %}
 	{%set rental = rental[0]%}
 	Locataire : {{rental.cust_name}} </br>
-	Nombre de personnes : {{rental.rent_nb_person}} personnes </br>
-	Nombre de jours : </br>
+	Nombre de personnes : {{rental.rent_nb_person}}</br>
+	Nombre de jours : {{rental.rent_days_number}}<br>
+	Caution: {{rental.rent_caution_state}}E<br>
+	Prix total (hors caution): {{rental.rent_price - rental.rent_caution_state}}E<br>
+	Prix total: {{rental.rent_price}}E<br><br /><br />
 	<h2> Emplacement :</h2>
 	<table class="table">
 		<tr>
@@ -25,12 +28,12 @@
 		<tr>
 			<td>{{location.loc_id}}</td>
 			<td>{{location.type_location_name}}</td>
-			<td>{{location.type_location_price}} € \ jours</td>
+			<td>{{location.type_location_price}}E / jours</td>
 		</tr>
 	{% endfor %}
 	</table>
 	
-	<h2> Location de caravanes :</h2>
+	<!--<h2> Location de caravanes :</h2>
 	<table class="table">
 		<tr>
 			<th> Nombre de personnes </th>
@@ -44,9 +47,9 @@
 			<td>{{caravan.car_price}} €</td>
 		</tr>
 	{% endfor %}
-	</table>
+	</table>-->
 	
-	<h2> Saison : </h2>
+	<!--<h2> Saison : </h2>
 	<table class="table">
 		<tr>
 			<th> Nom de la saison </th>
@@ -60,7 +63,7 @@
 			<td>{{season.seas_coeff}}</td>
 		</tr>
 	{% endfor %}
-	</table>
+	</table>-->
 	<div>
 		<form method="post" ACTION="/Cas-M-Ping/rentals/modify/{{rental.rent_id}}">
 			<button type="submit" > Modifier </button>

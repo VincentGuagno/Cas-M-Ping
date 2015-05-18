@@ -25,7 +25,7 @@
 			<th> Client </th>
 			<th> Nombre de jours </th>
 			<th> Nombre de personnes </th>
-			<th> Paiement effectué </th>
+			<th> Réservation active </th>
 			<th> </th>
 			<th> </th> 
 			<th> </th>

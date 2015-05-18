@@ -149,7 +149,12 @@
 			'create-rentals' => array(
 				'controller' => 'CreateController',
 				'directory' => 'rentals/',
-				'url-formatter' => 'rentals/create'
+				'url-formatter' => 'rentals/add'
+			),
+			'confirm-create-locations' => array(
+				'controller' => 'ConfirmAddController',
+				'directory' => 'rentals/',
+				'url-formatter' => 'rentals/add/confirm'
 			),
 			'delete-rentals' => array(
 				'controller' => 'DeleteController',
