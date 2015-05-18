@@ -27,7 +27,7 @@
 			<th> Nombre de personnes </th>
 			<th> Réservation active </th>
 			<th> </th>
-			<th> </th> 
+			<!--<th> </th> -->
 			<th> </th>
 			<th> </th> 
 		</tr>
@@ -43,11 +43,11 @@
 				<button type="submit" > Modifier </button>
 				</form>
 			</td>
-			<td> 
+			<!--<td> 
 				<form method="post" ACTION="/Cas-M-Ping/rentals/cancel/{{rental.rent_id}}">
 				<button type="submit" > Annuler </button>
 				</form>
-			</td>
+			</td>-->
 			<td> 
 				<form method="post" ACTION="/Cas-M-Ping/rentals/delete/{{rental.rent_id}}">
 				<button type="submit" > Supprimer </button>
